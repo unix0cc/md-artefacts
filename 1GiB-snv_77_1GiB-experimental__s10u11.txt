@@ -1,0 +1,33 @@
+./qemu-system-sparc64 -M niagara -L /git/md/bin/1GiB-snv_77_1GiB-experimental/ -nographic -m 1024  -drive if=pflash,readonly=on,file=/zroot/iso/s10u11/V36434-01.iso
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 1024 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10cbab5] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10cbab8, 0x12b4e0f] data at 0x1a167c0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x12b4e10, 0x12b4e27] data at 0x1a6e450
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x12b4e40, 0x12b7a77] data at 0x1a6ebc0
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x12b7a80, 0x1327617] data at 0x1a85e70
+module /kernel/misc/sparcv9/ctf: text at [0x1327618, 0x132f477] data at 0x1aab098
+
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+[0]> :c
+get_single_q_size: dflt 256 > max 8 for q-cpu-mondo-#bits
+panic - kernel: kmem64 prom_alloc contig failed
+Program terminated
+ok
