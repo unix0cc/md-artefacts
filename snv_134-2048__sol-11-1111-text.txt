@@ -1,0 +1,61 @@
+Command:
+./qemu-system-sparc64 -M niagara -L /git/md/bin/snv_134/2048 -nographic -m 2048  -drive if=pflash,readonly=on,file=/zroot/iso/sol-11-1111-text-sparc.iso
+
+Result: FAIL (panic:sfmmu_cpu_init)
+
+Output:
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 2048 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10e2677] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10e2678, 0x1306ae7] data at 0x19373c0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x1306ae8, 0x1306aef] data at 0x198d698
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x1306b00, 0x13096f7] data at 0x198dd00
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x1309700, 0x138a397] data at 0x19a5e50
+module /kernel/misc/sparcv9/ctf: text at [0x138a398, 0x1391f9f] data at 0x19c33b0
+/
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+Loaded modules: [ unix krtld genunix ]
+[0]> :c
+SunOS Release 5.11 Version 11.0 64-bit
+Copyright (c) 1983, 2011, Oracle and/or its affiliates. All rights reserved.
+-
+panic[cpu0]/thread=180e000:
+
+Warning - stack not written to the dumpbuf
+000000000180b6d0 unix:sfmmu_cpu_init+48 (180c000, 102a6e0, 102a400, 102a400, 0, 0)
+  %l0-3: 0000000001897578 0000000000000000 0000000001897578 0000000001897578
+  %l4-7: 0000000000000001 0000000001915c00 0000000000000200 0000030002b37fc8
+000000000180b790 unix:hat_init+1e0 (18f8400, 1035c00, 1874c00, 10d6d28, 1874ee8, 18a8c00)
+  %l0-3: 0000000000000040 0000000001915c00 0000000000008000 0000000000000001
+  %l4-7: 0000000001931800 000000000183c400 0000000001931618 00000000018f8510
+000000000180b8a0 unix:startup_modules+a0 (6000, 183ac00, 3e7c9, 1043400, 10e0000, 0)
+  %l0-3: 0000000000000000 000000000183c400 00000000edd00000 00000000018a8800
+  %l4-7: 00000000018ef800 0000000001999400 0000000001a5e980 0000000001848000
+000000000180b950 unix:startup+38 (2, 1, 1043000, 1043000, 0, 0)
+  %l0-3: 000000003b9aca00 0000000000000000 000000003b9ac800 000000000183c400
+  %l4-7: 0000000000000005 000000000017ffff 0017ffffbcf289fd 0000000001072eb0
+000000000180ba00 genunix:main+28 (180c000, 104e800, 180c000, 70002000, 2000, 1999400)
+  %l0-3: 0000000000000060 0000000070002000 00000000000a2040 00000000018ef000
+  %l4-7: 0000000000000000 000000000180c000 00000000018a62c0 0000000000000000
+
+panic: entering debugger (no dump device, continue to reboot)
+kmdb: target stopped at:
+kmdb_enter:     ta        %icc, 0x7d
+[0]>
