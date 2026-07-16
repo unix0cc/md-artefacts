@@ -1,0 +1,92 @@
+Command:
+./qemu-system-sparc64 -M niagara -L /git/md/bin/snv_134/2048 -nographic -m 2048  -drive if=pflash,readonly=on,file=/zroot/iso/osol-dev-134-ai-sparc.iso -d int,guest_errors -D /tmp/trace.log
+
+Result: FAIL (hang)
+
+Output:
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 2048 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10d9cef] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10d9cf0, 0x12d4d17] data at 0x18d93c0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x12d4d18, 0x12d4d1f] data at 0x192f670
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x12d4d20, 0x12d8e77] data at 0x192fd40
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x12d8e80, 0x13553bf] data at 0x19487c0
+module /kernel/misc/sparcv9/ctf: text at [0x13553c0, 0x135cda7] data at 0x1965f30
+-
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+Loaded modules: [ unix krtld genunix ]
+[0]> :c
+QEMU: Terminated
+
+Trap trace (tail -1000 /tmp/trace.log | grep v=), showing the
+repeating loop that never terminates:
+
+1389392: Data Access MMU Miss (v=0068)
+1389393: Hyperprivileged Trap Instruction (v=0183)
+1389394: External Interrupt 14 (v=004e)
+1389395: Hyperprivileged Trap Instruction (v=0180)
+1389396: Data Access MMU Miss (v=0068)
+1389397: Hyperprivileged Trap Instruction (v=0183)
+1389398: Data Access MMU Miss (v=0068)
+1389399: Hyperprivileged Trap Instruction (v=0183)
+1389400: Data Access MMU Miss (v=0068)
+1389401: Hyperprivileged Trap Instruction (v=0183)
+1389402: Data Access MMU Miss (v=0068)
+1389403: Hyperprivileged Trap Instruction (v=0183)
+1389404: External Interrupt 14 (v=004e)
+1389405: Hyperprivileged Trap Instruction (v=0180)
+1389406: Data Access MMU Miss (v=0068)
+1389407: Hyperprivileged Trap Instruction (v=0183)
+1389408: Data Access MMU Miss (v=0068)
+1389409: Hyperprivileged Trap Instruction (v=0183)
+1389410: Data Access MMU Miss (v=0068)
+1389411: Hyperprivileged Trap Instruction (v=0183)
+1389412: Data Access MMU Miss (v=0068)
+1389413: Hyperprivileged Trap Instruction (v=0183)
+1389414: External Interrupt 14 (v=004e)
+1389415: Hyperprivileged Trap Instruction (v=0180)
+[... pattern repeats identically until termination at 1389457 ...]
+1389457: Hyperprivileged Trap Instruction (v=0183)
+
+Register state at a v=0183 trap (Hyperprivileged Trap Instruction,
+i.e. software trap 0x183-0x100=0x83 == sun4v Hypervisor API function
+MMU_MAP_ADDR, issued by the HV firmware on itself while already
+hyperprivileged):
+
+1389457: Hyperprivileged Trap Instruction (v=0183)
+pc: 00000000f023b0d8  npc: 00000000f023b0dc
+%g0-3: 0000000000000000 00000000f0083100 00000000f0200000 00000000fff78000
+%g4-7: 0000070000000000 00000000f023cdb0 00000000f00832f0 00000000f00834e0
+%o0-3: 0000070000000000 0000000000000000 84000000d00007f5 0000000000000001
+%o4-7: 0000000000000001 0000000000000000 000000000180afe1 00000000f023bf50
+%l0-3: 000000000003b0bc 84000000d00007f5 0000070000000000 00000700024dc000
+%l4-7: 00000700024dc000 0000000080082e80 00000700024dcd80 0000000000043db0
+%i0-3: 00000700024dcd88 0000000000000000 0000000000100000 0000001c00093736
+%i4-7: 000000000183a400 0000000000000000 000000000180b091 000000000101cb00
+pstate: 00000014 ccr: 88 (icc: N--- xcc: N---) asi: 14 tl: 0 pil: d gl: 0
+tbr: 00000000f0200000 hpstate: 0000000000000800 htba: 0000000000400000
+cansave: 5 canrestore: 1 otherwin: 0 wstate: 0 cleanwin: 7 cwp: 4
+fsr: 0000000000000000 y: 0000000000000000 fprs: 0000000000000000
+
+pc 0xf023b0d8 disassembles as pure `illtrap 0` (unmapped/zero memory);
+%o2 = 0x84000000d00007f5 has the shape of a TTE. QEMU's sun4v CPU
+model has no real handler for this hyperprivileged self-call, so
+execution falls through to an unpopulated dispatch-table slot and
+faults forever. Full 1.35GB trace at /tmp/trace.log (not attached).
