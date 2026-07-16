@@ -1,7 +1,7 @@
 Command:
 ./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/1up/ -nographic -m 256 -drive if=pflash,readonly=on,file=/zroot/vmdisks/ramdisk.snv-b77-nd.no-boot-time-network
 
-Result: FAIL (panic during early boot, before reaching a shell)
+Result: FAIL (panic)
 
 Output:
 cpu Probing I/O buses
@@ -48,12 +48,3 @@ panic[cpu0]/thread=180e000: lgrp_traverse: No memory blocks found
 ERROR: Last Trap: Level 14 Interrupt
 [Exception handlers interrupted, please file a bug]
 [type 'resume' to attempt a normal recovery]
-
-Analysis: matches the long-established root cause -- OpenSPARC_T1_rebuild
-is Sun's original, unpatched MD (no memory/cpus/cache nodes, no mmu-*
-platform properties). lgrp_traverse() finds no mblock because the MD has
-no `memory` node at all, so it panics during mlsetup(), before any
-userland/tty is reached. Same failure mode documented for modern kernels
-in niagara-findings.md Experiment #16, now confirmed here against the
-snv_77 ramdisk too -- the original MD doesn't even boot the
-period-correct image, contrary to the earlier assumption that it might.
