@@ -1,0 +1,59 @@
+Command:
+./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/1up/ -nographic -m 256 -drive if=pflash,readonly=on,file=/zroot/vmdisks/ramdisk.snv-b77-nd.no-boot-time-network
+
+Result: FAIL (panic during early boot, before reaching a shell)
+
+Output:
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 256 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -v
+Boot device: /virtual-devices/disk@0  File and args: -v
+Loading ufs-file-system package 1.4 04 Aug 1995 13:02:54.
+FCode UFS Reader 1.12 00/07/17 15:48:16.
+Loading: /platform/SUNW,Sun-Fire-T2000/ufsboot
+Loading: /platform/sun4v/ufsboot
+The boot filesystem is logging.
+The ufs log is empty and will not be used.
+Size: 0xa7827+0x31d30+0x604ec Bytes
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10a7827] data at 0x1800000
+module misc/sparcv9/krtld: text at [0x10a7828, 0x10c26ff] data at 0x1892220
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10c2700, 0x12abe57] data at 0x1898000
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x12abe58, 0x12abe6f] data at 0x18ec6c8
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x12abe80, 0x12afe27] data at 0x18ece00
+
+panic[cpu0]/thread=180e000: lgrp_traverse: No memory blocks found
+
+000000000180b750 unix:lgrp_traverse+bc8 (fff46000, 1, 1828e84, 0, 0, 0)
+  %l0-3: ffffffffffffffff 00000000010a3800 0000000001828c00 0000000000000000
+  %l4-7: 00000000010a3a70 0000000001839758 000000000183a800 0000000001828c00
+000000000180b8c0 unix:plat_lgrp_init+14 (1046800, 1046800, 0, 0, 0, 185b000)
+  %l0-3: 00000000fff4a000 0000000001046c00 0000000001046c00 0000000000000000
+  %l4-7: 0000000000000000 0000000000000000 0000000000000008 00000000fff46000
+000000000180b970 unix:lgrp_init+4 (0, 1828a50, 0, 1828800, 0, 0)
+  %l0-3: 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+  %l4-7: 00000000010a5190 00000000010a5000 00000000010a2058 0000000001828800
+000000000180ba20 unix:mlsetup+2cc (70002000, 1018400, 109f400, 109f400, 70002000, 109f400)
+  %l0-3: 0000000001018400 000000000180c000 00000000018584c0 0000000001860058
+  %l4-7: 000000000180c000 000000000180bec0 000000000180c000 000000000109f400
+
+ERROR: Last Trap: Level 14 Interrupt
+[Exception handlers interrupted, please file a bug]
+[type 'resume' to attempt a normal recovery]
+
+Analysis: matches the long-established root cause -- OpenSPARC_T1_rebuild
+is Sun's original, unpatched MD (no memory/cpus/cache nodes, no mmu-*
+platform properties). lgrp_traverse() finds no mblock because the MD has
+no `memory` node at all, so it panics during mlsetup(), before any
+userland/tty is reached. Same failure mode documented for modern kernels
+in niagara-findings.md Experiment #16, now confirmed here against the
+snv_77 ramdisk too -- the original MD doesn't even boot the
+period-correct image, contrary to the earlier assumption that it might.
