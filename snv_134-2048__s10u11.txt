@@ -1,7 +1,7 @@
 Command:
 ./qemu-system-sparc64 -M niagara -L /git/md/bin/snv_134/2048 -nographic -m 2048  -drive if=pflash,readonly=on,file=/zroot/iso/s10u11/V36434-01.iso
 
-Result: FAIL (trap:Level 14 Interrupt)
+Result: FAIL (hang)
 
 Output:
 cpu Probing I/O buses
