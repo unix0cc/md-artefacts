@@ -1,0 +1,54 @@
+Command:
+./qemu-system-sparc64 -M niagara -L /git/md/bin/snv_134/1024 -nographic -m 1024  -drive if=pflash,readonly=on,file=/zroot/iso/sol-10-u10-ga2-sparc-dvd.iso
+
+Result: FAIL (panic:sfmmu_cpu_init)
+
+Output:
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10c1c1d] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10c1c20, 0x12a6b77] data at 0x1935f40
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x12a6b78, 0x12a6b8f] data at 0x198d598
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x12a6ba0, 0x12aad2f] data at 0x198dd00
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x12aad80, 0x131a397] data at 0x19a4f50
+module /kernel/misc/sparcv9/ctf: text at [0x131a398, 0x13221f7] data at 0x19c9558
+
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+[0]> :c
+SunOS Release 5.10 Version Generic_147440-01 64-bit
+Copyright (c) 1983, 2011, Oracle and/or its affiliates. All rights reserved.
+|
+panic[cpu0]/thread=180e000:
+
+000000000180b6f0 unix:sfmmu_cpu_init+34 (180c000, 0, 1877800, 1915c00, 1946c00, 1029800)
+  %l0-3: 0000030002984008 000000000193a358 000000000114bc00 0000000001899fd0
+  %l4-7: 000000000194cc00 000000000194cdc0 0000000000000000 0000000000000000
+000000000180b7b0 unix:hat_init+204 (1847000, 40, 80000, 18a8c00, 1930800, 40000)
+  %l0-3: 0000000001930400 0000000000000000 0000000001877988 00000000018f8000
+  %l4-7: 000000000183c400 0000000001915c00 00000000018a9400 0000000000200000
+000000000180b8b0 unix:startup_modules+7c (1914c00, 1c00000, 1878800, 1f0f0, edd00000, 1042c00)
+  %l0-3: 00000000018a8800 00000000018ef400 0000000001999000 000000000183ac00
+  %l4-7: 000000000183ac00 000000000183c400 000000000184ac00 0000000000000000
+000000000180b960 unix:startup+28 (2, 1, 1, 1, 1070000, 1042800)
+  %l0-3: 0000000c80000000 03b9aca000000000 00000000004c4b40 000000000000001c
+  %l4-7: 0000000000000005 00000000005b8d7f 00000000004c4b40 00000000010701a4
+000000000180ba10 genunix:main+1c (0, 180c000, 18a6840, 10b9400, 1846050, 1999000)
+  %l0-3: 0000000000000001 0000000070002000 0000000070002000 00000000000a2040
+  %l4-7: 00000000018ef000 0000000000000000 000000000180c000 0000000000000060
+
+panic: entering debugger (no dump device, continue to reboot)
+Loaded modules: [ unix krtld genunix ]
+kmdb: target stopped at:
+kaif_enter:     ta        %icc, %g0 + 0x7d
+[0]>
+
+Note: initial run (see conversation) used a mismatched -m 2048 against
+this same -L snv_134/1024 build and hit the identical sfmmu_cpu_init
+panic; this re-run confirms the panic is real at the build's own
+correct -m 1024, not an artifact of the earlier mismatch.
