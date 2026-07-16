@@ -1,0 +1,31 @@
+./qemu-system-sparc64 -M niagara -L /git/md/bin/1GiB-snv_77_1GiB-experimental/ -nographic -m 1024  -drive if=pflash,readonly=on,file=/zroot/vmdisks/ramdisk.snv-b77-nd
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 1024 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+Loading ufs-file-system package 1.4 04 Aug 1995 13:02:54.
+FCode UFS Reader 1.12 00/07/17 15:48:16.
+Loading: /platform/SUNW,Sun-Fire-T2000/ufsboot
+Loading: /platform/sun4v/ufsboot
+The boot filesystem is logging.
+The ufs log is empty and will not be used.
+Size: 0xa7827+0x31d30+0x604ec Bytes
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10a7827] data at 0x1800000
+module misc/sparcv9/krtld: text at [0x10a7828, 0x10c26ff] data at 0x1892220
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10c2700, 0x12abe57] data at 0x1898000
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x12abe58, 0x12abe6f] data at 0x18ec6c8
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x12abe80, 0x12afe27] data at 0x18ece00
+Loading kmdb...
+krtld: error during initial load/link phase
+panic - boot: exitto64 returned from client program
+Program terminated
+ok fsboot
