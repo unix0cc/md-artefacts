@@ -1,0 +1,32 @@
+./qemu-system-sparc64 -M niagara -L /git/md/bin/snv_134/256/1up/ -nographic -m 256  -drive if=pflash,readonly=on,file=/zroot/iso/sol-10-u8-ga-sparc-dvd.iso
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 256 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10b51e5] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10b51e8, 0x127d22f] data at 0x189d540
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x127d230, 0x127d247] data at 0x18f2c98
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x127d260, 0x12810a7] data at 0x18f3400
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x1281100, 0x12ee247] data at 0x190b770
+module /kernel/misc/sparcv9/ctf: text at [0x12ee248, 0x12f60a7] data at 0x1930158
+
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+[0]> :c
+panic - kernel: bop_alloc_chunk failed
+Program terminated
+ok
