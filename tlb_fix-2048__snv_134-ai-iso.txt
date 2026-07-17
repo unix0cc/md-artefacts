@@ -29,4 +29,6 @@ kmdb: unable to determine terminal type: assuming `vt100'
 Loaded modules: [ unix krtld genunix ]
 [0]> :c
 (hard hang -- no further console output at all after continuing from
-kmdb)
+kmdb. Re-tested against the corrected build (post hv-config memsize
+fix, see src/tlb_fix/2048/1up.hdesc history); same outcome, so this
+hang is not related to the memsize bug.)
