@@ -28,9 +28,24 @@ Welcome to kmdb
 kmdb: unable to determine terminal type: assuming `vt100'
 Loaded modules: [ unix krtld genunix ]
 [0]> :c
-(hard hang -- no further console output at all after continuing from
-kmdb. Retested twice against the corrected build (post hv-config
-memsize fix, see src/tlb_fix/2048/1up.hdesc history): first attempt
-left running 30 minutes with zero output, second attempt left running
-20 minutes with zero output. Same outcome as the pre-fix build, so this
-particular hang is not related to the memsize bug.)
+(hard hang; no further console output. Broke in via serial break
+(Ctrl-A b in the QEMU -nographic console) instead of just recording a
+black-box hang.)
+kmdb: single-step stop on miscellaneous trap
+kmdb: target stopped at:
+alloc_page_freelists+0x54:      stx       %i0, [%l6 + %l7]
+[0]> :c
+(continued past the break point; hang resumed as before with no
+further output)
+
+CONFIRMED (via serial-break): stuck inside alloc_page_freelists, exact
+same offset (+0x54) and same stuck store instruction as
+tlb_fix-2048__snv_134-ai-iso.txt. This is now the THIRD OS image
+(alongside Solaris 10u10 at +0x44 and snv_134 ai ISO at +0x54) found
+stuck in this same function on tlb_fix/2048 -- strong confirmation this
+is a systemic bug in this build tied to the 2048M memory size, not
+anything specific to a particular guest OS. Supersedes the earlier
+"retested twice, 30min/20min wait, not related to the memsize bug" note
+on this file -- that conclusion predates this trace and needs
+revisiting; the hang itself may well be memsize-related after all, even
+if the earlier blind waits didn't reveal that.
