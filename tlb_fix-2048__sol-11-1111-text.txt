@@ -53,3 +53,32 @@ panicking with "bad unexpected error from hypervisor call at TL 1".
 With the corrected 2048M, it now hangs one step earlier in the device
 attach sequence instead. Another genuine behavior change caused by the
 memory correction, same as the sol-10-u8 and s10u11 cells.)
+
+--- follow-up attempt: tried to break in via serial break (Ctrl-A b) ---
+[0]> :c
+kmdb: single-step stop on miscellaneous trap
+kmdb: target stopped at:
+kmdb_enter+4:   retl
+[0]> :c
+SunOS Release 5.11 Version 11.0 64-bit
+Copyright (c) 1983, 2011, Oracle and/or its affiliates. All rights reserved.
+os-io Ethernet address = 0:80:3:de:ad:3
+Using default device instance data
+
+Type  'go' to resume
+ok go
+mem = 2097152K (0x80000000)
+avail mem = 1748688896
+
+(hard hang again -- and this time further serial breaks stopped being
+acknowledged at all ("kmdb stopped respond to break"). Two things worth
+noting: (1) the first break landed at kmdb_enter+4 itself, an
+uninformative trampoline location, not the actual stuck point; (2) the
+second break dropped to the OBP "ok" prompt requesting 'go' to resume,
+a different intercept path than kmdb catching it directly. This run
+appears to hang around/right after "avail mem =", earlier than the
+previous run's hang point (after the watchdog-disable notice) -- though
+that could be genuine non-determinism in where this stalls, or just
+where this particular attempt was stopped/observed. Unlike the
+alloc_page_freelists hang (tlb_fix-2048__snv_134-ai-iso.txt etc.), this
+one did not yield a clean, reproducible break-in point.)
