@@ -1,0 +1,85 @@
+./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/2048 -nographic -m 2048 -drive if=pflash,readonly=on,file=/zroot/iso/sol-11-1111-text-sparc.iso
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 2048 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10e2677] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10e2678, 0x1306ae7] data at 0x19373c0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x1306ae8, 0x1306aef] data at 0x198d698
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x1306b00, 0x13096f7] data at 0x198dd00
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x1309700, 0x138a397] data at 0x19a5e50
+module /kernel/misc/sparcv9/ctf: text at [0x138a398, 0x1391f9f] data at 0x19c33b0
+/
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+Loaded modules: [ unix krtld genunix ]
+[0]> :c
+SunOS Release 5.11 Version 11.0 64-bit
+Copyright (c) 1983, 2011, Oracle and/or its affiliates. All rights reserved.
+os-io Ethernet address = 0:80:3:de:ad:3
+Using default device instance data
+mem = 2097152K (0x80000000)
+avail mem = 674947072
+root nexus = Sun Fire T2000
+pseudo0 at root
+pseudo0 is /pseudo
+scsi_vhci0 at root
+scsi_vhci0 is /scsi_vhci
+NOTICE: Disabling watchdog as watchdog services are not available
+
+ramdisk0 at root
+ramdisk0 is /ramdisk-root
+root on /ramdisk-root:a fstype ufs
+pseudo-device: dld0
+dld0 is /pseudo/dld@0
+
+panic[cpu0]/thread=180e000: bad unexpected error from hypervisor call at TL 1
+
+%tl %tpc              %tnpc             %tstate           %tt
+ 1  000000007bf60508  000000007bf6050c  44e2001605        031
+    %gl: 00  %ccr: 44  %asi: e2  %cwp: 5  %pstate: 16<PEF,PRIV,IE>
+    %gl: 01
+%g0-3: 0000000000000000 000000000000000e 00000000bf40c930 00000000bf40c930
+%g4-7: 0000030005fa8000 a0000000c0efa520 0000000000008000 00000000afc2fd40
+    %gl: 00
+%g0-3: 0000000000000000 0000000000000000 0000000000000000 00000000c0ffffff
+%g4-7: 00000000018ef6ac 0000030005fa8000 0000000000000010 000000000180e000
+Register window 5, caller SHA1Update+15c
+%o0-3: 0000000000000002 0000000000000000 a0000000c0efa520 0000000000000001
+%o4-7: 00000000ffffffc7 0000000000000080 000000000180a1c1 000000000102dccc
+%l0-3: 0000000000000500 0000000000000100 0000000004000000 0000000000000000
+%l4-7: 0000000002000000 0000000098badcfe 0000000067452301 00000000c3d2e1f0
+%i0-3: 000000000180ad5c 0000030005fa9000 00000000efcdab89 0000000010325476
+%i4-7: 0000000000000000 0000000067452301 000000000180a281 000000007bf60310
+Register window 4, caller physmem_ent_gen+134
+%l0-3: 0000000000000000 000000000000008b 0000000000000000 0000000000000000
+%l4-7: 0000000000400000 0000000000000040 0000000000000001 0000000000000000
+%i0-3: 000000000180ad5c 0000000000000040 0000000000001000 0000030005fa9000
+%i4-7: 0000000000000000 0000030005fa9000 000000000180a481 000000007bfe1abc
+Register window 3, caller physmem_ent_init+78
+%l0-3: 0000000000000000 0000000001a15ba8 00000000010e0af0 f930ec1e19c3208f
+%l4-7: 0000000000001000 0000000000000000 0000000000001000 0000000000001000
+%i0-3: 0000000001a14f10 00000000000012fb 00000000018a8000 000000000180adc0
+%i4-7: 0000000000002000 0000000000000000 000000000180a5d1 000000007bfe17d8
+
+Warning - stack not written to the dumpbuf
+
+panic: entering debugger (no dump device, continue to reboot)
+Loaded modules: [ scsi_vhci crypto mac ldc neti ufs hook ip specfs ]
+kmdb: target stopped at:
+kmdb_enter:     ta        %icc, 0x7d
+[0]>
