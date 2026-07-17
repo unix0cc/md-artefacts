@@ -27,8 +27,38 @@ module /kernel/misc/sparcv9/ctf: text at [0x131a398, 0x13221f7] data at 0x19c955
 Welcome to kmdb
 kmdb: unable to determine terminal type: assuming `vt100'
 [0]> :c
-(hard hang -- no further console output at all after continuing from
-kmdb; confirmed genuine kernel/emulation-level hang, not an installer
-service stall. Re-tested against the corrected build (post hv-config
-memsize fix, see src/tlb_fix/2048/1up.hdesc history); same outcome, so
-this hang is not related to the memsize bug.)
+(hard hang; no further console output. Broke in via serial break
+(Ctrl-A b in the QEMU -nographic console) to confirm live rather than
+just recording a black-box hang.)
+kmdb: 1 dmod load/unload pending
+kmdb: single-step stop on miscellaneous trap
+kmdb: target stopped at:
+alloc_page_freelists+0x44:      stx       %i0, [%g3 + %l7]
+[0]> :c
+(broke in a second time to confirm -- landed at the EXACT SAME
+instruction again, strong evidence this is a genuine stuck loop at
+this precise point, not a random freeze)
+kmdb: 1 dmod load/unload pending
+kmdb: single-step stop on miscellaneous trap
+kmdb: target stopped at:
+alloc_page_freelists+0x44:      stx       %i0, [%g3 + %l7]
+[0]> $c
+alloc_page_freelists+0x44(70002c3f488, 18ab800, 0, 0, 0, 18a9558)
+startup_memlist+0x6a0(1914800, 7000243f480, 3f, 1930400, 18ef400, 40)
+startup+0x20(2, 1, 1, 1, 1070000, 1042800)
+main+0x1c(0, 180c000, 18a6840, 10b9400, 1846050, 1999000)
+_start+0x100(0, 0, 0, 0, 0, 0)
+[0]>
+
+CONFIRMED (via serial-break + $c, not just a placeholder "hang" note):
+stuck inside alloc_page_freelists, called from startup_memlist during
+very early kernel bootstrap (physical memory free-list construction,
+well before device attach or anything we traced in the sfmmu_cpu_init/
+bop_alloc_chunk investigations). Two independent breaks landed at the
+identical PC, ruling out a random freeze. Given this only reproduces
+at 2048M (not seen on tlb_fix/1024), this is plausibly the same class
+of memory-size-sensitivity as the Solaris 10u11 regression and the
+Solaris 10u8/11-11/11-text failure-mode changes recorded elsewhere on
+this build -- worth full kmdb tracing (::dis on alloc_page_freelists,
+same methodology as sfmmu_cpu_init/bop_alloc_chunk) to find the actual
+root cause.
