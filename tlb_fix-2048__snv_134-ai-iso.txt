@@ -28,7 +28,27 @@ Welcome to kmdb
 kmdb: unable to determine terminal type: assuming `vt100'
 Loaded modules: [ unix krtld genunix ]
 [0]> :c
-(hard hang -- no further console output at all after continuing from
-kmdb. Re-tested against the corrected build (post hv-config memsize
-fix, see src/tlb_fix/2048/1up.hdesc history); same outcome, so this
-hang is not related to the memsize bug.)
+(hard hang; no further console output. Broke in via serial break
+(Ctrl-A b in the QEMU -nographic console) instead of just recording a
+black-box hang.)
+kmdb: single-step stop on miscellaneous trap
+kmdb: target stopped at:
+alloc_page_freelists+0x54:      stx       %i0, [%l6 + %l7]
+[0]> :c
+(broke in a second time to confirm)
+kmdb: single-step stop on miscellaneous trap
+kmdb: target stopped at:
+alloc_page_freelists+0x54:      stx       %i0, [%l6 + %l7]
+
+CONFIRMED (via serial-break, same technique used on the Solaris 10u10
+hang): stuck inside alloc_page_freelists, same function and same class
+of stuck store instruction as tlb_fix-2048__sol-10-u10.txt (there at
++0x44, here at +0x54 -- close but not identical offset, still worth
+noting). Two independent breaks landed on the identical PC both times.
+This means the alloc_page_freelists hang is NOT specific to Solaris
+10u10 -- it reproduces across multiple OS images on tlb_fix/2048,
+strengthening the theory that this is a systemic bug in this MD/hv-config
+build specific to 2048M (not seen on tlb_fix/1024), rather than
+something particular to any one guest OS. Supersedes the earlier note
+on this file claiming the hang was "not related to the memsize bug" --
+that conclusion was made before this trace and needs revisiting.
