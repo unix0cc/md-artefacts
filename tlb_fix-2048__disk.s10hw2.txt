@@ -31,15 +31,13 @@ module /kernel/misc/sparcv9/zmod: text at [0x1252d98, 0x1257a67] data at 0x18d7a
 
 Welcome to kmdb
 kmdb: unable to determine terminal type: assuming `vt100'
-[0]> :cx
-Usage: :c
 [0]> :c
 SunOS Release 5.10 Version Generic_118822-23 64-bit
 Copyright 1983-2005 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 Ethernet address = 0:80:3:de:ad:3
 mem = 2097152K (0x80000000)
-avail mem = 1005486080
+avail mem = 2052685824
 root nexus = Sun Fire T2000
 pseudo0 at root
 pseudo0 is /pseudo
@@ -53,6 +51,7 @@ dld0 is /pseudo/dld@0
 cpu0: UltraSPARC-T1 (cpuid 0 clock 5 MHz)
 iscsi0 at root
 iscsi0 is /iscsi
-Hostname: unknown
+aHostname: unknown
+^R
 
 unknown console login:
