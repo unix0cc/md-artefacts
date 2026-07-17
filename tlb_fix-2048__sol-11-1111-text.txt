@@ -41,12 +41,15 @@ scsi_vhci0 at root
 scsi_vhci0 is /scsi_vhci
 NOTICE: Disabling watchdog as watchdog services are not available
 
-(hard hang -- no further console output at all after this point.
-Re-tested against the corrected build (post hv-config memsize fix, see
-src/tlb_fix/2048/1up.hdesc history) -- this is a DIFFERENT outcome than
-before the fix, which reached further into boot (through "ramdisk0 at
-root" and "pseudo-device: dld0") before panicking with "bad unexpected
-error from hypervisor call at TL 1". With the corrected 2048M, it now
-hangs earlier instead, right after the watchdog-disable notice, before
-even reaching ramdisk0/dld0. Another genuine behavior change caused by
-the memory correction, same as the sol-10-u8 and s10u11 cells.)
+(hard hang -- no further console output at all after this point. Kernel
+init itself completes cleanly (root nexus, pseudo bus, scsi_vhci,
+watchdog-disable check all print normally); the hang happens AFTER
+init, at the point where it should move on to device attach
+(ramdisk0/dld0) and never does. Re-tested against the corrected build
+(post hv-config memsize fix, see src/tlb_fix/2048/1up.hdesc history) --
+this is a DIFFERENT outcome than before the fix, which got past device
+attach (through "ramdisk0 at root" and "pseudo-device: dld0") before
+panicking with "bad unexpected error from hypervisor call at TL 1".
+With the corrected 2048M, it now hangs one step earlier in the device
+attach sequence instead. Another genuine behavior change caused by the
+memory correction, same as the sol-10-u8 and s10u11 cells.)
