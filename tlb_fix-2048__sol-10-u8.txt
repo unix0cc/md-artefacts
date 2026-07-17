@@ -16,7 +16,23 @@ hsfs-file-system
 Loading: /platform/sun4v/boot_archive
 ramdisk-root ufs-file-system
 Loading: /platform/sun4v/kernel/sparcv9/unix
-ERROR: Last Trap: Level 14 Interrupt
-[Exception handlers interrupted, please file a bug]
-[type 'resume' to attempt a normal recovery]
-ok
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10b51e5] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10b51e8, 0x127d22f] data at 0x189d540
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x127d230, 0x127d247] data at 0x18f2c98
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x127d260, 0x12810a7] data at 0x18f3400
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x1281100, 0x12ee247] data at 0x190b770
+module /kernel/misc/sparcv9/ctf: text at [0x12ee248, 0x12f60a7] data at 0x1930158
+
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+[0]> :c
+(hard hang -- no further console output at all after continuing from
+kmdb. Re-tested against the corrected build (post hv-config memsize
+fix, see src/tlb_fix/2048/1up.hdesc history) -- this is a DIFFERENT
+outcome than before the fix, which trapped with "ERROR: Last Trap:
+Level 14 Interrupt" during unix module load, before kmdb even finished
+loading. With the corrected 2048M, it now boots past that point and
+hangs later instead, after continuing from kmdb. So unlike the other
+re-tested cells, this one's failure mode did change with the memsize
+fix.)
