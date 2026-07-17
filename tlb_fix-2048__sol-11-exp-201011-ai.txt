@@ -29,4 +29,8 @@ kmdb: unable to determine terminal type: assuming `vt100'
 Loaded modules: [ unix krtld genunix ]
 [0]> :c
 (hard hang -- no further console output at all after continuing from
-kmdb; QEMU process terminated by operator after an extended wait)
+kmdb. Retested twice against the corrected build (post hv-config
+memsize fix, see src/tlb_fix/2048/1up.hdesc history): first attempt
+left running 30 minutes with zero output, second attempt left running
+20 minutes with zero output. Same outcome as the pre-fix build, so this
+particular hang is not related to the memsize bug.)
