@@ -1,4 +1,4 @@
-./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/1024 -nographic -m 1024 -drive if=pflash,readonly=on,file=/zroot/iso/sol-10-u8-ga-sparc-dvd.iso
+./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/1024/ -nographic -m 1024 -drive if=pflash,readonly=on,file=/zroot/iso/sol-10-u8-ga-sparc-dvd.iso
 cpu Probing I/O buses
 
 
@@ -83,7 +83,6 @@ pseudo-device: fcode0
 fcode0 is /pseudo/fcode@0
 pseudo-device: drctl0
 drctl0 is /pseudo/drctl@0
-a^R
 Using RPC Bootparams for network configuration information.
 Reading ZFS config: done.
 Serial console, reverting to text install
@@ -91,6 +90,29 @@ Beginning system identification...
 Searching for configuration file(s)...
 Search complete.
 Discovering additional network configuration...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Select a Language
 
@@ -105,4 +127,69 @@ Select a Language
    8. Swedish
    9. Traditional Chinese
 
-Please make a choice (0 - 9), or press h or ? for help:
+Please make a choice (0 - 9), or press h or ? for help: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+─ Host Name ────────────────────────────────────────────────────────────────────
+
+  Enter    the host name which identifies this system on the network.  The    name
+  must be unique within    your domain; creating a    duplicate host name will cause
+  problems on the network after    you install Solaris.
+
+  A host name must have    at least one character;    it can contain letters,
+  digits, and minus signs (-).
+
+
+Host name
+
+
+
+
+
+
+
+
+
+
+────────────────────────────────────────────────────────────────────────────────
+    Esc-2_Continue    Esc-6_Help
