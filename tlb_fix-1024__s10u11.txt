@@ -1,4 +1,4 @@
-./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/1024 -nographic -m 1024 -drive if=pflash,readonly=on,file=/zroot/iso/s10u11/V36434-01.iso
+./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/1024/ -nographic -m 1024 -drive if=pflash,readonly=on,file=/zroot/iso/s10u11/V36434-01.iso
 cpu Probing I/O buses
 
 
@@ -91,6 +91,29 @@ Searching for configuration file(s)...
 Search complete.
 Discovering additional network configuration...
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Select a Language
 
    0. English
@@ -105,4 +128,71 @@ Select a Language
    9. Swedish
   10. Traditional Chinese
 
-Please make a choice (0 - 10), or press h or ? for help:
+Please make a choice (0 - 10), or press h or ? for help: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+─ The Oracle Solaris Installation Program ──────────────────────────────────────
+
+  The Solaris installation program is divided into a series of short sections
+  where    you'll be prompted to provide information for the installation.    At
+  the end of each section, you'll be able to change the    selections you've
+  made before continuing.
+
+  About    navigation...
+    - The mouse cannot be used
+    - If your keyboard does    not have function keys,    or they    do not
+      respond, press ESC; the legend at the    bottom of the screen
+      will change to show the ESC keys to use for navigation.
+
+
+
+
+
+
+
+
+
+
+────────────────────────────────────────────────────────────────────────────────
+    F2_Continue       F6_Help
+
