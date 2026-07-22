@@ -1,0 +1,40 @@
+Command:
+./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/1up -nographic -m 256 -drive if=pflash,readonly=on,file=/zroot/iso/osol-dev-134-ai-sparc.iso
+
+Result: FAIL/trap (Fast Data Access MMU Miss)
+
+Output:
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 256 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10d9cef] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10d9cf0, 0x12d4d17] data at 0x18d93c0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x12d4d18, 0x12d4d1f] data at 0x192f670
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x12d4d20, 0x12d8e77] data at 0x192fd40
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x12d8e80, 0x13553bf] data at 0x19487c0
+module /kernel/misc/sparcv9/ctf: text at [0x13553c0, 0x135cda7] data at 0x1965f30
+-
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+Loaded modules: [ unix krtld genunix ]
+[0]> :c
+
+ERROR: Last Trap: Fast Data Access MMU Miss
+[Exception handlers interrupted, please file a bug]
+[type 'resume' to attempt a normal recovery]
+ok
