@@ -1,0 +1,65 @@
+Command:
+./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/1up -nographic -m 256 -drive if=pflash,readonly=on,file=/zroot/iso/sol-10-u8-ga-sparc-dvd.iso
+
+Result: FAIL/panic (lgrp_traverse: No memory blocks found)
+
+Output:
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 256 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10b51e5] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10b51e8, 0x127d22f] data at 0x189d540
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x127d230, 0x127d247] data at 0x18f2c98
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x127d260, 0x12810a7] data at 0x18f3400
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x1281100, 0x12ee247] data at 0x190b770
+module /kernel/misc/sparcv9/ctf: text at [0x12ee248, 0x12f60a7] data at 0x1930158
+
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+[0]> :c
+
+panic[cpu0]/thread=180e000: lgrp_traverse: No memory blocks found
+
+000000000180b7c0 unix:lgrp_traverse+b64 (fff32000, 10b1000, 0, ffffffffffffffff, ffffffffffffffff, fff42000)
+  %l0-3: 0000000000000000 000000000182900c 0000000000000000 00000000fff34010
+  %l4-7: 00000000010b0000 0000000000000000 0000000000000000 0000000000000000
+000000000180b8c0 unix:plat_lgrp_init+18 (0, 1049c00, 8, 1826400, 1049800, 1863000)
+  %l0-3: 00000000fff32000 000000000180b960 0000000000002000 0000000000000008
+  %l4-7: 0000000001861d24 00000000018630e0 ffffffffffffffff 0000000000000001
+000000000180b970 unix:lgrp_init+4 (0, 1828ba8, 183d2b8, 0, 1828800, 1828800)
+  %l0-3: 0000000000000000 0000000000000000 ffffffffffffffff 0000000001828a58
+  %l4-7: 0000000000000004 0000000000000000 0000000001832c58 00000000010b0000
+000000000180ba20 unix:mlsetup+30c (0, 180c000, 4000, 180e000, 1831bb8, 70002000)
+  %l0-3: 000000000180c000 000000000180c000 0000000070002000 000000000180e000
+  %l4-7: 0000000000000060 0000000000000000 000000000180c000 0000000000000001
+
+panic: entering debugger (no dump device, continue to reboot)
+kmdb: 1 dmod load/unload pending
+kmdb: target stopped at:
+kaif_enter:     ta        %icc, %g0 + 0x7d
+[0]> :c
+kmdb: 1 dmod load/unload pending
+kmdb: single-step stop on miscellaneous trap
+kmdb: target stopped at:
+getzoneid+8:    ld        [%o4 + 0x30], %o3
+[0]> :c
+kmdb: 1 dmod load/unload pending
+kmdb: single-step stop on data access MMU miss trap
+kmdb: target stopped at:
+getzoneid+8:    ld        [%o4 + 0x30], %o3
+[0]>
