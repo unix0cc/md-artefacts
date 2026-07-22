@@ -1,0 +1,28 @@
+Command:
+./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/1up -nographic -m 256 -drive if=pflash,readonly=on,file=/zroot/iso/sol-11-exp-201011-ai-sparc.iso
+
+Result: FAIL/trap (Level 14 Interrupt)
+
+Output:
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 256 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+|
+ERROR: Last Trap: Level 14 Interrupt
+[Exception handlers interrupted, please file a bug]
+[type 'resume' to attempt a normal recovery]
+ok
