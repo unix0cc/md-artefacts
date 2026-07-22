@@ -59,3 +59,44 @@ iscsi0 is /iscsi
 Hostname: unknown
 
 unknown console login:
+
+---
+
+Follow-up run confirming login and OS identity:
+
+Command:
+./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/1up -nographic -m 256 -drive if=pflash,readonly=on,file=/home/dpim/images/S10image/disk.s10hw2
+
+Result: PASS
+
+Output:
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 256 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot
+Boot device: vdisk  File and args:
+Loading ufs-file-system package 1.4 04 Aug 1995 13:02:54.
+FCode UFS Reader 1.12 00/07/17 15:48:16.
+Loading: /platform/SUNW,Sun-Fire-T2000/ufsboot
+Loading: /platform/sun4v/ufsboot
+SunOS Release 5.10 Version Generic_118822-23 64-bit
+Copyright 1983-2005 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+Hostname: unknown
+
+unknown console login: root
+Last login: Wed Feb  8 09:01:28 on console
+Sun Microsystems Inc.   SunOS 5.10      Generic January 2005
+# cat /etc/release
+                     Solaris 10 3/05 HW2 s10s_hw2wos_05 SPARC
+           Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
+                        Use is subject to license terms.
+                           Assembled 26 September 2005
