@@ -1,5 +1,5 @@
 Command:
-./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/1up -nographic -m 256 -drive if=pflash,readonly=on,file=/zroot/iso/sol-10-u8-ga-sparc-dvd.iso
+./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/ -nographic -m 256 -drive if=pflash,readonly=on,file=/zroot/iso/sol-10-u8-ga-sparc-dvd.iso
 
 Result: FAIL/panic (lgrp_traverse: No memory blocks found)
 

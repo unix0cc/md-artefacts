@@ -1,5 +1,5 @@
 Command:
-./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/1up/ -nographic -m 256  -drive if=pflash,readonly=on,file=/zroot/vmdisks/disk.s10hw2
+./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/ -nographic -m 256  -drive if=pflash,readonly=on,file=/zroot/vmdisks/disk.s10hw2
 
 Result: PASS
 
@@ -65,7 +65,7 @@ unknown console login:
 Follow-up run confirming login and OS identity:
 
 Command:
-./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/1up -nographic -m 256 -drive if=pflash,readonly=on,file=/home/dpim/images/S10image/disk.s10hw2
+./qemu-system-sparc64 -M niagara -L /git/md/bin/OpenSPARC_T1_rebuild/ -nographic -m 256 -drive if=pflash,readonly=on,file=/home/dpim/images/S10image/disk.s10hw2
 
 Result: PASS
 

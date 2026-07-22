@@ -1,5 +1,5 @@
 Command:
-./qemu-system-sparc64 -M niagara -L /git/md/bin/t1_boot_fix/256/1up/ -nographic -m 256 -drive if=pflash,readonly=on,file=/zroot/iso/sol-11-exp-201011-ai-sparc.iso
+./qemu-system-sparc64 -M niagara -L /git/md/bin/t1_boot_fix/256/ -nographic -m 256 -drive if=pflash,readonly=on,file=/zroot/iso/sol-11-exp-201011-ai-sparc.iso
 
 Result: FAIL/panic (kmem64 prom_alloc contig failed)
 
