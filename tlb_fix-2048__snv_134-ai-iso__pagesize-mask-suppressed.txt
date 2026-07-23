@@ -1,0 +1,84 @@
+Command:
+./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/2048 -nographic -m 2048 -drive if=pflash,readonly=on,file=/zroot/iso/osol-dev-134-ai-sparc.iso
+
+Result: PASS (extremely slow -- reported boot to console in ~18 hours)
+
+Live kmdb workaround: broke at alloc_kmem64() and suppressed 32M/256M
+paging by clearing bits 4/5 of mmu_exported_pagesize_mask (0x2b -> 0xb)
+before letting kmem64_szc selection proceed, forcing the kernel off the
+256M-kmem64/MMU_MAP_ADDR path that otherwise hangs this boot. See
+docs/index.html footnote (9).
+
+Output:
+dpim@vmbox:~/build/qemu-sparc64-19a589cc31/build$ ./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/2048 -nographic -m 2048 -drive if=pflash,readonly=on,file=/zroot/iso/osol-dev-134-ai-sparc.iso
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 2048 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10d9cef] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10d9cf0, 0x12d4d17] data at 0x18d93c0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x12d4d18, 0x12d4d1f] data at 0x192f670
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x12d4d20, 0x12d8e77] data at 0x192fd40
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x12d8e80, 0x13553bf] data at 0x19487c0
+module /kernel/misc/sparcv9/ctf: text at [0x13553c0, 0x135cda7] data at 0x1965f30
+-
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+Loaded modules: [ unix krtld genunix ]
+[0]> ::bp alloc_kmem64
+[0]> :c
+kmdb: stop at alloc_kmem64
+kmdb: target stopped at:
+alloc_kmem64:   save      %sp, -0xc0, %sp
+[0]> mmu_exported_pagesize_mask/X
+mmu_exported_pagesize_mask:
+mmu_exported_pagesize_mask:     2B
+[0]>  mmu_exported_pagesize_mask/W 0xb
+mmu_exported_pagesize_mask:     0x2b            =       0xb
+[0]> mmu_exported_pagesize_mask/D
+mmu_exported_pagesize_mask:
+mmu_exported_pagesize_mask:     11
+[0]> mmu_exported_pagesize_mask/X
+mmu_exported_pagesize_mask:
+mmu_exported_pagesize_mask:     b
+[0]> :c
+SunOS Release 5.11 Version snv_134 64-bit
+Copyright 1983-2010 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+os-io Ethernet address = 0:80:3:de:ad:3
+Using default device instance data
+mem = 2097152K (0x80000000)
+avail mem = 1704427520
+root nexus = Sun Fire T2000
+pseudo0 at root
+pseudo0 is /pseudo
+scsi_vhci0 at root
+scsi_vhci0 is /scsi_vhci
+NOTICE: Disabling watchdog as watchdog services are not available
+
+ramdisk0 at root
+ramdisk0 is /ramdisk-root
+root on /ramdisk-root:a fstype ufs
+pseudo-device: dld0
+dld0 is /pseudo/dld@0
+cpu0: UltraSPARC-T1 (chipid 0, clock 5 MHz)
+pseudo-device: audio0
+audio0 is /pseudo/audio@0
+
+Requesting System Maintenance Mode
+(See /lib/svc/share/README for more information.)
+Console login service(s) cannot run
