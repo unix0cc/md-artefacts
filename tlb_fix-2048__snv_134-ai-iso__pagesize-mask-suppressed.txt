@@ -1,15 +1,36 @@
 Command:
 ./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/2048 -nographic -m 2048 -drive if=pflash,readonly=on,file=/zroot/iso/osol-dev-134-ai-sparc.iso
 
-Result: PASS (extremely slow -- reported boot to console in ~18 hours)
+Result: PASS (extremely slow -- reported boot to console in ~18 hours).
+Reaches System Maintenance Mode and a usable root shell; uname reports
+SunOS 5.11 snv_134 sun4v, and prtconf -v sees the full 2048 MB and device
+tree.
 
-Live kmdb workaround: broke at alloc_kmem64() and suppressed 32M/256M
-paging by clearing bits 4/5 of mmu_exported_pagesize_mask (0x2b -> 0xb)
-before letting kmem64_szc selection proceed, forcing the kernel off the
-256M-kmem64/MMU_MAP_ADDR path that otherwise hangs this boot. See
-docs/index.html footnote (9).
+Live kmdb workaround: broke at alloc_kmem64() and wrote
+mmu_exported_pagesize_mask 0x2b -> 0xb before letting kmem64_szc selection
+proceed, forcing the kernel off the 256M-kmem64/MMU_MAP_ADDR path that
+otherwise hangs this boot. That clears bit 5 and so drops 256M from the
+mask, leaving 8K/64K/4M; bit 4 (32M) was already clear in 0x2b, so nothing
+32M-related is actually being suppressed. See docs/index.html footnote (9).
 
 Output:
+dpim@vmbox:~/build/qemu-sparc64-19a589cc31/build$ ./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/2048 -nographic -m 2048 -drive if=pflash,readonly=on,file=/zroot/iso/osol-dev-134-ai-sparc.iso
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 2048 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdbv
+Boot device: /virtual-devices/disk@0  File and args: -kdbv
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+QEMU: Terminated
 dpim@vmbox:~/build/qemu-sparc64-19a589cc31/build$ ./qemu-system-sparc64 -M niagara -L /git/md/bin/tlb_fix/2048 -nographic -m 2048 -drive if=pflash,readonly=on,file=/zroot/iso/osol-dev-134-ai-sparc.iso
 cpu Probing I/O buses
 
@@ -39,14 +60,15 @@ module /kernel/misc/sparcv9/ctf: text at [0x13553c0, 0x135cda7] data at 0x1965f3
 Welcome to kmdb
 kmdb: unable to determine terminal type: assuming `vt100'
 Loaded modules: [ unix krtld genunix ]
+[0]> -drive if=pflash,readonly=on,file=/zroot/iso/
 [0]> ::bp alloc_kmem64
 [0]> :c
 kmdb: stop at alloc_kmem64
 kmdb: target stopped at:
 alloc_kmem64:   save      %sp, -0xc0, %sp
-[0]> mmu_exported_pagesize_mask/X
+[0]> mmu_exported_pagesize_mask/D
 mmu_exported_pagesize_mask:
-mmu_exported_pagesize_mask:     2B
+mmu_exported_pagesize_mask:     43
 [0]>  mmu_exported_pagesize_mask/W 0xb
 mmu_exported_pagesize_mask:     0x2b            =       0xb
 [0]> mmu_exported_pagesize_mask/D
@@ -63,6 +85,8 @@ os-io Ethernet address = 0:80:3:de:ad:3
 Using default device instance data
 mem = 2097152K (0x80000000)
 avail mem = 1704427520
+QEMU 11.0.50 monitor - type 'help' for more information
+(qemu)
 root nexus = Sun Fire T2000
 pseudo0 at root
 pseudo0 is /pseudo
@@ -78,7 +102,342 @@ dld0 is /pseudo/dld@0
 cpu0: UltraSPARC-T1 (chipid 0, clock 5 MHz)
 pseudo-device: audio0
 audio0 is /pseudo/audio@0
+Loaded modules: [ scsi_vhci mac ldc neti ufs s1394 hook ip usba specfs sctp arp
+sockfs ]
+kmdb: target stopped at:
+kmdb_enter:     ta        %icc, 0x7d
+[0]> :c
+kmdb: target stopped at:
+kmdb_enter:     ta        %icc, 0x7d
+[0]> ::modinfo
+ ID         LOADADDR     SIZE REV MODULE NAME
+  0          1000000   1b2a12   0 unix (?)
+  1          10d9cf0   250da8   0 genunix (?)
+  2          12d4d18       10   0 platmod (?)
+  3          12d4d20     4428   0 SUNW,UltraSPARC-T1 (?)
+  4          12d8e80    99198   0 kmdbmod (?)
+  5          13553c0     7a48   0 ctf (?)
+  6                0        0   0 cl_bootstrap (?)
+  7          13b4000     4d98   1 specfs (filesystem for specfs)
+  8          13b8cf8     3948   1 fifofs (filesystem for fifo)
+  9                0        0   0 dtrace (?)
+ 10          13bd0a8     4108   1 devfs (devices filesystem)
+ 11          13c0f68    1b570   1 procfs (filesystem for proc)
+ 12          13dba18     1fa0   1 swapgeneric (root and swap configuration)
+ 13                0        0   0 lbl_edition (?)
+ 14          13dd820     39f0   1 TS (time sharing sched class)
+ 15          13e0a48      8e8   1 TS_DPTBL (Time sharing dispatch table)
+ 16         7be00000    38a58   1 ufs (filesystem for ufs)
+ 17         7be37190      208   1 fssnap_if (File System Snapshot Interface)
+ 18          13e3268     14e0   1 rootnex (sun4 root nexus)
+ 19         7be37310      1b8   1 options (options driver)
+ 20          13e4450     1080   1 sad (STREAMS Administrative Driver ')
+ 21         7be37408      a48   1 pseudo (nexus driver for 'pseudo' 1.31)
+ 22         7be37c18      5e0   1 clone (Clone Pseudodriver 'clone')
+ 23          13e5298     fd68   1 scsi_vhci (SCSI VHCI Driver)
+ 24         7be38000    20198   1 scsi (SCSI Bus Utility Routines)
+ 25          13f4de8      cd0   1 scsi_vhci_f_asym_sun (f_asym_sun)
+ 26          13f59e8     1bf0   1 scsi_vhci_f_asym_lsi (f_asym_lsi)
+ 27          13f7360      eb0   1 scsi_vhci_f_asym_emc (f_asym_emc)
+ 28         7be55c20      278   1 scsi_vhci_f_sym_emc (f_sym_emc)
+ 29          13f8128      550   1 scsi_vhci_f_sym_hds (f_sym_hds)
+ 30          13f85b0      4a8   1 scsi_vhci_f_sym (f_sym)
+ 31          13f8910      a68   1 scsi_vhci_f_tpgs (f_tpgs)
+ 32          13f92b8     2008   1 ramdisk (ramdisk driver)
+ 33         7be56000     d880   1 dev (/dev filesystem)
+ 34          13fb148     4680   1 dls (Data-Link Services)
+ 35         7be64000    1b068   1 mac (MAC Services)
+ 36         7be84000     2e90   1 ctfs (contract filesystem)
+ 37         7be88000     2ed0   1 mntfs (mount information file system)
+ 38         7be8c000    164c8   1 tmpfs (filesystem for tmpfs)
+ 39         7be92160     1cb0   1 objfs (kernel object filesystem)
+ 40         7be94000     1e80   1 sharefs (sharetab filesystem)
+ 41                0        0   0 c2audit (?)
+ 42         7bea6000    24af8   1 sockfs (filesystem for sockfs)
+ 43         7ba00000   11aca0   1 ip (IP STREAMS driver 1.47)
+ 44         7bb0e000     30a0   1 md5 (MD5 Message-Digest Algorithm)
+ 45         7bb12000    23050   1 kcf (Kernel Crypto Framework)
+ 46         7be8ae20     1ab8   1 swrand (Kernel Random number Provider)
+ 47         7bb36000     3938   1 sha1 (SHA1 Message-Digest Algorithm)
+ 48         7bb3a000     30b0   1 hook (Hooks Interface v1.0)
+ 49         7bb343b0     19c8   1 neti (netinfo module)
+ 50         7bb47108     1088   1 strplumb (STREAMS Plumbing Module)
+ 51         7be96000     6470   1 dld (Data-Link Driver)
+ 52         7be93d90      4b8   1 ip6 (IP6 STREAMS driver)
+ 53         7bb35d00      590   1 tcp (TCP STREAMS driver)
+ 54         7be83918      4c0   1 tcp6 (TCP6 STREAMS driver)
+ 55         7be83b70      590   1 udp (UDP STREAMS driver)
+ 56         7bb39568      4c0   1 udp6 (UDP6 STREAMS driver)
+ 57         7bb397c0      4b8   1 sctp (SCTP device)
+ 58         7bb39a10      4b8   1 sctp6 (SCTP6 device)
+ 59         7bb39c60      588   1 icmp (ICMP STREAMS driver)
+ 60         7be63288      4b8   1 icmp6 (ICMP6 STREAMS driver)
+ 61         7be634d8      510   1 arp (ARP STREAMS driver)
+ 62         7bea2000     4838   1 timod (transport interface str mod)
+ 63         7bb39ee8      148   1 consconfig (console configuration)
+ 64         7bb48000     4928   1 consconfig_dacf (Consconfig DACF)
+ 65         7bb4c000     27d0   1 conskbd (conskbd multiplexer driver)
+ 66         7bb50000     43e0   1 kbtrans (kbtrans (key translation))
+ 67         7be7e838     1868   1 consms (Mouse Driver for Sun 'consms' 5)
+ 68         7bb54000     3f30   1 wc (Workstation multiplexer Driver )
+ 69         7bb58000     9740   1 tem (ANSI Terminal Emulator)
+ 70         7bb4b540      b30   1 iwscn (Workstation Redirection driver)
+ 71         7bb5e000    11790   1 ehci (USB EHCI Driver)
+ 72         7bb70000    2e0e8   1 usba (USBA: USB Architecture 2.0 1.66)
+ 73         7bb5c658     1638   1 dcfs (compressed filesystem)
+ 74         7bba4000     cf80   1 uhci (USB UHCI Controller Driver)
+ 75         7bbb2000     e300   1 ohci (USB OpenHCI Driver)
+ 76         7bb3d040      f30   1 vnex (sun4v virtual-devices nexus dri)
+ 77         7bb4e408     1e68   1 qcn (sun4v console driver)
+ 78         7bfcc000     c0e8   1 ib (IB nexus)
+ 79         7bbce000     9d30   1 ibdm (InfiniBand Device Manager)
+ 80         7bbd8000     e6d8   1 ibtl (IB Transport Layer)
+ 81         7beca000    61358   1 ibmf (IB Agent Interfaces 2.0)
+ 82         7bb57460      c88   1 pcbe.SUNW,UltraSPARC-T1 (
+UltraSPARC T1 Performance Count)
+ 83         7bbc2000     72e8   1 kssl (Kernel SSL Interface)
+ 84         7bbca000     30e8   1 pcieb (PCIe bridge/switch driver)
+ 85         7bf12000    14ea8   1 pcie (PCI Express Framework Module)
+ 86         7bbe6000     24a8   1 busra (Bus Resource Allocator (BUSRA))
+ 87         7bf28000    28840   1 hci1394 (1394 OpenHCI HBA driver)
+ 88         7bf48000    2d6b0   1 s1394 (IEEE 1394 Services Library 1.0)
+ 89         7bbea000     3c68   1 n2rng (N2 RNG Driver)
+ 90         7bf6e000    179e0   1 ncp (NCP Crypto Driver)
+ 91         7bbee000     41b8   1 bignum (bignum utility module)
+ 92                0        0   0 fpc (?)
+ 93                0        0   0 iospc (?)
+ 94         7bbf4000   2068e8   1 ds (Domain Services 1.9)
+ 95         7bf84000     d108   1 ldc (sun4v LDC module)
+ 96                0        0   0 n2piupc (?)
+ 97                0        0   0 n2cp (?)
+ 98         7bf92000     aa28   1 pcic (PCIC PCMCIA adapter driver)
+ 99         7bf9c000    191d0   1 pcmcia (PCMCIA Nexus Support)
+100         7bfb4000     fb30   1 cardbus (Cardbus Configurator support)
+101         7bbe5450      bd0   1 hpcsvc (hot-plug controller services)
+102         7b600000    55908   1 qlc (SunFC Qlogic FCA v20100212-2.40)
+103         7bfc4000     8898   1 fctl (SunFC Transport v20090729-1.70)
+104                0        0   0 tavor (?)
+105         7b650000    52400   1 audio (Audio Framework)
+106         7bfd8000     8ba8   1 elfexec (exec module for elf)
+107         7bfe2000     e800   1 ldterm (terminal line discipline)
+108         7bbfc000     2518   1 ttcompat (alt ioctl calls)
+109         7bf26d18     14d8   1 ptsl (tty pseudo driver slave 'ptsl')
+110         7bbc0158     1e78   1 ptc (tty pseudo driver control 'ptc')
+111         7bff0000     afa0   1 se (Siemens SAB 82532 ESCC2)
+112         7b69c000     54a0   1 su (su driver)
+113         7b6a2000    14140   1 usbser_edge (USB Digi Edgeport driver)
+114         7b6ac000     45a8   1 usbser (USB generic serial module)
+115         7bffc000     3bc8   1 usbsacm (USB Serial CDC ACM driver)
+116         7b6b2000     2700   1 usbsprl (USB Prolific PL2303 driver)
+117         7b6b6000     6b38   1 usbsksp (USB keyspan usb2serial driver)
+118         7bfeff50       f8   1 usbs49_fw (Placeholder module for the firm)
+119         7b6be000     29a8   1 usbftdi (FTDI FT232R USB UART driver)
+120         7b6c2000     8bd8   1 ttymux (serial mux driver)
+121         7b6cc000     6cf8   1 ipsecesp (IPsec ESP STREAMS driver)
+122         7b6d4000    10df0   1 ipsecah (IPsec AH STREAMS driver)
+123         7b6e6000     8d30   1 pcser (PCMCIA Serial Card Driver V2.0)
+124         7b6f0000     62b0   1 tl (TPI Local Transport (tl))
+125         7b6f6000     4120   1 keysock (PF_KEY socket STREAMS driver)
+126         7b6fa000     5e98   1 spdsock (PF_POLICY socket STREAMS driver)
+127         7bf110b8     1610   1 sysmsg (System message redirection (fan)
+128         7bf83800      920   1 cn (Console redirection driver)
+129         7b6d27f0     1970   1 mm (memory driver)
+130         7be83e00      2a0   1 pipe (pipe(2) syscall)
+131         7b700000     4f98   1 doorfs (doors)
+132         7b6bc758     18f0   1 namefs (filesystem for namefs)
+133         7b706000     58b8   1 portfs (event ports)
+[0]> :c
+
+
+
 
 Requesting System Maintenance Mode
 (See /lib/svc/share/README for more information.)
 Console login service(s) cannot run
+
+Enter user name for system maintenance (control-d to bypass): root
+Enter root password (control-d to bypass):
+
+single-user privilege assigned to root on /dev/console.
+Entering System Maintenance Mode
+
+Jul 23 01:57:45 su: 'su root' succeeded for root on /dev/console
+
+kmdb: target stopped at:
+kmdb_enter:     ta        %icc, 0x7d
+[0]> :c
+
+
+-bash: /usr/sbin/quota: No such file or directory
+Sun Microsystems Inc.	SunOS 5.11	snv_134	February 2010
+-bash: /bin/mail: No such file or directory
+-bash: /usr/bin/hostname: No such file or directory
+root@:~#
+-bash: /usr/bin/hostname: No such file or directory
+root@:~#
+-bash: /usr/bin/hostname: No such file or directory
+root@:~#
+-bash: /usr/bin/hostname: No such file or directory
+root@:~#
+-bash: /usr/bin/hostname: No such file or directory
+root@:~# uname -a
+SunOS  5.11 snv_134 sun4v sparc sun4v
+-bash: /usr/bin/hostname: No such file or directory
+root@:~# prtconf -v
+System Configuration:  Sun Microsystems  sun4v
+Memory size: 2048 Megabytes
+System Peripherals (Software Nodes):
+
+pseudo-device: devinfo0
+devinfo0 is /pseudo/devinfo@0
+SUNW,Sun-Fire-T2000
+    System properties:
+        name='fm-capable' type=int items=1
+            value=00000009
+        name='relative-addressing' type=int items=1
+            value=00000001
+        name='MMU_PAGEOFFSET' type=int items=1
+            value=00001fff
+        name='MMU_PAGESIZE' type=int items=1
+            value=00002000
+        name='PAGESIZE' type=int items=1
+            value=00002000
+    Driver properties:
+        name='pm-hardware-state' type=string items=1 dev=none
+            value='no-suspend-resume'
+        name='fm-errcb-capable' type=boolean dev=none
+        name='fm-ereport-capable' type=boolean dev=none
+    ib, instance #0 (driver not attached)
+        System properties:
+            name='class' type=string items=1
+                value='root'
+            name='port-svc-list' type=string items=1
+                value=''
+            name='vppa-svc-list' type=string items=1
+                value='ipib'
+            name='hca-svc-list' type=string items=1
+                value=''
+    scsi_vhci, instance #0
+        System properties:
+            name='class' type=string items=1
+                value='root'
+            name='load-balance' type=string items=1
+                value='round-robin'
+            name='auto-failback' type=string items=1
+                value='enable'
+            name='ddi-forceload' type=string items=7
+                value='misc/scsi_vhci/scsi_vhci_f_asym_sun' + 'misc/scsi_vhci/scsi_vhci_f_asym_lsi' + 'misc/scsi_vhci/scsi_vhci_f_asym_emc' + 'misc/scsi_vhci/scsi_vhci_f_sym_emc' + 'misc/scsi_vhci/scsi_vhci_f_sym_hds' + 'misc/scsi_vhci/scsi_vhci_f_sym' + 'misc/scsi_vhci/scsi_vhci_f_tpgs'
+        Driver properties:
+            name='pm-want-child-notification?' type=boolean dev=none
+            name='fm-ereport-capable' type=boolean dev=none
+        Hardware properties:
+            name='initiator-interconnect-type' type=string items=1
+                value='SPI'
+            name='scsi-initiator-id' type=int items=1
+                value=00000007
+            name='scsi-tag-age-limit' type=int items=1
+                value=00000002
+            name='scsi-selection-timeout' type=int items=1
+                value=000000fa
+            name='scsi-watchdog-tick' type=int items=1
+                value=0000000a
+            name='scsi-reset-delay' type=int items=1
+                value=00000bb8
+            name='scsi-options' type=int items=1
+                value=00107ff8
+            name='scsi-enumeration' type=int items=1
+                value=00000000
+        Device Minor Nodes:
+            dev=(87,0)
+                dev_path=/scsi_vhci:devctl
+                    spectype=chr type=minor
+     packages (driver not attached)
+        SUNW,builtin-drivers (driver not attached)
+        deblocker (driver not attached)
+        disk-label (driver not attached)
+        terminal-emulator (driver not attached)
+        dropins (driver not attached)
+        kbd-translator (driver not attached)
+        obp-tftp (driver not attached)
+        SUNW,asr (driver not attached)
+        hsfs-file-system (driver not attached)
+        ufs-file-system (driver not attached)
+    chosen (driver not attached)
+    openprom (driver not attached)
+        client-services (driver not attached)
+    options, instance #0
+        System properties:
+            name='ttymodes' type=byte items=36
+                value=00.00.25.02.00.00.18.05.00.00.00.bd.00.00.8a.3b.03.1c.7f.15.04.00.00.00.11.13.1a.19.12.0f.17.16.00.00.00.00
+            name='class' type=string items=1
+                value='root'
+    aliases (driver not attached)
+    memory (driver not attached)
+    virtual-memory (driver not attached)
+    virtual-devices, instance #0
+        Hardware properties:
+            name='compatible' type=string items=2
+                value='SUNW,sun4v-virtual-devices' + 'SUNW,virtual-devices'
+        Register Specifications:
+            Bus Type=0xc0000100, Address=0x0, Size=0x0
+        disk (driver not attached)
+            Hardware properties:
+                name='compatible' type=string items=1
+                    value='SUNW,legion-disk'
+        console, instance #0
+            Driver properties:
+                name='ddi-no-autodetach' type=int items=1 dev=none
+                    value=00000001
+            Hardware properties:
+                name='compatible' type=string items=2
+                    value='qcn' + 'qcn'
+            Device Minor Nodes:
+                dev=(168,0)
+                    dev_path=/virtual-devices@100/console@1:qcn
+                        spectype=chr type=internal
+        nvram (driver not attached)
+        rtc (driver not attached)
+            Hardware properties:
+                name='compatible' type=string items=1
+                    value='SUNW,sun4v-tod'
+    cpu (driver not attached)
+        Hardware properties:
+            name='compatible' type=string items=3
+                value='SUNW,UltraSPARC-T1' + 'SUNW,sun4v-cpu' + 'sun4v'
+    ramdisk-root, instance #0
+        Driver properties:
+            name='ddi-no-autodetach' type=int items=1 dev=none
+                value=00000001
+        Hardware properties:
+            name='compatible' type=string items=1
+                value='SUNW,ramdisk'
+        Device Minor Nodes:
+            dev=(82,1)
+                dev_path=/ramdisk-root:a
+                    spectype=blk type=minor
+                dev_path=/ramdisk-root:a,raw
+                    spectype=chr type=minor
+                Minor properties:
+                    name='Nblocks' type=int64 items=1 dev=(82,1)
+                        value=0000000000054f00
+                    name='Size' type=int64 items=1 dev=(82,1)
+                        value=000000000a9e0000
+    os-io (driver not attached)
+    iscsi, instance #0 (driver not attached)
+        System properties:
+            name='instance' type=int items=1
+                value=00000000
+            name='mpxio-disable' type=string items=1
+                value='no'
+    pseudo, instance #0
+        System properties:
+            name='instance' type=int items=1
+                value=00000000
+            name='class' type=string items=1
+                value='root'
+        Device Minor Nodes:
+            dev=(79,0)
+                dev_path=/pseudo:devctl
+                    spectype=chr type=minor
+-bash: /usr/bin/hostname: No such file or directory
+root@:~#
