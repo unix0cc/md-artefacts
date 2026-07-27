@@ -1,0 +1,152 @@
+/home/dpim/build/qemu-sparc64-tte-pgsize-fix/build/qemu-system-sparc64 -M niagara -L /git/md/bin/_test/pagesize_256m/4096 -L /git/md/fw_blobs -nographic -m 4096 -drive if=pflash,readonly=on,file=/zroot/iso/sol-11_1-ai-sparc.iso
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 4096 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdvs
+Boot device: /virtual-devices/disk@0  File and args: -kdvs
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10cf407] data at 0x10000000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10cf408, 0x132f8cf] data at 0x107beac0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x132f8d0, 0x132f8d7] data at 0x1081bd20
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x132f8e0, 0x13324c7] data at 0x1081c380
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x1332500, 0x13b72af] data at 0x10835af0
+module /kernel/misc/sparcv9/ctf: text at [0x13b72b0, 0x13beeb7] data at 0x108535c0
+|
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+Loaded modules: [ unix krtld genunix ]
+[0]> :c
+WARNING: max-cpus property missing from MD platform node, using default NCPU value
+SunOS Release 5.11 Version 11.1 64-bit
+Copyright (c) 1983, 2012, Oracle and/or its affiliates. All rights reserved.
+os-io Ethernet address = 0:80:3:de:ad:3
+Using default device instance data
+mem = 4194304K (0x100000000)
+avail mem = 3109453824
+root nexus = Sun Fire T2000
+pseudo0 at root
+pseudo0 is /pseudo
+scsi_vhci0 at root
+scsi_vhci0 is /scsi_vhci
+NOTICE: Disabling watchdog as watchdog services are not available
+
+ramdisk0 at root
+ramdisk0 is /ramdisk-root
+root on /ramdisk-root:a fstype ufs
+pseudo-device: dld0
+dld0 is /pseudo/dld@0
+cpu0: UltraSPARC-T1 (chipid 0, clock 5 MHz)
+Booting to milestone "milestone/single-user:default".
+Remounting root read/write
+Probing for device nodes ...
+fcoe0 at root
+fcoe0 is /fcoe
+iscsi0 at root
+iscsi0 is /iscsi
+pseudo-device: pseudo1
+pseudo1 is /pseudo/zconsnex@1
+pseudo-device: bmc0
+bmc0 is /pseudo/bmc@0
+pseudo-device: dcpc0
+dcpc0 is /pseudo/dcpc@0
+pseudo-device: drctl0
+drctl0 is /pseudo/drctl@0
+pseudo-device: dtrace0
+dtrace0 is /pseudo/dtrace@0
+pseudo-device: fasttrap0
+fasttrap0 is /pseudo/fasttrap@0
+pseudo-device: fbt0
+fbt0 is /pseudo/fbt@0
+pseudo-device: fcode0
+fcode0 is /pseudo/fcode@0
+pseudo-device: fcp0
+fcp0 is /pseudo/fcp@0
+pseudo-device: fcsm0
+fcsm0 is /pseudo/fcsm@0
+pseudo-device: devinfo0
+devinfo0 is /pseudo/devinfo@0
+pseudo-device: llc10
+llc10 is /pseudo/llc1@0
+pseudo-device: lockstat0
+lockstat0 is /pseudo/lockstat@0
+pseudo-device: lofi0
+lofi0 is /pseudo/lofi@0
+pseudo-device: mdesc0
+mdesc0 is /pseudo/mdesc@0
+WARNING: kernel debugger was booted; application watchdog is not available.
+pseudo-device: profile0
+profile0 is /pseudo/profile@0
+pseudo-device: ramdisk1024
+ramdisk1024 is /pseudo/ramdisk@1024
+pseudo-device: sdt0
+sdt0 is /pseudo/sdt@0
+pseudo-device: srn0
+srn0 is /pseudo/srn@0
+pseudo-device: systrace0
+systrace0 is /pseudo/systrace@0
+pseudo-device: trapstat0
+trapstat0 is /pseudo/trapstat@0
+pseudo-device: zfs0
+zfs0 is /pseudo/zfs@0
+
+
+Preparing image for use
+Requesting System Maintenance Mode
+Console login service(s) cannot run
+
+Enter user name for system maintenance (control-d to bypass): Loaded modules: [ scsi_vhci mdesc px crypto mac cpc ldc neti ufs mpt zfs s1394
+pmcs hook idm ip usba specfs random arp kssl mpt_sas emlxs sockfs ]
+kmdb: target stopped at:
+kmdb_enter:     ta        %icc, 0x7d
+[0]> mmu_exported_pagesize_mask/X
+mmu_exported_pagesize_mask:
+mmu_exported_pagesize_mask:     2b
+[0]> kmem64_szc/X
+kmem64_szc:
+kmem64_szc:     5
+[0]> kmem64_base/J
+kmem64_base:
+kmem64_base:    30000000000
+[0]> kmem64_aligned_end/J
+kmem64_aligned_end:
+kmem64_aligned_end:             30010000000
+[0]> segkmem_lpsize/J
+segkmem_lpsize:
+segkmem_lpsize: 10000000
+[0]> 70000100000/J
+kmdb: failed to read data from target: no mapping for address
+0x70000100000:
+[0]> 30010000000/J
+kmdb: failed to read data from target: no mapping for address
+0x30010000000:
+[0]> 30000000000/J
+0x30000000000:  1034a340
+[0]> :c
+
+
+Enter user name for system maintenance (control-d to bypass): root
+Enter root password (control-d to bypass):
+single-user privilege assigned to root on /dev/console.
+Entering System Maintenance Mode
+
+Jul 27 16:27:10 su: 'su root' succeeded for root on /dev/console
+-bash: /usr/sbin/quota: No such file or directory
+Oracle Corporation    SunOS 5.11    11.1    September 2012
+-bash: /bin/mail: No such file or directory
+root@:~# pagesize
+-bash: pagesize: command not found
+root@:~# trapstat -T
+-bash: trapstat: command not found
+root@:~#
