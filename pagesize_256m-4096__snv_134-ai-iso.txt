@@ -102,3 +102,152 @@ Requesting System Maintenance Mode
 Console login service(s) cannot run
 
 Enter user name for system maintenance (control-d to bypass):
+mmu_exported_pagesize_mask:     2b
+[0]> kmem64_szc/X
+kmem64_szc:
+kmem64_szc:     5
+[0]> kmem64_base/J
+kmem64_base:
+kmem64_base:    70000000000
+[0]> kmem64_aligned_end/J
+kmem64_aligned_end:
+kmem64_aligned_end:             70010000000 (qemu) info tlb
+MMU contexts: Primary: 0, Secondary: 0
+DMMU Tag Access: 30002676000, TSB Tag Target: 0
+DMMU dump
+[00] VA: 30006110000, PA: 13bfd8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[01] VA: 300025f4000, PA: 168350000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[02] VA: 300025fa000, PA: 168356000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[03] VA: 30002642000, PA: 1682c0000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[04] VA: 3000267a000, PA: 1682f8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[05] VA: 3000264a000, PA: 1682c8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[06] VA: 30002680000, PA: 1682fe000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[07] VA: 30002674000, PA: 1682f2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[08] VA: 1000000, PA: 17f800000,   4M, priv, RO, locked, ie no, ctx 0 local
+[09] VA: 30002666000, PA: 1682e4000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[10] VA: 1800000, PA: 17f400000,   4M, priv, RW, locked, ie no, ctx 0 local
+[11] VA: 30002692000, PA: 168310000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[12] VA: 300028c2000, PA: 1648a8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[13] VA: 3000266a000, PA: 1682e8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[14] VA: 30002694000, PA: 168312000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[15] VA: 3000266c000, PA: 1682ea000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[16] VA: 30002696000, PA: 168314000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[17] VA: 3000261a000, PA: 168376000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[18] VA: 300028be000, PA: 1648a4000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[19] VA: 300024fe000, PA: 168378000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[20] VA: 30002f1a000, PA: 167aa0000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[21] VA: 300025e4000, PA: 168340000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[22] VA: 30002608000, PA: 168364000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[23] VA: 300025f0000, PA: 16834c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[24] VA: 30002610000, PA: 16836c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[25] VA: 30002602000, PA: 16835e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[26] VA: 300025fc000, PA: 168358000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[27] VA: 30002618000, PA: 168374000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[28] VA: 30002670000, PA: 1682ee000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[29] VA: 3000263a000, PA: 1682b8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[30] VA: 3000267c000, PA: 1682fa000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[31] VA: 3000264c000, PA: 1682ca000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[32] VA: 30002682000, PA: 168300000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[33] VA: 30002672000, PA: 1682f0000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[34] VA: 30002654000, PA: 1682d2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[35] VA: 30002686000, PA: 168304000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[36] VA: 300025f8000, PA: 168354000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[37] VA: 3000263c000, PA: 1682ba000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[38] VA: 600108bc000, PA: 140000000, 256M, priv, RW, unlocked, ie no, ctx 0 local
+[39] VA: 30002998000, PA: 167a6c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[40] VA: 3000250e000, PA: 1683fe000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[41] VA: 30006042000, PA: 164992000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[42] VA: 70010000, PA: 1730a8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[43] VA: 2a100066000, PA: 13a9e8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[44] VA: 2a10006e000, PA: 13a9f0000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[45] VA: 3000277c000, PA: 1681d2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[46] VA: 3000277e000, PA: 1681d4000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[47] VA: 300028c0000, PA: 1648a6000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[48] VA: 3000610e000, PA: 13bf96000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[49] VA: 30002600000, PA: 16835c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[50] VA: 300025dc000, PA: 168338000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[51] VA: 300025e0000, PA: 16833c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[52] VA: 30002606000, PA: 168362000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[53] VA: 3000267e000, PA: 1682fc000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[54] VA: 300025f6000, PA: 168352000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[55] VA: 30002614000, PA: 168370000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[56] VA: 30002616000, PA: 168372000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[57] VA: 300025ee000, PA: 16834a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[58] VA: 30002604000, PA: 168360000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[59] VA: 300025de000, PA: 16833a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[60] VA: 300025e2000, PA: 16833e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[61] VA: 300025ea000, PA: 168346000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[62] VA: 300025ec000, PA: 168348000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[63] VA: 3000260e000, PA: 16836a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+IMMU dump
+[00] VA: 7be36000, PA: 16498c000,   8k, priv, unlocked, ctx 0 local
+[01] VA: 7be38000, PA: 1648aa000,   8k, priv, unlocked, ctx 0 local
+[02] VA: 7be3a000, PA: 1648ac000,   8k, priv, unlocked, ctx 0 local
+[03] VA: 7be4a000, PA: 1648bc000,   8k, priv, unlocked, ctx 0 local
+[04] VA: 7be40000, PA: 1648b2000,   8k, priv, unlocked, ctx 0 local
+[05] VA: 7be44000, PA: 1648b6000,   8k, priv, unlocked, ctx 0 local
+[06] VA: 7be54000, PA: 1648c6000,   8k, priv, unlocked, ctx 0 local
+[07] VA: 1016000, PA: 17f816000,   8k, priv, unlocked, ctx 0 local
+[08] VA: 1000000, PA: 17f800000,   4M, priv, locked, ctx 0 local
+[09] VA: f0000000, PA: 80000000,   4M, priv, locked, ctx 0 local
+[10] VA: 7be10000, PA: 164966000,   8k, priv, unlocked, ctx 0 local
+[11] VA: edd00000, PA: 17f0fe000,   8k, priv, locked, ctx 0 local
+[12] VA: edd02000, PA: 17f100000,   8k, priv, locked, ctx 0 local
+[13] VA: edd04000, PA: 17f102000,   8k, priv, locked, ctx 0 local
+[14] VA: 7be12000, PA: 164968000,   8k, priv, unlocked, ctx 0 local
+[15] VA: 7be0a000, PA: 164960000,   8k, priv, unlocked, ctx 0 local
+[16] VA: 7be22000, PA: 164978000,   8k, priv, unlocked, ctx 0 local
+[17] VA: 7be1c000, PA: 164972000,   8k, priv, unlocked, ctx 0 local
+[18] VA: 7be28000, PA: 16497e000,   8k, priv, unlocked, ctx 0 local
+[19] VA: 7be2a000, PA: 164980000,   8k, priv, unlocked, ctx 0 local
+[20] VA: 7be2e000, PA: 164984000,   8k, priv, unlocked, ctx 0 local
+[21] VA: 7be34000, PA: 16498a000,   8k, priv, unlocked, ctx 0 local
+[22] VA: 7be0e000, PA: 164964000,   8k, priv, unlocked, ctx 0 local
+[23] VA: 7be0c000, PA: 164962000,   8k, priv, unlocked, ctx 0 local
+[24] VA: 7be1e000, PA: 164974000,   8k, priv, unlocked, ctx 0 local
+[25] VA: 7be16000, PA: 16496c000,   8k, priv, unlocked, ctx 0 local
+[26] VA: 7be06000, PA: 16495c000,   8k, priv, unlocked, ctx 0 local
+[27] VA: 7be1a000, PA: 164970000,   8k, priv, unlocked, ctx 0 local
+[28] VA: 7be04000, PA: 16495a000,   8k, priv, unlocked, ctx 0 local
+[29] VA: 7be14000, PA: 16496a000,   8k, priv, unlocked, ctx 0 local
+[30] VA: 7be18000, PA: 16496e000,   8k, priv, unlocked, ctx 0 local
+[31] VA: 7be74000, PA: 13a8e6000,   8k, priv, unlocked, ctx 0 local
+[32] VA: 10ec000, PA: 17f8ec000,   8k, priv, unlocked, ctx 0 local
+[33] VA: 1042000, PA: 17f842000,   8k, priv, unlocked, ctx 0 local
+[34] VA: 1046000, PA: 17f846000,   8k, priv, unlocked, ctx 0 local
+[35] VA: 10fa000, PA: 17f8fa000,   8k, priv, unlocked, ctx 0 local
+[36] VA: 108c000, PA: 17f88c000,   8k, priv, unlocked, ctx 0 local
+[37] VA: 109e000, PA: 17f89e000,   8k, priv, unlocked, ctx 0 local
+[38] VA: 11a4000, PA: 17f9a4000,   8k, priv, unlocked, ctx 0 local
+[39] VA: 11a2000, PA: 17f9a2000,   8k, priv, unlocked, ctx 0 local
+[40] VA: 123a000, PA: 17fa3a000,   8k, priv, unlocked, ctx 0 local
+[41] VA: 1102000, PA: 17f902000,   8k, priv, unlocked, ctx 0 local
+[42] VA: 10ea000, PA: 17f8ea000,   8k, priv, unlocked, ctx 0 local
+[43] VA: 1358000, PA: 17fb58000,   8k, priv, unlocked, ctx 0 local
+[44] VA: 126e000, PA: 17fa6e000,   8k, priv, unlocked, ctx 0 local
+[45] VA: 1092000, PA: 17f892000,   8k, priv, unlocked, ctx 0 local
+[46] VA: 1018000, PA: 17f818000,   8k, priv, unlocked, ctx 0 local
+[47] VA: 1176000, PA: 17f976000,   8k, priv, unlocked, ctx 0 local
+[48] VA: 11e0000, PA: 17f9e0000,   8k, priv, unlocked, ctx 0 local
+[49] VA: 116a000, PA: 17f96a000,   8k, priv, unlocked, ctx 0 local
+[50] VA: 1100000, PA: 17f900000,   8k, priv, unlocked, ctx 0 local
+[51] VA: 11e2000, PA: 17f9e2000,   8k, priv, unlocked, ctx 0 local
+[52] VA: 107c000, PA: 17f87c000,   8k, priv, unlocked, ctx 0 local
+[53] VA: 103e000, PA: 17f83e000,   8k, priv, unlocked, ctx 0 local
+[54] VA: 100a000, PA: 17f80a000,   8k, priv, unlocked, ctx 0 local
+[55] VA: 1036000, PA: 17f836000,   8k, priv, unlocked, ctx 0 local
+[56] VA: 102c000, PA: 17f82c000,   8k, priv, unlocked, ctx 0 local
+[57] VA: 116c000, PA: 17f96c000,   8k, priv, unlocked, ctx 0 local
+[58] VA: 107a000, PA: 17f87a000,   8k, priv, unlocked, ctx 0 local
+[59] VA: 102a000, PA: 17f82a000,   8k, priv, unlocked, ctx 0 local
+[60] VA: 1034000, PA: 17f834000,   8k, priv, unlocked, ctx 0 local
+[61] VA: 103a000, PA: 17f83a000,   8k, priv, unlocked, ctx 0 local
+[62] VA: 1050000, PA: 17f850000,   8k, priv, unlocked, ctx 0 local
+[63] VA: 100e000, PA: 17f80e000,   8k, priv, unlocked, ctx 0 local
+(qemu)
+[0]> segkmem_lpsize/J
+segkmem_lpsize:
+segkmem_lpsize: 10000000
+[0]> 70000100000/J
+0x70000100000:  ffffffffffffffff
+[0]>
