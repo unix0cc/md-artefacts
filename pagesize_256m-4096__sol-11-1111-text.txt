@@ -1,0 +1,814 @@
+dpim@vmbox:~$ /home/dpim/build/qemu-sparc64-tte-pgsize-fix/build/qemu-system-sparc64 -M niagara -L /git/md/bin/_test/pagesize_256m/4096 -L /git/md/fw_blobs -nographic -m 4096 -drive if=pflash,readonly=on,file=/zroot/iso/sol-11-1111-text-sparc.iso
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 4096 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdvs
+Boot device: /virtual-devices/disk@0  File and args: -kdvs
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10e2677] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10e2678, 0x1306ae7] data at 0x19373c0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x1306ae8, 0x1306aef] data at 0x198d698
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x1306b00, 0x13096f7] data at 0x198dd00
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x1309700, 0x138a397] data at 0x19a5e50
+module /kernel/misc/sparcv9/ctf: text at [0x138a398, 0x1391f9f] data at 0x19c33b0
+/
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+Loaded modules: [ unix krtld genunix ]
+[0]> :c
+SunOS Release 5.11 Version 11.0 64-bit
+Copyright (c) 1983, 2011, Oracle and/or its affiliates. All rights reserved.
+os-io Ethernet address = 0:80:3:de:ad:3
+Using default device instance data
+mem = 4194304K (0x100000000)
+avail mem = 3807412224
+root nexus = Sun Fire T2000
+pseudo0 at root
+pseudo0 is /pseudo
+scsi_vhci0 at root
+scsi_vhci0 is /scsi_vhci
+NOTICE: Disabling watchdog as watchdog services are not available
+
+ramdisk0 at root
+ramdisk0 is /ramdisk-root
+root on /ramdisk-root:a fstype ufs
+pseudo-device: dld0
+dld0 is /pseudo/dld@0
+cpu0: UltraSPARC-T1 (chipid 0, clock 5 MHz)
+Booting to milestone "milestone/single-user:default".
+Remounting root read/write
+Probing for device nodes ...
+fcoe0 at root
+fcoe0 is /fcoe
+iscsi0 at root
+iscsi0 is /iscsi
+pseudo-device: pseudo1
+pseudo1 is /pseudo/zconsnex@1
+pseudo-device: srn0
+srn0 is /pseudo/srn@0
+pseudo-device: dcpc0
+dcpc0 is /pseudo/dcpc@0
+pseudo-device: dtrace0
+dtrace0 is /pseudo/dtrace@0
+pseudo-device: fasttrap0
+fasttrap0 is /pseudo/fasttrap@0
+pseudo-device: fbt0
+fbt0 is /pseudo/fbt@0
+pseudo-device: lockstat0
+lockstat0 is /pseudo/lockstat@0
+pseudo-device: profile0
+profile0 is /pseudo/profile@0
+pseudo-device: sdt0
+sdt0 is /pseudo/sdt@0
+pseudo-device: systrace0
+systrace0 is /pseudo/systrace@0
+pseudo-device: drctl0
+drctl0 is /pseudo/drctl@0
+pseudo-device: fcp0
+fcp0 is /pseudo/fcp@0
+pseudo-device: devinfo0
+devinfo0 is /pseudo/devinfo@0
+pseudo-device: fcsm0
+fcsm0 is /pseudo/fcsm@0
+pseudo-device: llc10
+llc10 is /pseudo/llc1@0
+pseudo-device: lofi0
+lofi0 is /pseudo/lofi@0
+pseudo-device: ramdisk1024
+ramdisk1024 is /pseudo/ramdisk@1024
+pseudo-device: fcode0
+fcode0 is /pseudo/fcode@0
+pseudo-device: zfs0
+zfs0 is /pseudo/zfs@0
+pseudo-device: trapstat0
+trapstat0 is /pseudo/trapstat@0
+pseudo-device: bmc0
+bmc0 is /pseudo/bmc@0
+pseudo-device: mdesc0
+mdesc0 is /pseudo/mdesc@0
+WARNING: kernel debugger was booted; application watchdog is not available.
+
+Loaded modules: [ scsi_vhci mdesc px crypto mac cpc ldc neti ufs mpt zfs s1394
+pmcs hook idm ip usba specfs random arp kssl mpt_sas emlxs sockfs ]
+kmdb: target stopped at:
+kmdb_enter:     ta        %icc, 0x7d
+[0]> ::stacks
+THREAD           STATE    SOBJ                COUNT
+2a10000fc60      SLEEP    CV                     54
+                 taskq_thread_wait+0x38
+                 taskq_thread+0x358
+                 thread_start+4
+
+30007437520      SLEEP    SHUTTLE                24
+                 syscall_trap32+0xcc
+
+2a10003fc60      FREE     <NONE>                  8
+                 <no consistent stack found>
+
+2a100ad7c60      SLEEP    CV                      5
+                 evch_delivery_hold+0x5c
+                 evch_delivery_thr+0x210
+                 thread_start+4
+
+30007431880      SLEEP    CV                      5
+                 lwp_park+0x128
+                 syslwp_park+0x58
+                 syscall_trap32+0xcc
+
+2a100837c60      SLEEP    CV                      4
+                 fcoe`fcoe_worker_frame+0x118
+                 taskq_thread+0x3b8
+                 thread_start+4
+
+3000737ae20      SLEEP    CV                      3
+                 cv_waituntil_sig+0x94
+                 lwp_park+0x128
+                 syslwp_park+0x58
+                 syscall_trap32+0xcc
+
+300077f38a0      SLEEP    CV                      2
+                 pause+0x10
+                 syscall_trap32+0xcc
+
+2a10013fc60      RUN      <NONE>                  2
+                 taskq_thread_wait+0x38
+                 taskq_thread+0x358
+                 thread_start+4
+
+2a10001fc60      STOPPED  <NONE>                  2
+                 <no consistent stack found>
+
+2a10007fc60      FREE     <NONE>                  1
+                 cbe_hres_tick+0xc
+                 clock+0x520
+                 cyclic_softint+0xbc
+                 cbe_level10+8
+                 intr_thread+0x258
+
+2a1008d7c60      SLEEP    CV                      1
+                 bmc`bmc_task+0xfc
+                 taskq_thread+0x3b8
+                 thread_start+4
+
+3000737b1a0      SLEEP    CV                      1
+                 cte_get_event+0x60
+                 fop_ioctl+0xc8
+                 ioctl+0x16c
+                 syscall_trap32+0xcc
+
+3000737bc20      SLEEP    CV                      1
+                 cv_waituntil_sig+0x94
+                 poll_common+0x444
+                 pollsys+0xf0
+                 syscall_trap32+0xcc
+
+2a10059fc60      SLEEP    CV                      1
+                 dld`dld_taskq_dispatch+0xec
+                 thread_start+4
+
+3000737b520      SLEEP    CV                      1
+                 doorfs`door_unref+0x88
+                 syscall_trap32+0xcc
+
+3000737a3a0      SLEEP    SHUTTLE                 1
+                 doorfs`doorfs32+0x90
+                 syscall_trap32+0xcc
+
+2a10020fc60      SLEEP    CV                      1
+                 fcoe`fcoe_send_ka+0x70
+                 taskq_thread+0x3b8
+                 thread_start+4
+
+2a100207c60      SLEEP    CV                      1
+                 fcoe`fcoe_watchdog+0x284
+                 taskq_thread+0x3b8
+                 thread_start+4
+
+2a100bf1c60      SLEEP    CV                      1
+                 fsflush+0x1c0
+                 thread_start+4
+
+2a100affc60      SLEEP    CV                      1
+                 ibcm`ibcm_process_tlist+0x12c
+                 thread_start+4
+
+2a100827c60      SLEEP    CV                      1
+                 idm`idm_wd_thread+0x1a4
+                 thread_start+4
+
+2a100be9c60      SLEEP    CV                      1
+                 io_balancer+0x310
+                 thread_start+4
+
+2a1005c7c60      SLEEP    CV                      1
+                 ip`ill_taskq_dispatch+0x110
+                 thread_start+4
+
+2a1005dfc60      SLEEP    CV                      1
+                 ip`ipsec_loader+0x90
+                 thread_start+4
+
+2a1005cfc60      SLEEP    CV                      1
+                 ip`squeue_polling_thread+0x94
+                 thread_start+4
+
+2a1005d7c60      SLEEP    CV                      1
+                 ip`squeue_worker+0xd4
+                 thread_start+4
+
+2a100687c60      SLEEP    CV                      1
+                 kbtrans`splash_key_abort_thread+0x38
+                 thread_start+4
+
+2a100007c60      SLEEP    SEMA                    1
+                 kctl_wr_thread+0x80
+                 thread_start+4
+
+2a100bd9c60      SLEEP    CV                      1
+                 mod_uninstall_daemon+0xc8
+                 thread_start+4
+
+2a100547c60      SLEEP    CV                      1
+                 page_capture_thread+0xec
+                 thread_start+4
+
+2a100ae7c60      SLEEP    CV                      1
+                 pageout+0x274
+                 thread_start+4
+
+2a100c09c60      SLEEP    CV                      1
+                 pageout_scanner+0x18c
+                 thread_start+4
+
+2a10056fc60      SLEEP    CV                      1
+                 pm_dep_thread+0x80
+                 thread_start+4
+
+30007430e00      SLEEP    CV                      1
+                 portfs`port_getn+0x2c4
+                 portfs`portfs+0x130
+                 syscall_trap32+0xcc
+
+2a10009fc60      SLEEP    CV                      1
+                 scsi`scsi_hba_barrier_daemon+0x80
+                 thread_start+4
+
+2a100097c60      SLEEP    CV                      1
+                 scsi`scsi_lunchg1_daemon+0x80
+                 thread_start+4
+
+2a10008fc60      SLEEP    CV                      1
+                 scsi`scsi_lunchg2_daemon+0x88
+                 thread_start+4
+
+2a100897c60      SLEEP    CV                      1
+                 sdpib`sdp_delete_thread+0x2c
+                 thread_start+4
+
+2a100c11c60      SLEEP    CV                      1
+                 seg_pasync_thread+0xc0
+                 thread_start+4
+
+3000737b8a0      SLEEP    CV                      1
+                 sigsuspend+0xa0
+                 syscall_trap32+0xcc
+
+3000737aaa0      SLEEP    CV                      1
+                 sigtimedwait+0x154
+                 syscall_trap32+0xcc
+
+2a1008afc60      SLEEP    CV                      1
+                 softmac`softmac_taskq_dispatch+0xf4
+                 thread_start+4
+
+2a10055fc60      SLEEP    CV                      1
+                 streams_bufcall_service+0x150
+                 thread_start+4
+
+2a100557c60      SLEEP    CV                      1
+                 streams_qbkgrnd_service+0x78
+                 thread_start+4
+
+2a10054fc60      SLEEP    CV                      1
+                 streams_sqbkgrnd_service+0x74
+                 thread_start+4
+
+2a100adfc60      SLEEP    CV                      1
+                 task_commit+0x78
+                 thread_start+4
+
+2a10093fc60      SLEEP    CV                      1
+                 taskq_thread_wait+0x54
+                 taskq_d_thread+0x178
+                 thread_start+4
+
+2a100017c60      SLEEP    CV                      1
+                 thread_reaper+0xa8
+                 thread_start+4
+
+2a10010fc60      SLEEP    CV                      1
+                 timeout_taskq_thread+0x80
+                 thread_start+4
+
+2a1001e7c60      SLEEP    CV                      1
+                 ufs`trans_roll_wait+0x68
+                 ufs`trans_roll+0x290
+                 thread_start+4
+
+2a10057fc60      SLEEP    CV                      1
+                 ufs`ufs_thread_idle+0x168
+                 thread_start+4
+
+2a100567c60      SLEEP    CV                      1
+                 ufs`ufs_thread_run+0x108
+                 ufs`ufs_thread_delete+0x50
+                 thread_start+4
+
+2a100577c60      SLEEP    CV                      1
+                 ufs`ufs_thread_run+0x108
+                 ufs`ufs_thread_hlock+0x54
+                 thread_start+4
+
+2a1008ffc60      SLEEP    CV                      1
+                 vhcache_flush_thread+0xbc
+                 thread_start+4
+
+2a1008a7c60      SLEEP    CV                      1
+                 zfs`arc_reclaim_thread+0x1d8
+                 thread_start+4
+
+2a1008dfc60      SLEEP    CV                      1
+                 zfs`l2arc_feed_thread+0x94
+                 thread_start+4
+
+2a100077c60      ONPROC   <NONE>                  1
+                 cyclic_softint+0xbc
+                 cbe_level1+8
+                 intr_thread+0x258
+
+30007440aa0      ONPROC   <NONE>                  1
+                 dnlc_lookup+0x80
+                 ufs`ufs_lookup+0x1b8
+                 fop_lookup+0x158
+                 lookuppnvp+0x3a4
+                 lookuppnatcred+0x118
+                 lookupnameatcred+0x4c
+                 caccess+0xc0
+                 faccessat+0x7c
+                 syscall_trap32+0xcc
+
+180e000          STOPPED  <NONE>                  1
+                 _start+0x100
+
+[0]> ::modinfo
+ ID         LOADADDR     SIZE REV MODULE NAME
+  0          1000000   21940a   0 unix (?)
+  1          10e2678   27a298   0 genunix (?)
+  2          1306ae8       10   0 platmod (?)
+  3          1306b00     2e70   0 SUNW,UltraSPARC-T1 (?)
+  4          1309700    9d760   0 kmdbmod (?)
+  5          138a398     7c68   0 ctf (?)
+  6                0        0   0 cl_bootstrap (?)
+  7          13fa000     5030   1 specfs (filesystem for specfs)
+  8         7be00000     39f0   1 fifofs (filesystem for fifo)
+  9         7b246000    17ec8   1 dtrace (Dynamic Tracing)
+ 10         7be04000     4260   1 devfs (devices filesystem)
+ 11         7be0a000    1be58   1 procfs (filesystem for proc)
+ 12         7be08018     1f58   1 swapgeneric (root and swap configuration)
+ 13                0        0   0 lbl_edition (?)
+ 14         7be26000     3d38   1 TS (time sharing sched class)
+ 15         7be09dd8      8e0   1 TS_DPTBL (Time sharing dispatch table)
+ 16         7be2a000    38e18   1 ufs (filesystem for ufs)
+ 17         7be09e88      1f8   1 fssnap_if (File System Snapshot Interface)
+ 18         7be64828     14c8   1 rootnex (sun4 root nexus)
+ 19          13ffad8      1c0   1 options (options driver)
+ 20         7be66000     10a8   1 sad (STREAMS Administrative Driver ')
+ 21         7be615a8      a40   1 pseudo (nexus driver for 'pseudo' 1.31)
+ 22          13ffbd8      5e0   1 clone (Clone Pseudodriver 'clone')
+ 23         7be68000    10768   1 scsi_vhci (SCSI VHCI Driver)
+ 24         7be7a000    21e80   1 scsi (SCSI Bus Utility Routines)
+ 25         7be25398      cd8   1 scsi_vhci_f_asym_sun (f_asym_sun)
+ 26         7be98000     1c48   1 scsi_vhci_f_asym_lsi (f_asym_lsi)
+ 27         7be66e70      ea0   1 scsi_vhci_f_asym_emc (f_asym_emc)
+ 28         7be79e50      278   1 scsi_vhci_f_sym_emc (f_sym_emc)
+ 29         7be659f8      580   1 scsi_vhci_f_sym_hds (f_sym_hds)
+ 30         7be67c28      4b0   1 scsi_vhci_f_sym (f_sym)
+ 31         7be29548      b50   1 scsi_vhci_f_tpgs (f_tpgs)
+ 32         7be9a000     2038   1 ramdisk (ramdisk driver)
+ 33         7be9c000      f40   1 vnex (sun4v virtual-devices nexus dri)
+ 34         7be9e000     2360   1 cnex (sun4v channel-devices nexus)
+ 35         7bea2000     d598   1 ldc (sun4v LDC module)
+ 36                0        0   0 vpci (?)
+ 37         7beb6000     2178   1 platsvc (sun4v Platform Services)
+ 38         7beb8000   206a78   1 ds (Domain Services 1.9)
+ 39         7bebe888     17c8   1 drctl (DR Control pseudo driver)
+ 40         7bec0000    3db50   1 pcie (PCI Express Framework Module)
+ 41         7befe000     2510   1 busra (Bus Resource Allocator (BUSRA))
+ 42         7bf02000     3628   1 iovcfg (IOV Configuration Module)
+ 43         7bf06000    25098   1 mac (MAC Services)
+ 44         7bf30000    25628   1 kcf (Kernel Crypto Framework)
+ 45         7bf54000     c818   1 aes (AES Kernel SW Provider)
+ 46         7bf60000     3b48   1 sha1 (SHA1 Message-Digest Algorithm)
+ 47         7bf64000     cd38   1 des (des encryption)
+ 48         7bf70000    41d68   1 ecc (EC Kernel SW Provider)
+ 49         7bfb0000     3bb8   1 rsa (RSA Kernel SW Provider)
+ 50         7bfb4000     3678   1 md5 (MD5 Message-Digest Algorithm)
+ 51         7bfb8000     c2b0   1 sha2 (SHA2 Message-Digest Algorithm)
+ 52         7bfc4000     6218   1 bignum (bignum utility module)
+ 53         7bfca000    11160   1 crypto (Cryptographic Library Interface)
+ 54         7be9ccf0     13e0   1 cryptoadm (Cryptographic Administrative In)
+ 55         7bfe2000     f510   1 dev (/dev filesystem)
+ 56         7bff2000     4ad8   1 dls (Data-Link Services)
+ 57         7bff8000     2e68   1 ctfs (contract filesystem)
+ 58         7bffc000     3308   1 mntfs (mount information file system)
+ 59         7ba00000    16458   1 tmpfs (filesystem for tmpfs)
+ 60         7beb46e0     1c80   1 objfs (kernel object filesystem)
+ 61         7bfdafd8     1010   1 sharefs (sharetab filesystem)
+ 62         7bff0e88     1058   1 strplumb (STREAMS Plumbing Module)
+ 63         7ba08000     6d38   1 dld (Data-Link Driver)
+ 64         7b600000   12cfc0   1 ip (IP STREAMS driver 1.47)
+ 65         7bfe0e50     2338   1 swrand (Kernel Random number Provider)
+ 66         7b71c000     3598   1 hook (Hooks Interface v1.0)
+ 67         7bf004b0     1990   1 neti (netinfo module)
+ 68         7be61db0      4b0   1 ip6 (IP6 STREAMS driver)
+ 69         7bff1cc0      5b8   1 tcp (TCP STREAMS driver)
+ 70         7bebfd90      4b8   1 tcp6 (TCP6 STREAMS driver)
+ 71         7bfc9b58      5b8   1 udp (UDP STREAMS driver)
+ 72         7b71baf8      4b8   1 udp6 (UDP6 STREAMS driver)
+ 73         7b71bd48      5b0   1 icmp (ICMP STREAMS driver)
+ 74         7bfc3a68      4b0   1 icmp6 (ICMP6 STREAMS driver)
+ 75         7bfc3cb0      508   1 arp (ARP STREAMS driver)
+ 76         7b732000     4878   1 timod (transport interface str mod)
+ 77         7bfdbf20      140   1 consconfig (console configuration)
+ 78         7b736000     4940   1 consconfig_dacf (Consconfig DACF)
+ 79         7b73a000     27e8   1 conskbd (conskbd multiplexer driver)
+ 80         7b73e000     44b0   1 kbtrans (kbtrans (key translation))
+ 81         7ba0e820     18a8   1 consms (Mouse Driver for Sun 'consms' 5)
+ 82         7b742000     44e8   1 wc (Workstation multiplexer Driver )
+ 83         7b746000     9d88   1 tem (ANSI Terminal Emulator)
+ 84         7b739558      b88   1 iwscn (Workstation Redirection driver)
+ 85         7b74c000    13ab8   1 ehci (USB EHCI Driver)
+ 86         7b760000    2f970   1 usba (USBA: USB Architecture 2.0 1.66)
+ 87         7bff67e0     1700   1 dcfs (compressed filesystem)
+ 88         7b796000     d598   1 uhci (USB UHCI Controller Driver)
+ 89         7b7a4000     f500   1 ohci (USB OpenHCI Driver)
+ 90         7bf2e368     1ed0   1 qcn (sun4v console driver)
+ 91                0        0   0 ib (?)
+ 92         7b7c2000     9f20   1 ibdm (InfiniBand Device Manager)
+ 93         7b7cc000    10420   1 ibtl (IB Transport Layer)
+ 94         7b7dc000    11a88   1 ibmf (IB Agent Interfaces 2.0)
+ 95         7b74aca0     16a8   1 SDC (system duty cycle scheduling cl)
+ 96         7b7ee000    2a4e8   1 ifp (ISP2100 FCAL HBA (TM supp))
+ 97         7b7a3408      c58   1 pcbe.SUNW,UltraSPARC-T1 (
+UltraSPARC T1 Performance Count)
+ 98                0        0   0 tavor (?)
+ 99         7ba10000     ab98   1 dca (PCI Crypto Accelerator)
+100                0        0   0 hermon (?)
+101                0        0   0 rdsv3 (?)
+102         7ba5e000    289c0   1 sockfs (filesystem for sockfs)
+103         7bf52af8     1540   1 ksocket (kernel socket module)
+104         7ba86000    245f0   1 ibcm (IB Communication Manager)
+105         7baac000    15ff0   1 sol_ofs (Solaris OFS Misc module)
+106         7ba42000     ab10   1 pcic (PCIC PCMCIA adapter driver)
+107         7bac2000    193f0   1 pcmcia (PCMCIA Nexus Support)
+108         7ba4c000     fcb0   1 cardbus (Cardbus Configurator support)
+109         7bfb7390      bb0   1 hpcsvc (hot-plug controller services)
+110         7bada000    633b8   1 qlc (SunFC Qlogic FCA v20110321-3.05)
+111         7b7b4000     8910   1 fctl (SunFC Transport v20090729-1.70)
+112         7ba1c000     fb58   1 hci1394 (1394 OpenHCI HBA driver)
+113         7bb34000    13250   1 s1394 (IEEE 1394 Services Library 1.0)
+114                0        0   0 iospc (?)
+115                0        0   0 fpc (?)
+116                0        0   0 n2piupc (?)
+117                0        0   0 n2cp (?)
+118         7beb0000     2660   1 kssl (Kernel SSL Interface)
+119         7b7fc000     3998   1 pcieb (PCIe bridge/switch driver)
+120         7bb48000    167e0   1 px (Sun4v Host to PCIe nexus driver)
+121         7ba2c000     41c8   1 n2rng (N2 RNG Driver)
+122         7bb5e000    1a1c8   1 ncp (NCP Crypto Driver)
+123         7bb76000     8fa0   1 elfexec (exec module for elf)
+124         7bb80000     e868   1 ldterm (terminal line discipline)
+125         7ba30000     25c8   1 ttcompat (alt ioctl calls)
+126         7bb46cb8     1508   1 ptsl (tty pseudo driver slave 'ptsl')
+127         7baaa240     1ea8   1 ptc (tty pseudo driver control 'ptc')
+128         7bb8e000     b058   1 se (Siemens SAB 82532 ESCC2)
+129         7bb9a000     54a0   1 su (su driver)
+130         7bba0000    14190   1 usbser_edge (USB Digi Edgeport driver)
+131         7bbaa000     4610   1 usbser (USB generic serial module)
+132         7bbb0000     3c38   1 usbsacm (USB Serial CDC ACM driver)
+133         7beb2348     26a8   1 usbsprl (USB Prolific PL2303 driver)
+134         7bbb4000     6b58   1 usbsksp (USB keyspan usb2serial driver)
+135         7b7a3f40       f8   1 usbs49_fw (Placeholder module for the firm)
+136         7bbbc000     29e0   1 usbftdi (FTDI FT232R USB UART driver)
+137         7bbc0000     8dd8   1 ttymux (serial mux driver)
+138         7bbca000     6ad8   1 ipsecesp (IPsec ESP STREAMS driver)
+139         7bbd2000    11b58   1 ipsecah (IPsec AH STREAMS driver)
+140         7bbe4000     8d70   1 pcser (PCMCIA Serial Card Driver V2.0)
+141         7b7db0e0     1628   1 sysmsg (System message redirection (fan)
+142         7b7ff750      930   1 cn (Console redirection driver)
+143         7ba1a528     1ba0   1 mm (memory driver)
+144         7bf01dc8      2b0   1 pipe (pipe(2) syscall)
+145         7bbee000     5088   1 doorfs (doors)
+146         7bbba778     1920   1 namefs (filesystem for namefs)
+147         7bbf4000     59e0   1 portfs (event ports)
+148         7b7ed9a8      518   1 intpexec (exec mod for interp)
+149         7ba34000     60a8   1 fcoe (FCoE Transport v20110331-1.04)
+150         7b200000    2dd00   1 iscsi (iSCSI Initiator v-1.55)
+151         7b22e000     d008   1 idm (iSCSI Data Mover)
+152         7b23a730     1c48   1 fm (fault management driver)
+153         7bbe3408      e18   1 srn (srn driver)
+154         7b78e718     1818   1 dcpc (DTrace CPC Module)
+155         7b7306c0     1850   1 cpc (cpc sampling driver)
+156         7ba3a000     4a80   1 fasttrap (Fasttrap Tracing)
+157         7bbfa000     2d58   1 fbt (Function Boundary Tracing)
+158         7bb5d968      950   1 lockstat (Lock Statistics)
+159         7b7b3358      c40   1 profile (Profile Interrupt Tracing)
+160         7b25e000     c5c0   1 sdt (Statically Defined Tracing)
+161         7be03938      7c0   1 systrace (System Call Tracing)
+162         7b262000     2b88   1 rds (RDS STREAMS driver)
+163         7b266000    100c8   1 sdpib (SDP IB STREAMS module)
+164         7b276000     7898   1 fcip (SunFC FCIP v1.61)
+165                0        0   0 ds_snmp (?)
+166                0        0   0 ds_pri (?)
+167         7b27e000    16b40   1 fcp (SunFC FCP v20091208-1.192)
+168         7b296000     5a40   1 devinfo (DEVINFO Driver)
+169         7bb7ee58     12d0   1 sysevent (sysevent driver)
+170         7b29c000     25b8   1 vnic (Virtual NIC)
+171         7b2a0000     63f0   1 tl (TPI Local Transport (tl))
+172         7bbb38c8      9c8   1 dlpistub (DLPI stub driver)
+173         7b2a6000     84a8   1 aggr (Link Aggregation MAC)
+174         7b7bbbd0      528   1 bl (blacklist driver)
+175         7b2b0000     53e8   1 bridge (bridging driver)
+176         7b25daf0      4d0   1 cpuid (cpuid driver)
+177         7b2b6000     46f8   1 fcsm (SunFC FCSM v20090729-1.28)
+178         7b2bc000     4120   1 llc1 (LLC Class 1 Driver)
+179         7b2c0000     6988   1 lofi (loopback file driver)
+180         7b2c8000     40f0   1 keysock (PF_KEY socket STREAMS driver)
+181         7b2cbb10      540   1 kmdb (kmdb driver)
+182         7b2cc000     26d0   1 openeepr (OPENPROM/NVRAM Driver)
+183         7b2d0000     41f0   1 ipnet (STREAMS ipnet driver)
+184         7bbbe698     1ab8   1 ippctl (IP Policy Configuration Driver)
+185         7ba2b8b8      980   1 log (streams log driver)
+186         7b2d4000     4df8   1 iptun (IP tunneling driver)
+187         7bb98c30     12a0   1 physmem (physmem driver)
+188         7bbfcb68     1568   1 poll (/dev/poll driver)
+189         7b2da000     5ee8   1 spdsock (PF_POLICY socket STREAMS driver)
+190         7b71fd90      520   1 rts (PF_ROUTE socket STREAMS driver)
+191         7b2e0000     22d0   1 simnet (Simulated Network Driver)
+192         7b2df9e0      660   1 random (random number device)
+193         7b29b8d8      5a8   1 sy (Indirect driver for tty 'sy')
+194         7b2e4000     7ce8   1 softmac (softmac module)
+195         7b245048     1110   1 fcode (FCode driver)
+196         7b2ec000     2748   1 fcodem (FCode framework 1.13)
+197         7b2f0000     40a0   1 sol_ucma (Solaris User RDMACM driver)
+198         7b2f4000    b8648   1 zfs (ZFS filesystem version 33)
+199         7b3a2000     3ad8   1 idmap (ID Mapping kernel module)
+200         7b3a6000    1f970   1 rpcmod (RPC syscall)
+201         7b2ce178     1df8   1 tlimod (KTLI misc module)
+202         7b2e2050     2250   1 trapstat (Trap Statistics 1.1)
+203         7b3ca000     2da8   1 bmc (BMC 1.13)
+204         7bb75668      ad0   1 mdesc (Machine Description Driver)
+205         7bfff258      d18   1 ntwdt (Application Watchdog Driver)
+206         7ae00000    3fc88   1 pmcs (pmcs HBA device driver)
+207         7b3d8000    38bb0   1 mpt (MPT HBA Driver)
+208         7ae3c000    21fe8   1 mpt_sas (MPTSAS HBA Driver 00.00.00.25)
+209         7ae5e000    19608   1 fp (SunFC Port v20091123-1.101)
+210         7ae78000    bd110   1 emlxs (SunFC emlxs FCA v20110324-2.60k)
+[0]>      :c
+kmdb: target stopped at:
+kmdb_enter:     ta        %icc, 0x7d
+[0]> ::modinfo
+ ID         LOADADDR     SIZE REV MODULE NAME
+  0          1000000   21940a   0 unix (?)
+  1          10e2678   27a298   0 genunix (?)
+  2          1306ae8       10   0 platmod (?)
+  3          1306b00     2e70   0 SUNW,UltraSPARC-T1 (?)
+  4          1309700    9d760   0 kmdbmod (?)
+  5          138a398     7c68   0 ctf (?)
+  6                0        0   0 cl_bootstrap (?)
+  7          13fa000     5030   1 specfs (filesystem for specfs)
+  8         7be00000     39f0   1 fifofs (filesystem for fifo)
+  9         7b246000    17ec8   1 dtrace (Dynamic Tracing)
+ 10         7be04000     4260   1 devfs (devices filesystem)
+ 11         7be0a000    1be58   1 procfs (filesystem for proc)
+ 12         7be08018     1f58   1 swapgeneric (root and swap configuration)
+ 13                0        0   0 lbl_edition (?)
+ 14         7be26000     3d38   1 TS (time sharing sched class)
+ 15         7be09dd8      8e0   1 TS_DPTBL (Time sharing dispatch table)
+ 16         7be2a000    38e18   1 ufs (filesystem for ufs)
+ 17         7be09e88      1f8   1 fssnap_if (File System Snapshot Interface)
+ 18         7be64828     14c8   1 rootnex (sun4 root nexus)
+ 19          13ffad8      1c0   1 options (options driver)
+ 20         7be66000     10a8   1 sad (STREAMS Administrative Driver ')
+ 21         7be615a8      a40   1 pseudo (nexus driver for 'pseudo' 1.31)
+ 22          13ffbd8      5e0   1 clone (Clone Pseudodriver 'clone')
+ 23         7be68000    10768   1 scsi_vhci (SCSI VHCI Driver)
+ 24         7be7a000    21e80   1 scsi (SCSI Bus Utility Routines)
+ 25         7be25398      cd8   1 scsi_vhci_f_asym_sun (f_asym_sun)
+ 26         7be98000     1c48   1 scsi_vhci_f_asym_lsi (f_asym_lsi)
+ 27         7be66e70      ea0   1 scsi_vhci_f_asym_emc (f_asym_emc)
+ 28         7be79e50      278   1 scsi_vhci_f_sym_emc (f_sym_emc)
+ 29         7be659f8      580   1 scsi_vhci_f_sym_hds (f_sym_hds)
+ 30         7be67c28      4b0   1 scsi_vhci_f_sym (f_sym)
+ 31         7be29548      b50   1 scsi_vhci_f_tpgs (f_tpgs)
+ 32         7be9a000     2038   1 ramdisk (ramdisk driver)
+ 33         7be9c000      f40   1 vnex (sun4v virtual-devices nexus dri)
+ 34         7be9e000     2360   1 cnex (sun4v channel-devices nexus)
+ 35         7bea2000     d598   1 ldc (sun4v LDC module)
+ 36                0        0   0 vpci (?)
+ 37         7beb6000     2178   1 platsvc (sun4v Platform Services)
+ 38         7beb8000   206a78   1 ds (Domain Services 1.9)
+ 39         7bebe888     17c8   1 drctl (DR Control pseudo driver)
+ 40         7bec0000    3db50   1 pcie (PCI Express Framework Module)
+ 41         7befe000     2510   1 busra (Bus Resource Allocator (BUSRA))
+ 42         7bf02000     3628   1 iovcfg (IOV Configuration Module)
+ 43         7bf06000    25098   1 mac (MAC Services)
+ 44         7bf30000    25628   1 kcf (Kernel Crypto Framework)
+ 45         7bf54000     c818   1 aes (AES Kernel SW Provider)
+ 46         7bf60000     3b48   1 sha1 (SHA1 Message-Digest Algorithm)
+ 47         7bf64000     cd38   1 des (des encryption)
+ 48         7bf70000    41d68   1 ecc (EC Kernel SW Provider)
+ 49         7bfb0000     3bb8   1 rsa (RSA Kernel SW Provider)
+ 50         7bfb4000     3678   1 md5 (MD5 Message-Digest Algorithm)
+ 51         7bfb8000     c2b0   1 sha2 (SHA2 Message-Digest Algorithm)
+ 52         7bfc4000     6218   1 bignum (bignum utility module)
+ 53         7bfca000    11160   1 crypto (Cryptographic Library Interface)
+ 54         7be9ccf0     13e0   1 cryptoadm (Cryptographic Administrative In)
+ 55         7bfe2000     f510   1 dev (/dev filesystem)
+ 56         7bff2000     4ad8   1 dls (Data-Link Services)
+ 57         7bff8000     2e68   1 ctfs (contract filesystem)
+ 58         7bffc000     3308   1 mntfs (mount information file system)
+ 59         7ba00000    16458   1 tmpfs (filesystem for tmpfs)
+ 60         7beb46e0     1c80   1 objfs (kernel object filesystem)
+ 61         7bfdafd8     1010   1 sharefs (sharetab filesystem)
+ 62         7bff0e88     1058   1 strplumb (STREAMS Plumbing Module)
+ 63         7ba08000     6d38   1 dld (Data-Link Driver)
+ 64         7b600000   12cfc0   1 ip (IP STREAMS driver 1.47)
+ 65         7bfe0e50     2338   1 swrand (Kernel Random number Provider)
+ 66         7b71c000     3598   1 hook (Hooks Interface v1.0)
+ 67         7bf004b0     1990   1 neti (netinfo module)
+ 68         7be61db0      4b0   1 ip6 (IP6 STREAMS driver)
+ 69         7bff1cc0      5b8   1 tcp (TCP STREAMS driver)
+ 70         7bebfd90      4b8   1 tcp6 (TCP6 STREAMS driver)
+ 71         7bfc9b58      5b8   1 udp (UDP STREAMS driver)
+ 72         7b71baf8      4b8   1 udp6 (UDP6 STREAMS driver)
+ 73         7b71bd48      5b0   1 icmp (ICMP STREAMS driver)
+ 74         7bfc3a68      4b0   1 icmp6 (ICMP6 STREAMS driver)
+ 75         7bfc3cb0      508   1 arp (ARP STREAMS driver)
+ 76         7b732000     4878   1 timod (transport interface str mod)
+ 77         7bfdbf20      140   1 consconfig (console configuration)
+ 78         7b736000     4940   1 consconfig_dacf (Consconfig DACF)
+ 79         7b73a000     27e8   1 conskbd (conskbd multiplexer driver)
+ 80         7b73e000     44b0   1 kbtrans (kbtrans (key translation))
+ 81         7ba0e820     18a8   1 consms (Mouse Driver for Sun 'consms' 5)
+ 82         7b742000     44e8   1 wc (Workstation multiplexer Driver )
+ 83         7b746000     9d88   1 tem (ANSI Terminal Emulator)
+ 84         7b739558      b88   1 iwscn (Workstation Redirection driver)
+ 85         7b74c000    13ab8   1 ehci (USB EHCI Driver)
+ 86         7b760000    2f970   1 usba (USBA: USB Architecture 2.0 1.66)
+ 87         7bff67e0     1700   1 dcfs (compressed filesystem)
+ 88         7b796000     d598   1 uhci (USB UHCI Controller Driver)
+ 89         7b7a4000     f500   1 ohci (USB OpenHCI Driver)
+ 90         7bf2e368     1ed0   1 qcn (sun4v console driver)
+ 91                0        0   0 ib (?)
+ 92         7b7c2000     9f20   1 ibdm (InfiniBand Device Manager)
+ 93         7b7cc000    10420   1 ibtl (IB Transport Layer)
+ 94         7b7dc000    11a88   1 ibmf (IB Agent Interfaces 2.0)
+ 95         7b74aca0     16a8   1 SDC (system duty cycle scheduling cl)
+ 96         7b7ee000    2a4e8   1 ifp (ISP2100 FCAL HBA (TM supp))
+ 97         7b7a3408      c58   1 pcbe.SUNW,UltraSPARC-T1 (
+UltraSPARC T1 Performance Count)
+ 98                0        0   0 tavor (?)
+ 99         7ba10000     ab98   1 dca (PCI Crypto Accelerator)
+100                0        0   0 hermon (?)
+101                0        0   0 rdsv3 (?)
+102         7ba5e000    289c0   1 sockfs (filesystem for sockfs)
+103         7bf52af8     1540   1 ksocket (kernel socket module)
+104         7ba86000    245f0   1 ibcm (IB Communication Manager)
+105         7baac000    15ff0   1 sol_ofs (Solaris OFS Misc module)
+106         7ba42000     ab10   1 pcic (PCIC PCMCIA adapter driver)
+107         7bac2000    193f0   1 pcmcia (PCMCIA Nexus Support)
+108         7ba4c000     fcb0   1 cardbus (Cardbus Configurator support)
+109         7bfb7390      bb0   1 hpcsvc (hot-plug controller services)
+110         7bada000    633b8   1 qlc (SunFC Qlogic FCA v20110321-3.05)
+111         7b7b4000     8910   1 fctl (SunFC Transport v20090729-1.70)
+112         7ba1c000     fb58   1 hci1394 (1394 OpenHCI HBA driver)
+113         7bb34000    13250   1 s1394 (IEEE 1394 Services Library 1.0)
+114                0        0   0 iospc (?)
+115                0        0   0 fpc (?)
+116                0        0   0 n2piupc (?)
+117                0        0   0 n2cp (?)
+118         7beb0000     2660   1 kssl (Kernel SSL Interface)
+119         7b7fc000     3998   1 pcieb (PCIe bridge/switch driver)
+120         7bb48000    167e0   1 px (Sun4v Host to PCIe nexus driver)
+121         7ba2c000     41c8   1 n2rng (N2 RNG Driver)
+122         7bb5e000    1a1c8   1 ncp (NCP Crypto Driver)
+123         7bb76000     8fa0   1 elfexec (exec module for elf)
+124         7bb80000     e868   1 ldterm (terminal line discipline)
+125         7ba30000     25c8   1 ttcompat (alt ioctl calls)
+126         7bb46cb8     1508   1 ptsl (tty pseudo driver slave 'ptsl')
+127         7baaa240     1ea8   1 ptc (tty pseudo driver control 'ptc')
+128         7bb8e000     b058   1 se (Siemens SAB 82532 ESCC2)
+129         7bb9a000     54a0   1 su (su driver)
+130         7bba0000    14190   1 usbser_edge (USB Digi Edgeport driver)
+131         7bbaa000     4610   1 usbser (USB generic serial module)
+132         7bbb0000     3c38   1 usbsacm (USB Serial CDC ACM driver)
+133         7beb2348     26a8   1 usbsprl (USB Prolific PL2303 driver)
+134         7bbb4000     6b58   1 usbsksp (USB keyspan usb2serial driver)
+135         7b7a3f40       f8   1 usbs49_fw (Placeholder module for the firm)
+136         7bbbc000     29e0   1 usbftdi (FTDI FT232R USB UART driver)
+137         7bbc0000     8dd8   1 ttymux (serial mux driver)
+138         7bbca000     6ad8   1 ipsecesp (IPsec ESP STREAMS driver)
+139         7bbd2000    11b58   1 ipsecah (IPsec AH STREAMS driver)
+140         7bbe4000     8d70   1 pcser (PCMCIA Serial Card Driver V2.0)
+141         7b7db0e0     1628   1 sysmsg (System message redirection (fan)
+142         7b7ff750      930   1 cn (Console redirection driver)
+143         7ba1a528     1ba0   1 mm (memory driver)
+144         7bf01dc8      2b0   1 pipe (pipe(2) syscall)
+145         7bbee000     5088   1 doorfs (doors)
+146         7bbba778     1920   1 namefs (filesystem for namefs)
+147         7bbf4000     59e0   1 portfs (event ports)
+148         7b7ed9a8      518   1 intpexec (exec mod for interp)
+149         7ba34000     60a8   1 fcoe (FCoE Transport v20110331-1.04)
+150         7b200000    2dd00   1 iscsi (iSCSI Initiator v-1.55)
+151         7b22e000     d008   1 idm (iSCSI Data Mover)
+152         7b23a730     1c48   1 fm (fault management driver)
+153         7bbe3408      e18   1 srn (srn driver)
+154         7b78e718     1818   1 dcpc (DTrace CPC Module)
+155         7b7306c0     1850   1 cpc (cpc sampling driver)
+156         7ba3a000     4a80   1 fasttrap (Fasttrap Tracing)
+157         7bbfa000     2d58   1 fbt (Function Boundary Tracing)
+158         7bb5d968      950   1 lockstat (Lock Statistics)
+159         7b7b3358      c40   1 profile (Profile Interrupt Tracing)
+160         7b25e000     c5c0   1 sdt (Statically Defined Tracing)
+161         7be03938      7c0   1 systrace (System Call Tracing)
+162         7b262000     2b88   1 rds (RDS STREAMS driver)
+163         7b266000    100c8   1 sdpib (SDP IB STREAMS module)
+164         7b276000     7898   1 fcip (SunFC FCIP v1.61)
+165                0        0   0 ds_snmp (?)
+166                0        0   0 ds_pri (?)
+167         7b27e000    16b40   1 fcp (SunFC FCP v20091208-1.192)
+168         7b296000     5a40   1 devinfo (DEVINFO Driver)
+169         7bb7ee58     12d0   1 sysevent (sysevent driver)
+170         7b29c000     25b8   1 vnic (Virtual NIC)
+171         7b2a0000     63f0   1 tl (TPI Local Transport (tl))
+172         7bbb38c8      9c8   1 dlpistub (DLPI stub driver)
+173         7b2a6000     84a8   1 aggr (Link Aggregation MAC)
+174         7b7bbbd0      528   1 bl (blacklist driver)
+175         7b2b0000     53e8   1 bridge (bridging driver)
+176         7b25daf0      4d0   1 cpuid (cpuid driver)
+177         7b2b6000     46f8   1 fcsm (SunFC FCSM v20090729-1.28)
+178         7b2bc000     4120   1 llc1 (LLC Class 1 Driver)
+179         7b2c0000     6988   1 lofi (loopback file driver)
+180         7b2c8000     40f0   1 keysock (PF_KEY socket STREAMS driver)
+181         7b2cbb10      540   1 kmdb (kmdb driver)
+182         7b2cc000     26d0   1 openeepr (OPENPROM/NVRAM Driver)
+183         7b2d0000     41f0   1 ipnet (STREAMS ipnet driver)
+184         7bbbe698     1ab8   1 ippctl (IP Policy Configuration Driver)
+185         7ba2b8b8      980   1 log (streams log driver)
+186         7b2d4000     4df8   1 iptun (IP tunneling driver)
+187         7bb98c30     12a0   1 physmem (physmem driver)
+188         7bbfcb68     1568   1 poll (/dev/poll driver)
+189         7b2da000     5ee8   1 spdsock (PF_POLICY socket STREAMS driver)
+190         7b71fd90      520   1 rts (PF_ROUTE socket STREAMS driver)
+191         7b2e0000     22d0   1 simnet (Simulated Network Driver)
+192         7b2df9e0      660   1 random (random number device)
+193         7b29b8d8      5a8   1 sy (Indirect driver for tty 'sy')
+194         7b2e4000     7ce8   1 softmac (softmac module)
+195         7b245048     1110   1 fcode (FCode driver)
+196         7b2ec000     2748   1 fcodem (FCode framework 1.13)
+197         7b2f0000     40a0   1 sol_ucma (Solaris User RDMACM driver)
+198         7b2f4000    b8648   1 zfs (ZFS filesystem version 33)
+199         7b3a2000     3ad8   1 idmap (ID Mapping kernel module)
+200         7b3a6000    1f970   1 rpcmod (RPC syscall)
+201         7b2ce178     1df8   1 tlimod (KTLI misc module)
+202         7b2e2050     2250   1 trapstat (Trap Statistics 1.1)
+203         7b3ca000     2da8   1 bmc (BMC 1.13)
+204         7bb75668      ad0   1 mdesc (Machine Description Driver)
+205         7bfff258      d18   1 ntwdt (Application Watchdog Driver)
+206         7ae00000    3fc88   1 pmcs (pmcs HBA device driver)
+207         7b3d8000    38bb0   1 mpt (MPT HBA Driver)
+208         7ae3c000    21fe8   1 mpt_sas (MPTSAS HBA Driver 00.00.00.25)
+209         7ae5e000    19608   1 fp (SunFC Port v20091123-1.101)
+210         7ae78000    bd110   1 emlxs (SunFC emlxs FCA v20110324-2.60k)
+211         7b27d510      e60   1 cubic (cubic congestion control module)
+212         7ae5dc80      698   1 highspeed (highspeed congestion control mo)
+213         7b3a5a68      728   1 vegas (vegas congestion control module)
+[0]> :c
+Preparing image for use
+Requesting System Maintenance Mode
+Console login service(s) cannot run
+
+Enter user name for system maintenance (control-d to bypass):
