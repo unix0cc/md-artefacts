@@ -1,0 +1,264 @@
+dpim@vmbox:~$ /home/dpim/build/qemu-sparc64-tte-pgsize-fix/build/qemu-system-sparc64 -M niagara -L /git/md/bin/_test/pagesize_256m/8192 -L /git/md/fw_blobs -nographic -m 8192 -drive if=pflash,readonly=on,file=/zroot/iso/sol-11_1-ai-sparc.iso
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 8192 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdvs
+Boot device: /virtual-devices/disk@0  File and args: -kdvs
+hsfs-file-system
+Loading: /platform/sun4v/boot_archive
+ramdisk-root ufs-file-system
+Loading: /platform/sun4v/kernel/sparcv9/unix
+module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10cf407] data at 0x10000000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10cf408, 0x132f8cf] data at 0x107beac0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x132f8d0, 0x132f8d7] data at 0x1081bd20
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x132f8e0, 0x13324c7] data at 0x1081c380
+Loading kmdb...
+module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x1332500, 0x13b72af] data at 0x10835af0
+module /kernel/misc/sparcv9/ctf: text at [0x13b72b0, 0x13beeb7] data at 0x108535c0
+|
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+Loaded modules: [ unix krtld genunix ]
+[0]> :c
+WARNING: max-cpus property missing from MD platform node, using default NCPU value
+SunOS Release 5.11 Version 11.1 64-bit
+Copyright (c) 1983, 2012, Oracle and/or its affiliates. All rights reserved.
+os-io Ethernet address = 0:80:3:de:ad:3
+Using default device instance data
+mem = 8388608K (0x200000000)
+avail mem = 7127957504
+root nexus = Sun Fire T2000
+pseudo0 at root
+pseudo0 is /pseudo
+scsi_vhci0 at root
+scsi_vhci0 is /scsi_vhci
+NOTICE: Disabling watchdog as watchdog services are not available
+
+ramdisk0 at root
+ramdisk0 is /ramdisk-root
+root on /ramdisk-root:a fstype ufs
+pseudo-device: dld0
+dld0 is /pseudo/dld@0
+cpu0: UltraSPARC-T1 (chipid 0, clock 5 MHz)
+Booting to milestone "milestone/single-user:default".
+Remounting root read/write
+Probing for device nodes ...
+fcoe0 at root
+fcoe0 is /fcoe
+iscsi0 at root
+iscsi0 is /iscsi
+pseudo-device: pseudo1
+pseudo1 is /pseudo/zconsnex@1
+pseudo-device: bmc0
+bmc0 is /pseudo/bmc@0
+pseudo-device: dcpc0
+dcpc0 is /pseudo/dcpc@0
+pseudo-device: drctl0
+drctl0 is /pseudo/drctl@0
+pseudo-device: dtrace0
+dtrace0 is /pseudo/dtrace@0
+pseudo-device: fasttrap0
+fasttrap0 is /pseudo/fasttrap@0
+pseudo-device: fbt0
+fbt0 is /pseudo/fbt@0
+pseudo-device: fcode0
+fcode0 is /pseudo/fcode@0
+pseudo-device: fcp0
+fcp0 is /pseudo/fcp@0
+pseudo-device: fcsm0
+fcsm0 is /pseudo/fcsm@0
+pseudo-device: devinfo0
+devinfo0 is /pseudo/devinfo@0
+pseudo-device: llc10
+llc10 is /pseudo/llc1@0
+pseudo-device: lockstat0
+lockstat0 is /pseudo/lockstat@0
+pseudo-device: lofi0
+lofi0 is /pseudo/lofi@0
+pseudo-device: mdesc0
+mdesc0 is /pseudo/mdesc@0
+WARNING: kernel debugger was booted; application watchdog is not available.
+pseudo-device: profile0
+profile0 is /pseudo/profile@0
+pseudo-device: ramdisk1024
+ramdisk1024 is /pseudo/ramdisk@1024
+pseudo-device: sdt0
+sdt0 is /pseudo/sdt@0
+pseudo-device: srn0
+srn0 is /pseudo/srn@0
+pseudo-device: systrace0
+systrace0 is /pseudo/systrace@0
+pseudo-device: trapstat0
+trapstat0 is /pseudo/trapstat@0
+pseudo-device: zfs0
+zfs0 is /pseudo/zfs@0
+Preparing image for use
+Requesting System Maintenance Mode
+Console login service(s) cannot run
+
+Enter user name for system maintenance (control-d to bypass): Loaded modules: [ scsi_vhci mdesc px crypto mac cpc ldc neti ufs mpt zfs s1394
+pmcs hook idm ip usba specfs random arp kssl mpt_sas emlxs sockfs ]
+kmdb: target stopped at:
+kmdb_enter:     ta        %icc, 0x7d
+[0]>
+[0]>  mmu_exported_pagesize_mask/X
+mmu_exported_pagesize_mask:
+mmu_exported_pagesize_mask:     2b
+[0]> kmem64_szc/X
+kmem64_szc:
+kmem64_szc:     5
+[0]>  kmem64_base/J
+kmem64_base:
+kmem64_base:    30000000000
+[0]>  kmem64_aligned_end/J
+kmem64_aligned_end:
+kmem64_aligned_end:             30010000000
+[0]> 30000000000/J
+0x30000000000:  1034a340
+[0]>
+[0]> :c
+
+
+Enter user name for system maintenance (control-d to bypass): QEMU 11.0.50 monitor - type 'help' for more information
+(qemu) info tlb
+MMU contexts: Primary: 0, Secondary: 0
+DMMU Tag Access: 2a10056a000, TSB Tag Target: 0
+DMMU dump
+[00] VA: 2a100088000, PA: 23e6e6000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[01] VA: 2a10009c000, PA: 23e6d8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[02] VA: 4000c61a000, PA: 225ce6000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[03] VA: 2075ad02000, PA: 24075e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[04] VA: 2075ad06000, PA: 240762000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[05] VA: 4001a0ce000, PA: 219486000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[06] VA: 40019fa2000, PA: 218346000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[07] VA: 4000c0b2000, PA: 25c014000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[08] VA: 1000000, PA: 27f800000,   4M, priv, RO, locked, ie no, ctx 0 local
+[09] VA: 4000c61e000, PA: 227218000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[10] VA: 10000000, PA: 260000000, 256M, priv, RW, locked, ie no, ctx 0 local
+[11] VA: ec000000, PA: 27f360000,   8k, priv, RO, locked, ie no, ctx 0 local
+[12] VA: ec002000, PA: 27f362000,   8k, priv, RO, locked, ie no, ctx 0 local
+[13] VA: ec004000, PA: 27f364000,   8k, priv, RO, locked, ie no, ctx 0 local
+[14] VA: 2a10019c000, PA: 2194a0000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[15] VA: 40311714000, PA: 200000000, 256M, priv, RW, unlocked, ie no, ctx 0 local
+[16] VA: 2a100192000, PA: 2182a0000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[17] VA: 40019efe000, PA: 219986000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[18] VA: 4000c0bc000, PA: 25c01e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[19] VA: 4001a018000, PA: 21834c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[20] VA: 4001a00a000, PA: 21814e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[21] VA: 2a100754000, PA: 17f2ba000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[22] VA: 70222000, PA: 260bcc000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[23] VA: 4001a00c000, PA: 218150000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[24] VA: 2a100740000, PA: 23eb16000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[25] VA: 2a100580000, PA: 17fd28000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[26] VA: 7021e000, PA: 270008000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[27] VA: 30000778000, PA: 230000000, 256M, priv, RW, unlocked, ie no, ctx 0 local
+[28] VA: 2075ad00000, PA: 24075c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[29] VA: 4000c620000, PA: 227226000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[30] VA: 20740008000, PA: 24074a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[31] VA: 4001b92e000, PA: 217ce8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[32] VA: 20740020000, PA: 240746000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[33] VA: 4001a008000, PA: 218146000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[34] VA: 4000c72e000, PA: 2271d8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[35] VA: 4000c588000, PA: 225ce2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[36] VA: 2a10056a000, PA: 17fe2a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[37] VA: 20400024000, PA: 240710000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[38] VA: 20400026000, PA: 240712000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[39] VA: 2a100232000, PA: 217764000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[40] VA: 2a1006b4000, PA: 17fba4000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[41] VA: 20740050000, PA: 240744000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[42] VA: 20740080000, PA: 240742000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[43] VA: 4000c5fe000, PA: 225c88000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[44] VA: 20750000000, PA: 240758000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[45] VA: 2075ad08000, PA: 240764000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[46] VA: 2075ad0c000, PA: 240768000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[47] VA: 4000c4d2000, PA: 21823c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[48] VA: 4000c4dc000, PA: 218246000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[49] VA: 4000c4d6000, PA: 218240000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[50] VA: 4000c4d8000, PA: 218242000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[51] VA: 4000c4d4000, PA: 21823e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[52] VA: 4000c084000, PA: 22733e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[53] VA: 4000c614000, PA: 225cda000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[54] VA: 4001a036000, PA: 2195c0000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[55] VA: 70132000, PA: 25c204000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[56] VA: 4000c08c000, PA: 227356000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[57] VA: 4000dc7a000, PA: 225c22000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[58] VA: 4000c61c000, PA: 2268ea000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[59] VA: 4000c0ba000, PA: 25c01c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[60] VA: 4000dc78000, PA: 225c20000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[61] VA: 2a10001c000, PA: 23e738000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[62] VA: 4001a012000, PA: 218232000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[63] VA: 7008c000, PA: 25c15e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+IMMU dump
+[00] VA: f4d84000, PA: 8bfb0000,  64k, user, unlocked, ctx 56 local
+[01] VA: f4d62000, PA: 8bf60000,  64k, user, unlocked, ctx 56 local
+[02] VA: 7ae04000, PA: 23ef2a000,   8k, priv, unlocked, ctx 0 local
+[03] VA: 7ae02000, PA: 23eea8000,   8k, priv, unlocked, ctx 0 local
+[04] VA: 7ae06000, PA: 25c32c000,   8k, priv, unlocked, ctx 0 local
+[05] VA: 7be2e000, PA: 21997c000,   8k, priv, unlocked, ctx 0 local
+[06] VA: 7be30000, PA: 21997e000,   8k, priv, unlocked, ctx 0 local
+[07] VA: 7be32000, PA: 219980000,   8k, priv, unlocked, ctx 0 local
+[08] VA: 1000000, PA: 27f800000,   4M, priv, locked, ctx 0 local
+[09] VA: f0000000, PA: 80000000,   4M, priv, locked, ctx 0 local
+[10] VA: 7b7cc000, PA: 23f292000,   8k, priv, unlocked, ctx 0 local
+[11] VA: ec000000, PA: 27f360000,   8k, priv, locked, ctx 0 local
+[12] VA: ec002000, PA: 27f362000,   8k, priv, locked, ctx 0 local
+[13] VA: ec004000, PA: 27f364000,   8k, priv, locked, ctx 0 local
+[14] VA: 7bfe2000, PA: 17ffa6000,   8k, priv, unlocked, ctx 0 local
+[15] VA: 7be12000, PA: 219960000,   8k, priv, unlocked, ctx 0 local
+[16] VA: 7be0e000, PA: 21995c000,   8k, priv, unlocked, ctx 0 local
+[17] VA: 7be34000, PA: 219982000,   8k, priv, unlocked, ctx 0 local
+[18] VA: 7b78c000, PA: 17fc9c000,   8k, priv, unlocked, ctx 0 local
+[19] VA: 7ae92000, PA: 23ef6a000,   8k, priv, unlocked, ctx 0 local
+[20] VA: 7bfec000, PA: 23e634000,   8k, priv, unlocked, ctx 0 local
+[21] VA: 7bf4e000, PA: 218300000,   8k, priv, unlocked, ctx 0 local
+[22] VA: 7bf50000, PA: 218302000,   8k, priv, unlocked, ctx 0 local
+[23] VA: f0baa000, PA: 8bc00000,  64k, user, unlocked, ctx 37 local
+[24] VA: f0bcc000, PA: 837c8000,   8k, user, unlocked, ctx 37 local
+[25] VA: f0ac2000, PA: 8bf60000,  64k, user, unlocked, ctx 37 local
+[26] VA: edd58000, PA: 8bef0000,  64k, user, unlocked, ctx 154 local
+[27] VA: edd38000, PA: 8bf00000,  64k, user, unlocked, ctx 154 local
+[28] VA: eddba000, PA: 8bf40000,  64k, user, unlocked, ctx 154 local
+[29] VA: edcfc000, PA: 8bf20000,  64k, user, unlocked, ctx 154 local
+[30] VA: f7f78000, PA: 8bfb0000,  64k, user, unlocked, ctx 118 local
+[31] VA: edd6a000, PA: 8bf60000,  64k, user, unlocked, ctx 154 local
+[32] VA: 1c000, PA: 8b570000,  64k, user, unlocked, ctx 118 local
+[33] VA: 3c000, PA: 8d10c000,   8k, user, unlocked, ctx 118 local
+[34] VA: edd84000, PA: 8bfb0000,  64k, user, unlocked, ctx 154 local
+[35] VA: 7b60e000, PA: 2268ec000,   8k, priv, unlocked, ctx 0 local
+[36] VA: f7f20000, PA: 8bf00000,  64k, user, unlocked, ctx 118 local
+[37] VA: 7be16000, PA: 219964000,   8k, priv, unlocked, ctx 0 local
+[38] VA: 7b23e000, PA: 17fc0c000,   8k, priv, unlocked, ctx 0 local
+[39] VA: 7be0c000, PA: 21995a000,   8k, priv, unlocked, ctx 0 local
+[40] VA: 7bfe0000, PA: 17fee4000,   8k, priv, unlocked, ctx 0 local
+[41] VA: 7bfde000, PA: 17ffa2000,   8k, priv, unlocked, ctx 0 local
+[42] VA: edcec000, PA: 8bfa0000,  64k, user, unlocked, ctx 154 local
+[43] VA: 7b246000, PA: 17fb54000,   8k, priv, unlocked, ctx 0 local
+[44] VA: 7b244000, PA: 17fb52000,   8k, priv, unlocked, ctx 0 local
+[45] VA: edd10000, PA: 8bf10000,  64k, user, unlocked, ctx 154 local
+[46] VA: ed854000, PA: 8d938000,   8k, user, unlocked, ctx 154 local
+[47] VA: edd4a000, PA: 8bec0000,  64k, user, unlocked, ctx 154 local
+[48] VA: 7b240000, PA: 17fb4e000,   8k, priv, unlocked, ctx 0 local
+[49] VA: 7bb1e000, PA: 17fe9a000,   8k, priv, unlocked, ctx 0 local
+[50] VA: edc24000, PA: 87228000,   8k, user, unlocked, ctx 154 local
+[51] VA: ede4c000, PA: 8bc00000,  64k, user, unlocked, ctx 154 local
+[52] VA: ede6c000, PA: 8dfc0000,   8k, user, unlocked, ctx 154 local
+[53] VA: edd22000, PA: 8bf30000,  64k, user, unlocked, ctx 154 local
+[54] VA: 7bb3e000, PA: 23fca2000,   8k, priv, unlocked, ctx 0 local
+[55] VA: 1e000, PA: 8aa10000,  64k, user, unlocked, ctx 154 local
+[56] VA: 48000, PA: 8db24000,   8k, user, unlocked, ctx 154 local
+[57] VA: f4e4a000, PA: 8bc00000,  64k, user, unlocked, ctx 56 local
+[58] VA: 7b242000, PA: 17fb10000,   8k, priv, unlocked, ctx 0 local
+[59] VA: 7bad2000, PA: 219878000,   8k, priv, unlocked, ctx 0 local
+[60] VA: 7ba7c000, PA: 219884000,   8k, priv, unlocked, ctx 0 local
+[61] VA: 7ba16000, PA: 17ffcc000,   8k, priv, unlocked, ctx 0 local
+[62] VA: ede2e000, PA: 8d62a000,   8k, user, unlocked, ctx 154 local
+[63] VA: f4e6c000, PA: 83a3e000,   8k, user, unlocked, ctx 56 local
+(qemu)
