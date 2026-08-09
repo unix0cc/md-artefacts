@@ -1,0 +1,89 @@
+dpim@vmbox:~/patches/qemu-sparc-64/test$ ~/build/qemu-hv-console/qemu-system-sparc64 -M niagara -m 4096 \
+  -L ~/patches/qemu-sparc-64/test/exp21-n2-openboot \
+  -L ~/hv-build/fw \
+  -L /git/references/opensparc/opensparc-t2/obp/obp/arch/sun4v/niagara/t1_fpga \
+  -L /git/md/fw_blobs \
+  -drive if=pflash,file=/git/references/opensparc/opensparc-t2/S10image/disk1.img \
+  -display none -serial mon:stdio -serial file:/tmp/exp21-hv.log
+WARNING: Image format was not specified for '/git/references/opensparc/opensparc-t2/S10image/disk1.img' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.
+
+WARNING: Unable to connect to Domain Service providers
+
+WARNING: Unable to get LDOM Variable Updates
+
+WARNING: Unable to update LDOM Variable
+virtual-console not found.
+virtual-console not found.
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2007 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.x.build_122***PROTOTYPE BUILD***, 4096 MB memory available, Serial #1122867.
+[mo23723 obp-opensparc #2]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok dev /packages/SUNW,builtin-drivers
+ok words
+SUNW,niusl    SUNW,niumx    SUNW,n2piu-pr pciex
+SUNW,sun4v-tod              SUNW,sun4v-disk
+SUNW,sun4v-network          SUNW,sun4v-channel-devices
+SUNW,sun4v-console          flashprom     nvram         disk
+onboard-devices             get-fcode     interrupt-property
+ok cd pciex
+Device not found
+ok cd /packages/SUNW,builtin-driver
+Device not found
+ok cd /packages/SUNW,builtin-drivers
+ok ls
+ok words
+SUNW,niusl    SUNW,niumx    SUNW,n2piu-pr pciex
+SUNW,sun4v-tod              SUNW,sun4v-disk
+SUNW,sun4v-network          SUNW,sun4v-channel-devices
+SUNW,sun4v-console          flashprom     nvram         disk
+onboard-devices             get-fcode     interrupt-property
+ok cd pciex
+Device not found
+ok boot disk
+Boot device: /virtual-devices/disk@0  File and args:
+SunOS Release 5.10 Version Generic_120011-14 64-bit
+Copyright 1983-2007 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+Hostname: unknown
+
+unknown console login: Aug  8 05:50:51 svc.startd[7]: svc:/application/stosreg:default: Method or service exit timed out.  Killing contract 28.
+Aug  8 05:51:06 svc.startd[7]: svc:/application/stosreg:default: Method "/lib/svc/method/svc-stosreg" failed due to signal KILL.
+
+unknown console login: root
+Last login: Mon Sep 17 15:48:04 on console
+Sun Microsystems Inc.   SunOS 5.10      Generic January 2005
+bash
+\320\270\321\204bash: not found
+# bash
+bash-3.00# ps
+   PID TTY         TIME CMD
+   171 console     0:02 bash
+   129 console     0:12 sh
+   172 console     0:02 ps
+bash-3.00# cd /devices
+bash-3.00# ls
+iscsi                pseudo               scsi_vhci:devctl
+iscsi:devctl         pseudo:devctl        virtual-devices@100
+options              scsi_vhci
+bash-3.00# c
+bash-3.00# cc
+bash: cc: command not found
+
+bash-3.00#
+bash-3.00#
+bash-3.00#
+bash-3.00# pwd
+/devices
+bash-3.00# ls
+iscsi                pseudo               scsi_vhci:devctl
+iscsi:devctl         pseudo:devctl        virtual-devices@100
+options              scsi_vhci
+bash-3.00#
