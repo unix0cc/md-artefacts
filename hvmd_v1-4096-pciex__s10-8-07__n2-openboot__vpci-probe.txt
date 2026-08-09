@@ -1,0 +1,28 @@
+WARNING: Image format was not specified for '/git/references/opensparc/opensparc-t2/S10image/disk1.img' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.
+
+WARNING: Unable to connect to Domain Service providers
+
+WARNING: Unable to get LDOM Variable Updates
+
+WARNING: Unable to update LDOM Variable
+
+ERROR: /pci@780: Invalid hypervisor argument(s). function: b4
+
+ERROR: /pci@780: Invalid hypervisor argument(s). function: b4
+
+ERROR: /pci@780: Invalid hypervisor argument(s). function: b5
+virtual-console not found.
+virtual-console not found.
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2007 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.x.build_122***PROTOTYPE BUILD***, 4096 MB memory available, Serial #1122867.
+[mo23723 obp-opensparc #2]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok 
