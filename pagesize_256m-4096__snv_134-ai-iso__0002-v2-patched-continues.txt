@@ -1,0 +1,252 @@
+Script started on 2026-09-15 16:08:41+02:00 [COMMAND="/home/dpim/build/qemu-0002-on-5f664cd37a/qemu-system-sparc64 -M niagara   -L /git/md/bin/pagesize_256m/4096 -L /git/md/fw_blobs   -nographic -serial mon:stdio -m 4096   -monitor unix:/tmp/0002-ab-patched.mon,server,nowait   -drive if=pflash,readonly=on,file=/zroot/iso/osol-dev-134-ai-sparc.iso" TERM="xterm-256color" TTY="/dev/pts/11" COLUMNS="130" LINES="42"]
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 4096 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system 
+Loading: /platform/sun4v/boot_archive
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-ramdisk-root ufs-file-system 
+Loading: /platform/sun4v/kernel/sparcv9/unix
+||/-\|/-\|/-\|/module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10d9cef] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10d9cf0, 0x12d4d17] data at 0x18d93c0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x12d4d18, 0x12d4d1f] data at 0x192f670
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x12d4d20, 0x12d8e77] data at 0x192fd40
+Loading kmdb...
+-\|/-\|/-\|module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x12d8e80, 0x13553bf] data at 0x19487c0
+module /kernel/misc/sparcv9/ctf: text at [0x13553c0, 0x135cda7] data at 0x1965f30
+/-\|/-\|/-\|/-
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+(B)0Loaded modules: [ unix krtld genunix ]
+[0]> :c
+[m\SunOS Release 5.11 Version snv_134 64-bit
+Copyright 1983-2010 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+|QEMU 11.1.50 monitor - type 'help' for more information
+(qemu) os-io /-\|/-\|/-\|/-\|/-\|/-Ethernet address = 0:80:3:de:ad:3
+\Using default device instance data
+:[K[D:o[K[D[D:[K[D:i[K[D[D:in[K[D[D[D:inf[K[D[D[D[D:info[K[D[D[D[D[D:info [K[D[D[D[D[D[D:info t[K[D[D[D[D[D[D[D:info tl[K[D[D[D[D[D[D[D[D:info tlv[K[D[D[D[D[D[D[D[D[D:info tlvb[K[D[D[D[D[D[D[D[D[D[D:info tlv[K|/[D[D[D[D[D[D[D[D[D:info tl[K-\|/-\[D[D[D[D[D[D[D[D:info tlb[K|/-\|/-\
+unknown command: ':info'
+(qemu) |/-\|/-\|/-\|/-\|/-\|/-\
+(qemu) |/-\|/-\|
+(qemu) /-\|/-\|/-\
+(qemu) |/-\|/-
+(qemu) \|/-\|/-\|
+(qemu) 
+(qemu) 
+(qemu) i[K[Din[K[D[Dinf[K[D[D[Dinfo[K[D[D[D[Dinfo [K[D[D[D[D[Dinfo t[K[D[D[D[D[D[Dinfo tl[K[D[D[D[D[D[D[Dinfo tlo[K[D[D[D[D[D[D[D[Dinfo tl[K[D[D[D[D[D[D[Dinfo tlb[Kmem = 4194304K (0x100000000)
+avail mem = 3758956544
+
+MMU contexts: Primary: 0, Secondary: 0
+DMMU Tag Access: 30002f5a000, TSB Tag Target: 0
+DMMU dump
+[00] VA: 3000012a000, PA: 16a79c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[01] VA: 3000013e000, PA: 16a69e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[02] VA: 3000603e000, PA: 16498e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[03] VA: 30006048000, PA: 16448a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[04] VA: 3000002a000, PA: 168432000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[05] VA: 30002aae000, PA: 167f52000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[06] VA: 30006338000, PA: 1646ba000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[07] VA: 30002816000, PA: 1680c2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[08] VA: 1000000, PA: 17f800000,   4M, priv, RO, locked, ie no, ctx 0 local
+[09] VA: 3000604c000, PA: 16448e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[10] VA: 1800000, PA: 17f400000,   4M, priv, RW, locked, ie no, ctx 0 local
+[11] VA: 30000004000, PA: 173094000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[12] VA: 30000002000, PA: 17309a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[13] VA: 3000003c000, PA: 167f86000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[14] VA: 300064d0000, PA: 1644b6000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[15] VA: 30006142000, PA: 1644c4000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[16] VA: 30002a60000, PA: 167f7c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[17] VA: 30002f58000, PA: 164492000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[18] VA: 700049c8000, PA: 150000000, 256M, priv, RW, unlocked, ie no, ctx 0 local
+[19] VA: 30002f52000, PA: 13a8cc000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[20] VA: 30002f54000, PA: 13a8ce000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[21] VA: 30002f56000, PA: 164490000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[22] VA: 30000026000, PA: 168568000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[23] VA: 30000036000, PA: 16809c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[24] VA: 30000180000, PA: 16a6a4000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[25] VA: 30002f44000, PA: 164996000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[26] VA: 30006046000, PA: 1644ba000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[27] VA: 30006044000, PA: 164952000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[28] VA: 300064cc000, PA: 1644b8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[29] VA: 30002518000, PA: 168436000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[30] VA: 30000322000, PA: 168588000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[31] VA: 30002514000, PA: 168426000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[32] VA: 3000030e000, PA: 16859c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[33] VA: 30002512000, PA: 168424000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[34] VA: 30000336000, PA: 168574000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[35] VA: 30002510000, PA: 168422000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[36] VA: f0214000, PA: 80214000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[37] VA: fff78000, PA: 801f8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[38] VA: f0080000, PA: 80080000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[39] VA: f0254000, PA: 80254000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[40] VA: f0082000, PA: 80082000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[41] VA: f021e000, PA: 8021e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[42] VA: f020a000, PA: 8020a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[43] VA: f0240000, PA: 80240000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[44] VA: f0230000, PA: 80230000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[45] VA: f0208000, PA: 80208000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[46] VA: f0212000, PA: 80212000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[47] VA: f0210000, PA: 80210000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[48] VA: f022c000, PA: 8022c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[49] VA: f020e000, PA: 8020e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[50] VA: f0270000, PA: 80270000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[51] VA: f024e000, PA: 8024e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[52] VA: f020c000, PA: 8020c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[53] VA: f0246000, PA: 80246000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[54] VA: f023e000, PA: 8023e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[55] VA: f0236000, PA: 80236000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[56] VA: f0232000, PA: 80232000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[57] VA: fff72000, PA: 801f2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[58] VA: fff6a000, PA: 17fff2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[59] VA: f022a000, PA: 8022a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[60] VA: f0228000, PA: 80228000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[61] VA: fff56000, PA: 17ffe2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[62] VA: f026e000, PA: 8026e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[63] VA: f022e000, PA: 8022e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+IMMU dump
+[00] VA: 1202000, PA: 17fa02000,   8k, priv, unlocked, ctx 0 local
+[01] VA: 13fa000, PA: 17fbfa000,   8k, priv, unlocked, ctx 0 local
+[02] VA: 10a8000, PA: 17f8a8000,   8k, priv, unlocked, ctx 0 local
+[03] VA: 101c000, PA: 17f81c000,   8k, priv, unlocked, ctx 0 local
+[04] VA: 1028000, PA: 17f828000,   8k, priv, unlocked, ctx 0 local
+[05] VA: 13dc000, PA: 17fbdc000,   8k, priv, unlocked, ctx 0 local
+[06] VA: 103c000, PA: 17f83c000,   8k, priv, unlocked, ctx 0 local
+[07] VA: 1016000, PA: 17f816000,   8k, priv, unlocked, ctx 0 local
+[08] VA: 1000000, PA: 17f800000,   4M, priv, locked, ctx 0 local
+[09] VA: f0000000, PA: 80000000,   4M, priv, locked, ctx 0 local
+[10] VA: 105a000, PA: 17f85a000,   8k, priv, unlocked, ctx 0 local
+[11] VA: edd00000, PA: 17f0fe000,   8k, priv, locked, ctx 0 local
+[12] VA: edd02000, PA: 17f100000,   8k, priv, locked, ctx 0 local
+[13] VA: edd04000, PA: 17f102000,   8k, priv, locked, ctx 0 local
+[14] VA: 10a2000, PA: 17f8a2000,   8k, priv, unlocked, ctx 0 local
+[15] VA: 1024000, PA: 17f824000,   8k, priv, unlocked, ctx 0 local
+[16] VA: 101a000, PA: 17f81a000,   8k, priv, unlocked, ctx 0 local
+[17] VA: 1056000, PA: 17f856000,   8k, priv, unlocked, ctx 0 local
+[18] VA: 1040000, PA: 17f840000,   8k, priv, unlocked, ctx 0 local
+[19] VA: 1082000, PA: 17f882000,   8k, priv, unlocked, ctx 0 local
+[20] VA: 1084000, PA: 17f884000,   8k, priv, unlocked, ctx 0 local
+[21] VA: 1086000, PA: 17f886000,   8k, priv, unlocked, ctx 0 local
+[22] VA: 1018000, PA: 17f818000,   8k, priv, unlocked, ctx 0 local
+[23] VA: 1074000, PA: 17f874000,   8k, priv, unlocked, ctx 0 local
+[24] VA: 108a000, PA: 17f88a000,   8k, priv, unlocked, ctx 0 local
+[25] VA: 1088000, PA: 17f888000,   8k, priv, unlocked, ctx 0 local
+[26] VA: 12d8000, PA: 17fad8000,   8k, priv, unlocked, ctx 0 local
+[27] VA: 1076000, PA: 17f876000,   8k, priv, unlocked, ctx 0 local
+[28] VA: 123c000, PA: 17fa3c000,   8k, priv, unlocked, ctx 0 local
+[29] VA: 10da000, PA: 17f8da000,   8k, priv, unlocked, ctx 0 local
+[30] VA: 107e000, PA: 17f87e000,   8k, priv, unlocked, ctx 0 local
+[31] VA: 12d4000, PA: 17fad4000,   8k, priv, unlocked, ctx 0 local
+[32] VA: 106a000, PA: 17f86a000,   8k, priv, unlocked, ctx 0 local
+[33] VA: 10ec000, PA: 17f8ec000,   8k, priv, unlocked, ctx 0 local
+[34] VA: 1042000, PA: 17f842000,   8k, priv, unlocked, ctx 0 local
+[35] VA: 1046000, PA: 17f846000,   8k, priv, unlocked, ctx 0 local
+[36] VA: 10fa000, PA: 17f8fa000,   8k, priv, unlocked, ctx 0 local
+[37] VA: 108c000, PA: 17f88c000,   8k, priv, unlocked, ctx 0 local
+[38] VA: 109e000, PA: 17f89e000,   8k, priv, unlocked, ctx 0 local
+[39] VA: 11a4000, PA: 17f9a4000,   8k, priv, unlocked, ctx 0 local
+[40] VA: 123a000, PA: 17fa3a000,   8k, priv, unlocked, ctx 0 local
+[41] VA: 1102000, PA: 17f902000,   8k, priv, unlocked, ctx 0 local
+[42] VA: 10ea000, PA: 17f8ea000,   8k, priv, unlocked, ctx 0 local
+[43] VA: 11a2000, PA: 17f9a2000,   8k, priv, unlocked, ctx 0 local
+[44] VA: 1358000, PA: 17fb58000,   8k, priv, unlocked, ctx 0 local
+[45] VA: 126e000, PA: 17fa6e000,   8k, priv, unlocked, ctx 0 local
+[46] VA: 1092000, PA: 17f892000,   8k, priv, unlocked, ctx 0 local
+[47] VA: 1176000, PA: 17f976000,   8k, priv, unlocked, ctx 0 local
+[48] VA: 11e0000, PA: 17f9e0000,   8k, priv, unlocked, ctx 0 local
+[49] VA: 116a000, PA: 17f96a000,   8k, priv, unlocked, ctx 0 local
+[50] VA: 1100000, PA: 17f900000,   8k, priv, unlocked, ctx 0 local
+[51] VA: 11e2000, PA: 17f9e2000,   8k, priv, unlocked, ctx 0 local
+[52] VA: 107c000, PA: 17f87c000,   8k, priv, unlocked, ctx 0 local
+[53] VA: 103e000, PA: 17f83e000,   8k, priv, unlocked, ctx 0 local
+[54] VA: 100a000, PA: 17f80a000,   8k, priv, unlocked, ctx 0 local
+[55] VA: 1036000, PA: 17f836000,   8k, priv, unlocked, ctx 0 local
+[56] VA: 102c000, PA: 17f82c000,   8k, priv, unlocked, ctx 0 local
+[57] VA: 116c000, PA: 17f96c000,   8k, priv, unlocked, ctx 0 local
+[58] VA: 107a000, PA: 17f87a000,   8k, priv, unlocked, ctx 0 local
+[59] VA: 102a000, PA: 17f82a000,   8k, priv, unlocked, ctx 0 local
+[60] VA: 1034000, PA: 17f834000,   8k, priv, unlocked, ctx 0 local
+[61] VA: 103a000, PA: 17f83a000,   8k, priv, unlocked, ctx 0 local
+[62] VA: 1050000, PA: 17f850000,   8k, priv, unlocked, ctx 0 local
+[63] VA: 100e000, PA: 17f80e000,   8k, priv, unlocked, ctx 0 local
+(qemu) root nexus = Sun Fire T2000
+pseudo0 at root
+pseudo0 is /pseudo
+scsi_vhci0 at root
+scsi_vhci0 is /scsi_vhci
+NOTICE: Disabling watchdog as watchdog services are not available
+
+ramdisk0 at root
+ramdisk0 is /ramdisk-root
+root on /ramdisk-root:a fstype ufs
+pseudo-device: dld0
+dld0 is /pseudo/dld@0
+cpu0: UltraSPARC-T1 (chipid 0, clock 5 MHz)
+pseudo-device: audio0
+audio0 is /pseudo/audio@0
+pseudo-device: devinfo0
+devinfo0 is /pseudo/devinfo@0
+iscsi0 at root
+iscsi0 is /iscsi
+pseudo-device: pseudo1
+pseudo1 is /pseudo/zconsnex@1
+pseudo-device: drctl0
+drctl0 is /pseudo/drctl@0
+pseudo-device: zfs0
+zfs0 is /pseudo/zfs@0
+pseudo-device: fcode0
+fcode0 is /pseudo/fcode@0
+pseudo-device: llc10
+llc10 is /pseudo/llc1@0
+pseudo-device: lofi0
+lofi0 is /pseudo/lofi@0
+pseudo-device: ramdisk1024
+ramdisk1024 is /pseudo/ramdisk@1024
+pseudo-device: mdesc0
+mdesc0 is /pseudo/mdesc@0
+WARNING: kernel debugger was booted; application watchdog is not available.
+pseudo-device: trapstat0
+trapstat0 is /pseudo/trapstat@0
+pseudo-device: dtrace0
+dtrace0 is /pseudo/dtrace@0
+pseudo-device: fbt0
+fbt0 is /pseudo/fbt@0
+pseudo-device: dcpc0
+dcpc0 is /pseudo/dcpc@0
+pseudo-device: lockstat0
+lockstat0 is /pseudo/lockstat@0
+pseudo-device: profile0
+profile0 is /pseudo/profile@0
+pseudo-device: fasttrap0
+fasttrap0 is /pseudo/fasttrap@0
+pseudo-device: systrace0
+systrace0 is /pseudo/systrace@0
+pseudo-device: sdt0
+sdt0 is /pseudo/sdt@0
+pseudo-device: fcp0
+fcp0 is /pseudo/fcp@0
+pseudo-device: fcsm0
+fcsm0 is /pseudo/fcsm@0
+Hostname: opensolaris
+Remounting root read/write
+Probing for device nodes ...
+Preparing automated install image for use
+Requesting System Maintenance Mode
+(See /lib/svc/share/README for more information.)
+Console login service(s) cannot run
+
+Enter user name for system maintenance (control-d to bypass): 
+(qemu) 
+(qemu) 
+(qemu) QEMU: Terminated
+
+Script done on 2026-09-15 16:45:09+02:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,237 @@
+Script started on 2026-09-15 16:06:23+02:00 [COMMAND="/home/dpim/build/qemu-0002-on-5f664cd37a/qemu-system-sparc64 -M niagara   -L /git/md/bin/pagesize_256m/4096 -L /git/md/fw_blobs   -nographic -serial mon:stdio -m 4096   -monitor unix:/tmp/0002-ab-patched.mon,server,nowait   -drive if=pflash,readonly=on,file=/zroot/iso/osol-dev-134-ai-sparc.iso" TERM="xterm-256color" TTY="/dev/pts/11" COLUMNS="130" LINES="42"]
+cpu Probing I/O buses
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.20.0, 4096 MB memory available, Serial #1122867.
+[mo23723 obp4.20.0 #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok boot -kdv
+Boot device: /virtual-devices/disk@0  File and args: -kdv
+hsfs-file-system 
+Loading: /platform/sun4v/boot_archive
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-ramdisk-root ufs-file-system 
+Loading: /platform/sun4v/kernel/sparcv9/unix
+||/-\|/-\|/-\|/module /platform/sun4v/kernel/sparcv9/unix: text at [0x1000000, 0x10d9cef] data at 0x1800000
+module /platform/sun4v/kernel/sparcv9/genunix: text at [0x10d9cf0, 0x12d4d17] data at 0x18d93c0
+module /platform/sun4v/kernel/misc/sparcv9/platmod: text at [0x12d4d18, 0x12d4d1f] data at 0x192f670
+module /platform/sun4v/kernel/cpu/sparcv9/SUNW,UltraSPARC-T1: text at [0x12d4d20, 0x12d8e77] data at 0x192fd40
+Loading kmdb...
+-\|/-\|/-\|module /platform/sun4v/kernel/misc/sparcv9/kmdbmod: text at [0x12d8e80, 0x13553bf] data at 0x19487c0
+module /kernel/misc/sparcv9/ctf: text at [0x13553c0, 0x135cda7] data at 0x1965f30
+/-\|/-\|/-\|/-
+Welcome to kmdb
+kmdb: unable to determine terminal type: assuming `vt100'
+(B)0Loaded modules: [ unix krtld genunix ]
+[0]> :c
+[m\SunOS Release 5.11 Version snv_134 64-bit
+Copyright 1983-2010 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+|QEMU 11.1.50 monitor - type 'help' for more information
+(qemu) i[K[Din[Kos-io /-\|/-\[D[Dinf[K|/-\|/-[D[D[Dinfo[K\|/-\|/-Ethernet address = 0:80:3:de:ad:3
+\Using default device instance data
+
+info accel  -- show accelerator statistics
+info accelerators  -- show present and enabled information
+info balloon  -- show balloon information
+info block [-n] [-v] [device] -- show info of one block device or all block devices (-n: show named nodes; -v: show details)
+info block-jobs  -- show progress of ongoing block device operations
+info blockstats  -- show block device statistics
+info capture  -- show capture information (deprecated)
+info chardev  -- show the character devices
+info cpus  -- show infos for each CPU
+info cryptodev  -- show the crypto devices
+info dirty_rate  -- show dirty rate information
+info dump  -- Display the latest dump status
+info firmware-log [max-size] -- show the firmware (ovmf) debug log
+info history  -- show the command line history
+info hotpluggable-cpus  -- Show information about hotpluggable CPUs
+info iothreads  -- show iothreads
+info irq  -- show the interrupts statistics (if available)
+info jit  -- show dynamic compiler info
+info kvm  -- show KVM information
+info memdev  -- show memory backends
+info memory-devices  -- show memory devices
+info memory_size_summary  -- show the amount of initially allocated and present hotpluggable (if enabled) memory in bytes.
+info mice  -- show which guest mouse is receiving events
+info migrate [-a] -- show migration status (-a: all, dump all status)
+info migrate_capabilities  -- show current migration capabilities
+info migrate_parameters  -- show current migration parameters
+info mtree [-f][-d][-o][-D] -- show memory tree (-f: dump flat view for address spaces;-d: dump dispatch tree, valid with -f only);-o: dump region owners/parents;-D: dump disabled regions
+info name  -- show the current VM name
+info network  -- show the network state
+info numa  -- show NUMA information
+info pci  -- show PCI info
+info pic  -- show PIC state
+info qdm  -- show qdev device model list
+info qom-tree [path] -- show QOM composition tree
+info qtree [-b] -- show device tree (-b: brief, omit properties)
+info ramblock  -- Display system ramblock information
+info registers [-a|vcpu] -- show the cpu registers (-a: show register info for all cpus; vcpu: specific vCPU to query; show the current CPU's registers if no argument is specified)
+info replay  -- show record/replay information
+info rocker name -- Show rocker switch
+info rocker-of-dpa-flows name [tbl_id] -- Show rocker OF-DPA flow tables
+info rocker-of-dpa-groups name [type] -- Show rocker OF-DPA groups
+info rocker-ports name -- Show rocker ports
+info roms  -- show roms
+info snapshots  -- show the currently saved VM snapshots
+info stats target [names] [provider] -- show statistics for the given target (vm or vcpu); optionally filter byname (comma-separated list, or * for all) and provider
+info status  -- show the current VM status (running|paused)
+info sync-profile [-m] [-n] [max] -- show synchronization profiling info, up to max entries (default: 10), sorted by total wait time. (-m: sort by mean wait time; -n: do not coalesce objects with the same call site)
+info tlb  -- show virtual to physical memory mappings
+info tpm  -- show the TPM device
+info trace-events [name] -- show available trace-events & their state (name: event name pattern)
+info usb  -- show guest USB devices
+info usbhost  -- show host USB devices
+info usernet  -- show user network stack connection states
+info uuid  -- show the current VM UUID
+info vcpu_dirty_limit  -- show dirty page limit information of all vCPU
+info version  -- show the version of QEMU
+info via  -- show guest mos6522 VIA devices
+info virtio  -- List all available virtio devices
+info virtio-queue-element path queue [index] -- Display element of a given virtio queue
+info virtio-queue-status path queue -- Display status of a given virtio queue
+info virtio-status path -- Display status of a given virtio device
+info virtio-vhost-queue-status path queue -- Display status of a given vhost queue
+info vm-generation-id  -- Show Virtual Machine Generation ID
+info vnc  -- show the vnc server status
+(qemu) i[K[Din[K[D[Dinf[K[D[D[Dinfo[K[D[D[D[Dinfo [K[D[D[D[D[Dinfo t[K[D[D[D[D[D[Dinfo tl[K[D[D[D[D[D[D[Dinfo tlb[K
+MMU contexts: Primary: 0, Secondary: 0
+DMMU Tag Access: ffffffffff300000, TSB Tag Target: 0
+DMMU dump
+[00] VA: 188c000, PA: 17f48c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[01] VA: fff78000, PA: 801f8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[02] VA: f0080000, PA: 80080000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[03] VA: f0084000, PA: 80084000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[04] VA: 18e8000, PA: 17f4e8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[05] VA: 193e000, PA: 17f53e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[06] VA: 192e000, PA: 17f52e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[07] VA: 19fa000, PA: 17f5fa000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[08] VA: fff60000, PA: 17ffe8000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[09] VA: 18c2000, PA: 17f4c2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[10] VA: 1930000, PA: 17f530000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[11] VA: 18ba000, PA: 17f4ba000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[12] VA: 186a000, PA: 17f46a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[13] VA: f022c000, PA: 8022c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[14] VA: f024e000, PA: 8024e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[15] VA: f0236000, PA: 80236000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[16] VA: fff72000, PA: 801f2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[17] VA: f0228000, PA: 80228000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[18] VA: fff6a000, PA: 17fff2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[19] VA: fffffffcc0014000, PA: 164a04000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[20] VA: f0214000, PA: 80214000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[21] VA: 183c000, PA: 17f43c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[22] VA: fff74000, PA: 801f4000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[23] VA: f0244000, PA: 80244000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[24] VA: 70000000000, PA: 150000000, 256M, priv, RW, unlocked, ie no, ctx 0 local
+[25] VA: f0224000, PA: 80224000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[26] VA: 180e000, PA: 17f40e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[27] VA: f020a000, PA: 8020a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[28] VA: f0240000, PA: 80240000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[29] VA: 19fc000, PA: 17f5fc000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[30] VA: f0208000, PA: 80208000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[31] VA: 18b4000, PA: 17f4b4000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[32] VA: 10d2000, PA: 17f8d2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[33] VA: 18d0000, PA: 17f4d0000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[34] VA: f020e000, PA: 8020e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[35] VA: 1846000, PA: 17f446000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[36] VA: 188a000, PA: 17f48a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[37] VA: f0254000, PA: 80254000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[38] VA: f0082000, PA: 80082000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[39] VA: f0232000, PA: 80232000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[40] VA: 18d2000, PA: 17f4d2000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[41] VA: f0230000, PA: 80230000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[42] VA: f021e000, PA: 8021e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[43] VA: 180a000, PA: 17f40a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[44] VA: f023c000, PA: 8023c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[45] VA: f0276000, PA: 80276000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[46] VA: f0246000, PA: 80246000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[47] VA: f020c000, PA: 8020c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[48] VA: f023a000, PA: 8023a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[49] VA: f0226000, PA: 80226000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[50] VA: f022a000, PA: 8022a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[51] VA: 1840000, PA: 17f440000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[52] VA: 187e000, PA: 17f47e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[53] VA: 180c000, PA: 17f40c000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[54] VA: 183a000, PA: 17f43a000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[55] VA: f0242000, PA: 80242000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[56] VA: f023e000, PA: 8023e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[57] VA: ffffffffffffc000, PA: 801ee000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[58] VA: 18b6000, PA: 17f4b6000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[59] VA: f0212000, PA: 80212000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[60] VA: f0270000, PA: 80270000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[61] VA: f022e000, PA: 8022e000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[62] VA: f0210000, PA: 80210000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+[63] VA: 1886000, PA: 17f486000,   8k, priv, RW, unlocked, ie no, ctx 0 local
+IMMU dump
+[00] VA: 1262000, PA: 17fa62000,   8k, priv, unlocked, ctx 0 local
+[01] VA: 1152000, PA: 17f952000,   8k, priv, unlocked, ctx 0 local
+[02] VA: 1138000, PA: 17f938000,   8k, priv, unlocked, ctx 0 local
+[03] VA: 1058000, PA: 17f858000,   8k, priv, unlocked, ctx 0 local
+[04] VA: 105a000, PA: 17f85a000,   8k, priv, unlocked, ctx 0 local
+[05] VA: 1008000, PA: 17f808000,   8k, priv, unlocked, ctx 0 local
+[06] VA: 101a000, PA: 17f81a000,   8k, priv, unlocked, ctx 0 local
+[07] VA: 1074000, PA: 17f874000,   8k, priv, unlocked, ctx 0 local
+[08] VA: 1118000, PA: 17f918000,   8k, priv, unlocked, ctx 0 local
+[09] VA: f0000000, PA: 80000000,   4M, priv, locked, ctx 0 local
+[10] VA: 12d6000, PA: 17fad6000,   8k, priv, unlocked, ctx 0 local
+[11] VA: 1024000, PA: 17f824000,   8k, priv, unlocked, ctx 0 local
+[12] VA: 116a000, PA: 17f96a000,   8k, priv, unlocked, ctx 0 local
+[13] VA: 111a000, PA: 17f91a000,   8k, priv, unlocked, ctx 0 local
+[14] VA: 1082000, PA: 17f882000,   8k, priv, unlocked, ctx 0 local
+[15] VA: 1084000, PA: 17f884000,   8k, priv, unlocked, ctx 0 local
+[16] VA: 1056000, PA: 17f856000,   8k, priv, unlocked, ctx 0 local
+[17] VA: 1086000, PA: 17f886000,   8k, priv, unlocked, ctx 0 local
+[18] VA: 108a000, PA: 17f88a000,   8k, priv, unlocked, ctx 0 local
+[19] VA: 1088000, PA: 17f888000,   8k, priv, unlocked, ctx 0 local
+[20] VA: 12d8000, PA: 17fad8000,   8k, priv, unlocked, ctx 0 local
+[21] VA: 1076000, PA: 17f876000,   8k, priv, unlocked, ctx 0 local
+[22] VA: 1018000, PA: 17f818000,   8k, priv, unlocked, ctx 0 local
+[23] VA: 10da000, PA: 17f8da000,   8k, priv, unlocked, ctx 0 local
+[24] VA: 116e000, PA: 17f96e000,   8k, priv, unlocked, ctx 0 local
+[25] VA: 107e000, PA: 17f87e000,   8k, priv, unlocked, ctx 0 local
+[26] VA: 10ec000, PA: 17f8ec000,   8k, priv, unlocked, ctx 0 local
+[27] VA: 106a000, PA: 17f86a000,   8k, priv, unlocked, ctx 0 local
+[28] VA: 12d4000, PA: 17fad4000,   8k, priv, unlocked, ctx 0 local
+[29] VA: 1212000, PA: 17fa12000,   8k, priv, unlocked, ctx 0 local
+[30] VA: 111c000, PA: 17f91c000,   8k, priv, unlocked, ctx 0 local
+[31] VA: 1200000, PA: 17fa00000,   8k, priv, unlocked, ctx 0 local
+[32] VA: 126e000, PA: 17fa6e000,   8k, priv, unlocked, ctx 0 local
+[33] VA: 103c000, PA: 17f83c000,   8k, priv, unlocked, ctx 0 local
+[34] VA: 11fe000, PA: 17f9fe000,   8k, priv, unlocked, ctx 0 local
+[35] VA: 115e000, PA: 17f95e000,   8k, priv, unlocked, ctx 0 local
+[36] VA: 1160000, PA: 17f960000,   8k, priv, unlocked, ctx 0 local
+[37] VA: 10a0000, PA: 17f8a0000,   8k, priv, unlocked, ctx 0 local
+[38] VA: 109e000, PA: 17f89e000,   8k, priv, unlocked, ctx 0 local
+[39] VA: 109a000, PA: 17f89a000,   8k, priv, unlocked, ctx 0 local
+[40] VA: 123a000, PA: 17fa3a000,   8k, priv, unlocked, ctx 0 local
+[41] VA: 1102000, PA: 17f902000,   8k, priv, unlocked, ctx 0 local
+[42] VA: 10ea000, PA: 17f8ea000,   8k, priv, unlocked, ctx 0 local
+[43] VA: 108e000, PA: 17f88e000,   8k, priv, unlocked, ctx 0 local
+[44] VA: 1092000, PA: 17f892000,   8k, priv, unlocked, ctx 0 local
+[45] VA: 1090000, PA: 17f890000,   8k, priv, unlocked, ctx 0 local
+[46] VA: 1094000, PA: 17f894000,   8k, priv, unlocked, ctx 0 local
+[47] VA: 1174000, PA: 17f974000,   8k, priv, unlocked, ctx 0 local
+[48] VA: 1012000, PA: 17f812000,   8k, priv, unlocked, ctx 0 local
+[49] VA: 113c000, PA: 17f93c000,   8k, priv, unlocked, ctx 0 local
+[50] VA: 11a4000, PA: 17f9a4000,   8k, priv, unlocked, ctx 0 local
+[51] VA: 1172000, PA: 17f972000,   8k, priv, unlocked, ctx 0 local
+[52] VA: 107c000, PA: 17f87c000,   8k, priv, unlocked, ctx 0 local
+[53] VA: 11a2000, PA: 17f9a2000,   8k, priv, unlocked, ctx 0 local
+[54] VA: 113a000, PA: 17f93a000,   8k, priv, unlocked, ctx 0 local
+[55] VA: 1176000, PA: 17f976000,   8k, priv, unlocked, ctx 0 local
+[56] VA: 11e0000, PA: 17f9e0000,   8k, priv, unlocked, ctx 0 local
+[57] VA: 116c000, PA: 17f96c000,   8k, priv, unlocked, ctx 0 local
+[58] VA: 107a000, PA: 17f87a000,   8k, priv, unlocked, ctx 0 local
+[59] VA: 1202000, PA: 17fa02000,   8k, priv, unlocked, ctx 0 local
+[60] VA: 1100000, PA: 17f900000,   8k, priv, unlocked, ctx 0 local
+[61] VA: 11e2000, PA: 17f9e2000,   8k, priv, unlocked, ctx 0 local
+[62] VA: 1050000, PA: 17f850000,   8k, priv, unlocked, ctx 0 local
+[63] VA: 1260000, PA: 17fa60000,   8k, priv, unlocked, ctx 0 local
+(qemu) |/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|QEMU: Terminated
+
+Script done on 2026-09-15 16:07:02+02:00 [COMMAND_EXIT_CODE="0"]
