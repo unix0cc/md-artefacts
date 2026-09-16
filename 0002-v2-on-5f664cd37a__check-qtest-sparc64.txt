@@ -1,0 +1,1083 @@
+Log of Meson test suite run on 2026-09-16T11:24:36.361789
+
+Inherited environment: SHELL=/bin/bash DESTDIR='' MAKE_TERMOUT=/dev/pts/14 PWD=/home/dpim/build/qemu-0002-on-5f664cd37a LOGNAME=dpim XDG_SESSION_TYPE=tty _=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/meson MESON_BUILD_ROOT=/home/dpim/build/qemu-0002-on-5f664cd37a HOME=/home/dpim LANG=en_US.UTF-8 LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:' LC_TERMINAL=iTerm2 SSH_CONNECTION='192.168.1.103 51955 192.168.1.10 22' MFLAGS=-rR LESSCLOSE='/usr/bin/lesspipe %s %s' XDG_SESSION_CLASS=user MAKEFLAGS=rR PYTHONPATH=/git/qemu-test/python:/git/qemu-test/tests/functional TERM=xterm-256color LESSOPEN='| /usr/bin/lesspipe %s' LIBVIRT_DEFAULT_URI=qemu:///system USER=dpim MAKE_TERMERR=/dev/pts/14 LC_TERMINAL_VERSION=3.7.1 SHLVL=1 MAKELEVEL=1 XDG_SESSION_ID=949 QEMU_TEST_QEMU_BINARY=/home/dpim/build/qemu-0002-on-5f664cd37a/qemu-system-sparc64 XDG_RUNTIME_DIR=/run/user/501 SSH_CLIENT='192.168.1.103 51955 22' DEBUGINFOD_URLS='https://debuginfod.ubuntu.com ' SRC_PATH=/git/qemu-test PATH=/home/dpim/.local/bin:/home/dpim/.cargo/bin:/home/dpim/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/dpim/go/bin DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/501/bus SSH_TTY=/dev/pts/14 NINJA=/usr/bin/ninja OLDPWD=/home/dpim/build 
+
+==================================== 1/17 ====================================
+test:         qtest+qtest-sparc64+slow - qemu:qtest-sparc64/qom-test
+start time:   09:24:36
+duration:     1.24s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc MALLOC_PERTURB_=128 UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/qom-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02S63947076309e08e5790bea5b92b8b90d
+1..5
+# Start of sparc64 tests
+# Start of qom tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197542.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197542.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -machine sun4u -object memory-backend-ram,id=node0,size=65536  -accel qtest
+ok 1 /sparc64/qom/sun4u
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197542.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197542.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -machine none -object memory-backend-ram,id=node0,size=65536  -accel qtest
+ok 2 /sparc64/qom/none
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197542.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197542.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -machine niagara -object memory-backend-ram,id=node0,size=65536  -accel qtest
+ok 3 /sparc64/qom/niagara
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197542.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197542.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -machine sun4v -object memory-backend-ram,id=node0,size=65536  -accel qtest
+ok 4 /sparc64/qom/sun4v
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197542.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197542.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -machine none  -accel qtest
+ok 5 /sparc64/qom/qom-qtests
+# End of qom tests
+# End of sparc64 tests
+----------------------------------- stderr -----------------------------------
+qemu-system-sparc64: qom-tests: vhost-user-spi-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: filter-buffer.interval: set failed: Property 'filter-buffer.interval' requires a positive value
+qemu-system-sparc64: qom-tests: ich9-usb-uhci6.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci6.realized: set failed: Device 'ich9-usb-uhci6' does not support hotplugging
+qemu-system-sparc64: qom-tests: secondary-vga.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: rtl8139.netdev: set failed: Property 'rtl8139.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: rtl8139.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pci-bridge.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pcm3680_pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci5.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci5.realized: set failed: Device 'ich9-usb-uhci5' does not support hotplugging
+qemu-system-sparc64: qom-tests: virtio-blk-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-input-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: gus.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: ich9-usb-uhci4.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci4.realized: set failed: Device 'ich9-usb-uhci4' does not support hotplugging
+qemu-system-sparc64: qom-tests: vfio-user-pci.socket: get failed: Property 'vfio-user-pci.socket' is not readable
+qemu-system-sparc64: qom-tests: vfio-user-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci3.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci3.realized: set failed: Device 'ich9-usb-uhci3' does not support hotplugging
+qemu-system-sparc64: qom-tests: iommu-testdev.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-rtc-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci2.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci2.realized: set failed: Device 'ich9-usb-uhci2' does not support hotplugging
+qemu-system-sparc64: qom-tests: vhost-user-vsock-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci1.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-uhci1.realized: set failed: Device 'ich9-usb-uhci1' does not support hotplugging
+qemu-system-sparc64: qom-tests: vhost-user-snd-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: memory-backend-ram.host-nodes: set failed: NUMA node binding are not supported by this QEMU
+qemu-system-sparc64: qom-tests: memory-backend-ram.size: set failed: property 'size' of memory-backend-ram doesn't take value '0'
+qemu-system-sparc64: qom-tests: virtio-serial-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: tulip.netdev: set failed: Property 'tulip.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: tulip.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-scsi-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-gpu-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-gpu-pci.realized: set failed: Device 'virtio-gpu-pci' does not support hotplugging
+qemu-system-sparc64: qom-tests: ufs.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-vsock-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pci-serial-2x.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-scsi-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: usb-audio.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: ich9-usb-ehci2.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-ehci2.realized: set failed: Device 'ich9-usb-ehci2' does not support hotplugging
+qemu-system-sparc64: qom-tests: usb-net.netdev: set failed: Property 'usb-net.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: virtio-9p-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-vsock-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vfio-pci-nohotplug.host: set failed: Property 'vfio-pci-nohotplug.host' doesn't take value 'ffff:ff:ff.f'
+qemu-system-sparc64: qom-tests: vfio-pci-nohotplug.x-nv-gpudirect-clique: set failed: Property x-nv-gpudirect-clique: valid range 0-15
+qemu-system-sparc64: qom-tests: vfio-pci-nohotplug.fd: get failed: Property 'vfio-pci-nohotplug.fd' is not readable
+qemu-system-sparc64: qom-tests: vfio-pci-nohotplug.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vfio-pci-nohotplug.realized: set failed: Device 'vfio-pci-nohotplug' does not support hotplugging
+qemu-system-sparc64: qom-tests: ctucan_pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-ehci1.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-usb-ehci1.realized: set failed: Device 'ich9-usb-ehci1' does not support hotplugging
+qemu-system-sparc64: qom-tests: virtio-input-host-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82557b.netdev: set failed: Property 'i82557b.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82557b.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82557c.netdev: set failed: Property 'i82557c.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82557c.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: thread-context.cpu-affinity: get failed: Object not initialized yet
+qemu-system-sparc64: qom-tests: thread-context.node-affinity: get failed: Property 'thread-context.node-affinity' is not readable
+qemu-system-sparc64: qom-tests: vhost-user-i2c-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-test-device-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82557a.netdev: set failed: Property 'i82557a.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82557a.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-scsi-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: sunhme.netdev: set failed: Property 'sunhme.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: sunhme.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-scsi-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-mouse-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: chardev-dbus.addr: get failed: socket not connected
+qemu-system-sparc64: qom-tests: virtio-9p-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: memory-backend-file.host-nodes: set failed: NUMA node binding are not supported by this QEMU
+qemu-system-sparc64: qom-tests: memory-backend-file.size: set failed: property 'size' of memory-backend-file doesn't take value '0'
+qemu-system-sparc64: qom-tests: virtio-blk-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: qtest.chardev: set failed: Cannot find character device ''
+qemu-system-sparc64: qom-tests: ne2k_pci.netdev: set failed: Property 'ne2k_pci.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: ne2k_pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-rtc-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-balloon-pci.guest-stats: set failed: Property 'virtio-balloon-device.guest-stats' is not writable
+qemu-system-sparc64: qom-tests: virtio-balloon-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-gpu-device.realized: set failed: Device 'virtio-gpu-device' does not support hotplugging
+qemu-system-sparc64: qom-tests: e1000.netdev: set failed: Property 'e1000.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: e1000.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ES1370.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: ES1370.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-backend.chardev: set failed: Chardev '' not found
+qemu-system-sparc64: qom-tests: i82551.netdev: set failed: Property 'i82551.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82551.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82550.netdev: set failed: Property 'i82550.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82550.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: nvme.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: mioe3680_pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vmxnet3.netdev: set failed: Property 'vmxnet3.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: vmxnet3.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: nec-usb-xhci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-sound-pci.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: virtio-sound-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: memory-backend-memfd.hugetlbsize: set failed: Property 'memory-backend-memfd.hugetlbsize' doesn't take value '0'
+qemu-system-sparc64: qom-tests: memory-backend-memfd.host-nodes: set failed: NUMA node binding are not supported by this QEMU
+qemu-system-sparc64: qom-tests: memory-backend-memfd.size: set failed: property 'size' of memory-backend-memfd doesn't take value '0'
+qemu-system-sparc64: qom-tests: vhost-user-gpu-pci.chardev: set failed: Chardev '' not found
+qemu-system-sparc64: qom-tests: vhost-user-gpu-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-gpu-pci.realized: set failed: Device 'vhost-user-gpu-pci' does not support hotplugging
+qemu-system-sparc64: qom-tests: virtio-crypto-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ati-vga.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ati-vga.realized: set failed: Device 'ati-vga' does not support hotplugging
+qemu-system-sparc64: warning: memory-encryption is deprecated, use confidential-guest-support instead
+qemu-system-sparc64: qom-tests: sun4v-machine.memory-encryption: set failed: No such memory encryption object ''
+qemu-system-sparc64: qom-tests: cirrus-vga.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: cirrus-vga.realized: set failed: Device 'cirrus-vga' does not support hotplugging
+qemu-system-sparc64: qom-tests: i82559er.netdev: set failed: Property 'i82559er.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82559er.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-rng-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-serial-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-blk-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: am53c974.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: e1000-82545em.netdev: set failed: Property 'e1000-82545em.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: e1000-82545em.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-serial-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: sdhci-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-rng-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: VGA.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: VGA.realized: set failed: Device 'VGA' does not support hotplugging
+qemu-system-sparc64: qom-tests: pci-serial-4x.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pci-ohci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pci-ohci.realized: set failed: Device 'pci-ohci' does not support hotplugging
+qemu-system-sparc64: qom-tests: virtio-keyboard-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pcnet.netdev: set failed: Property 'pcnet.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: pcnet.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82559c.netdev: set failed: Property 'i82559c.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82559c.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82559b.netdev: set failed: Property 'i82559b.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82559b.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-scsi-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82559a.netdev: set failed: Property 'i82559a.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82559a.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: kvaser_pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: e1000-82544gc.netdev: set failed: Property 'e1000-82544gc.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: e1000-82544gc.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: sabre-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: warning: memory-encryption is deprecated, use confidential-guest-support instead
+qemu-system-sparc64: qom-tests: niagara-machine.memory-encryption: set failed: No such memory encryption object ''
+qemu-system-sparc64: qom-tests: virtio-blk-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: bochs-display.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vfio-pci.host: set failed: Property 'vfio-pci.host' doesn't take value 'ffff:ff:ff.f'
+qemu-system-sparc64: qom-tests: vfio-pci.x-nv-gpudirect-clique: set failed: Property x-nv-gpudirect-clique: valid range 0-15
+qemu-system-sparc64: qom-tests: vfio-pci.fd: get failed: Property 'vfio-pci.fd' is not readable
+qemu-system-sparc64: qom-tests: vfio-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ebus.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: megasas.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-iommu-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-iommu-pci.realized: set failed: Device 'virtio-iommu-pci' does not support hotplugging
+qemu-system-sparc64: qom-tests: tpci200.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: chardev-socket.addr: get failed: socket not connected
+qemu-system-sparc64: qom-tests: usb-ehci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-vdpa-device-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: AC97.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: AC97.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-multitouch-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: cs4231a.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: virtio-net-pci-non-transitional.netdev: set failed: Property 'virtio-net-device.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: virtio-net-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-net-device.netdev: set failed: Property 'virtio-net-device.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: lsi53c810.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: piix4-usb-uhci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-rng-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-vdpa-device-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-scsi-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pci-testdev.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-intel-hda.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: secret_keyring.serial: set failed: 'serial' should not be equal to 0
+qemu-system-sparc64: qom-tests: virtio-9p-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-vsock-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-sound-device.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: virtio-balloon-pci-non-transitional.guest-stats: set failed: Property 'virtio-balloon-device.guest-stats' is not writable
+qemu-system-sparc64: qom-tests: virtio-balloon-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-net-pci-transitional.netdev: set failed: Property 'virtio-net-device.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: virtio-net-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-blk-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-scsi-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: colo-compare.expired_scan_cycle: set failed: Property 'colo-compare.expired_scan_cycle' requires a positive value
+qemu-system-sparc64: qom-tests: colo-compare.max_queue_size: set failed: Property 'colo-compare.max_queue_size' requires a positive value
+qemu-system-sparc64: qom-tests: colo-compare.compare_timeout: set failed: Property 'colo-compare.compare_timeout' requires a positive value
+qemu-system-sparc64: qom-tests: qemu-xhci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: megasas-gen2.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-blk-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: warning: memory-encryption is deprecated, use confidential-guest-support instead
+qemu-system-sparc64: qom-tests: none-machine.memory-encryption: set failed: No such memory encryption object ''
+qemu-system-sparc64: qom-tests: virtio-balloon-pci-transitional.guest-stats: set failed: Property 'virtio-balloon-device.guest-stats' is not writable
+qemu-system-sparc64: qom-tests: virtio-balloon-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: hda-output.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: pci-serial.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-scsi-pci-non-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: piix3-usb-uhci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ne2k_isa.netdev: set failed: Property 'ne2k_isa.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: adlib.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: cmd646-ide.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-gpio-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-gpu.chardev: set failed: Chardev '' not found
+qemu-system-sparc64: qom-tests: vhost-user-gpu.realized: set failed: Device 'vhost-user-gpu' does not support hotplugging
+qemu-system-sparc64: qom-tests: hda-duplex.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: pvpanic-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-rng-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82558b.netdev: set failed: Property 'i82558b.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82558b.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: virtio-net-pci.netdev: set failed: Property 'virtio-net-device.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: virtio-net-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82558a.netdev: set failed: Property 'i82558a.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82558a.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pvscsi.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82801.netdev: set failed: Property 'i82801.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82801.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: memory-backend-shm.host-nodes: set failed: NUMA node binding are not supported by this QEMU
+qemu-system-sparc64: qom-tests: memory-backend-shm.size: set failed: property 'size' of memory-backend-shm doesn't take value '0'
+qemu-system-sparc64: qom-tests: virtio-tablet-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: dc390.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i6300esb.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: sb16.audiodev: set failed: audiodev '' not found
+qemu-system-sparc64: qom-tests: vhost-user-fs-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: ich9-ahci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-scsi-pci-transitional.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: i82562.netdev: set failed: Property 'i82562.netdev' can't find value ''
+qemu-system-sparc64: qom-tests: i82562.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pci-bridge-seat.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: lsi53c895a.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-user-media-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: intel-hda.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: warning: memory-encryption is deprecated, use confidential-guest-support instead
+qemu-system-sparc64: qom-tests: sun4u-machine.memory-encryption: set failed: No such memory encryption object ''
+qemu-system-sparc64: qom-tests: mptsas1068.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: vhost-vdpa-device-pci.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: pbm-bridge.busnr: get failed: device not attached to a PCI bus
+qemu-system-sparc64: qom-tests: hda-micro.audiodev: set failed: audiodev '' not found
+==============================================================================
+
+==================================== 2/17 ====================================
+test:         qtest+qtest-sparc64+slow - qemu:qtest-sparc64/device-introspect-test
+start time:   09:24:37
+duration:     2.05s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 MALLOC_PERTURB_=21 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/device-introspect-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02S0f694abc8d3d85fba95dd777c3e1ed78
+1..6
+# Start of sparc64 tests
+# Start of device tests
+# Start of introspect tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197572.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197572.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 1 /sparc64/device/introspect/list
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197572.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197572.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 2 /sparc64/device/introspect/list-fields
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197572.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197572.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+# Testing device 'nonexistent'
+ok 3 /sparc64/device/introspect/none
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197572.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197572.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+# Testing device 'device'
+ok 4 /sparc64/device/introspect/abstract
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197572.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197572.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 5 /sparc64/device/introspect/abstract-interfaces
+# Start of concrete tests
+# Start of defaults tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197572.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197572.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+# Testing device 'vhost-user-vsock-device'
+# Testing device 'vhost-user-spi-pci'
+# Testing device 'usb-wacom-tablet'
+# Testing device 'ufs-lu'
+# Testing device 'ich9-usb-uhci6'
+# Testing device 'secondary-vga'
+# Testing device 'sysbus-m48t08'
+# Testing device 'rtl8139'
+# Testing device 'pci-bridge'
+# Testing device 'virtio-rng-device'
+# Testing device 'pcm3680_pci'
+# Testing device 'virtio-crypto-device'
+# Testing device 'ich9-usb-uhci5'
+# Testing device 'virtio-blk-pci-transitional'
+# Testing device 'vhost-user-input-pci'
+# Testing device 'i8042-mmio'
+# Testing device 'serial'
+# Testing device 'gus'
+# Testing device 'ich9-usb-uhci4'
+# Testing device 'usb-hub'
+# Testing device 'virtio-blk-device'
+# Testing device 'vfio-user-pci'
+# Testing device 'Sun-UltraSparc-IIIi-sparc64-cpu'
+# Testing device 'ich9-usb-uhci3'
+# Testing device 'iommu-testdev'
+# Testing device 'virtio-rtc-pci'
+# Testing device 'ich9-usb-uhci2'
+# Testing device 'vhost-user-vsock-pci'
+# Testing device 'ich9-usb-uhci1'
+# Testing device 'scsi-generic'
+# Testing device 'vhost-user-snd-pci'
+# Testing device 'virtio-serial-pci-transitional'
+# Testing device 'sysbus-m48t02'
+# Testing device 'ps2-mouse'
+# Testing device 'tulip'
+# Testing device 'vhost-scsi-pci'
+# Testing device 'virtio-gpu-pci'
+# Testing device 'ufs'
+# Testing device 'vhost-user-vsock-pci-non-transitional'
+# Testing device 'imx-usdhc'
+# Testing device 'pci-serial-2x'
+# Testing device 'vhost-user-i2c-device'
+# Testing device 'virtio-9p-device'
+# Testing device 'virtio-scsi-pci'
+# Testing device 'usb-audio'
+# Testing device 'memory'
+# Testing device 'ich9-usb-ehci2'
+# Testing device 'usb-net'
+# Testing device 'virtio-9p-pci-transitional'
+# Testing device 'vhost-vsock-pci-non-transitional'
+# Testing device 'vfio-pci-nohotplug'
+# Testing device 'ctucan_pci'
+# Testing device 'ich9-usb-ehci1'
+# Testing device 'virtio-input-host-pci'
+# Testing device 'serial-mm'
+# Testing device 'i82557b'
+# Testing device 'i82557c'
+# Testing device 'virtio-scsi-device'
+# Testing device 'vhost-user-i2c-pci'
+# Testing device 'vhost-user-test-device-pci'
+# Testing device 'i82557a'
+# Testing device 'vhost-user-scsi-pci-non-transitional'
+# Testing device 'sunhme'
+# Testing device 'generic-sdhci'
+# Testing device 'virtio-scsi-pci-non-transitional'
+# Testing device 'migration'
+# Testing device 'ps2-kbd'
+# Testing device 'virtio-mouse-pci'
+# Testing device 'isabus-bridge'
+# Testing device 'TI-UltraSparc-IIe-sparc64-cpu'
+# Testing device 'sd-card-spi'
+# Testing device 'usb-braille'
+# Testing device 'ib700'
+# Testing device 'Sun-UltraSparc-T1-sparc64-cpu'
+# Testing device 'virtio-9p-pci-non-transitional'
+# Testing device 'sysbus-m48t59'
+# Testing device 'vhost-vsock-device'
+# Testing device 'ide-cf'
+# Testing device 'sd-card'
+# Testing device 'vhost-scsi'
+# Testing device 'usb-tablet'
+# Testing device 'virtio-blk-pci-non-transitional'
+# Testing device 'esp'
+# Testing device 'NEC-UltraSparc-I-sparc64-cpu'
+# Testing device 'ne2k_pci'
+# Testing device 'ide-cd'
+# Testing device 'Sun-UltraSparc-T2-sparc64-cpu'
+# Testing device 'vhost-user-rtc-pci'
+# Testing device 'virtio-balloon-pci'
+# Testing device 'virtio-gpu-device'
+# Testing device 'e1000'
+# Testing device 'ES1370'
+# Testing device 'Fujitsu-Sparc64-sparc64-cpu'
+# Testing device 'i82551'
+# Testing device 'i82550'
+# Testing device 'i2c-echo'
+# Testing device 'nvme'
+# Testing device 'fsl-esdhc-le'
+# Testing device 'mioe3680_pci'
+# Testing device 'vmxnet3'
+# Testing device 'nec-usb-xhci'
+# Testing device 'virtio-sound-pci'
+# Testing device 'vhost-user-gpu-pci'
+# Testing device 'virtio-crypto-pci'
+# Testing device 'i8042'
+# Testing device 'ati-vga'
+# Testing device 'virtio-serial-device'
+# Testing device 'isa-serial'
+# Testing device 'cirrus-vga'
+# Testing device 'i82559er'
+# Testing device 'virtio-rng-pci-non-transitional'
+# Testing device 'virtio-serial-pci'
+# Testing device 'Fujitsu-Sparc64-IV-sparc64-cpu'
+# Testing device 'scsi-cd'
+# Testing device 'vhost-user-blk-pci-non-transitional'
+# Testing device 'am53c974'
+# Testing device 'e1000-82545em'
+# Testing device 'virtio-serial-pci-non-transitional'
+# Testing device 'sdhci-pci'
+# Testing device 'vhost-user-scsi'
+# Testing device 'virtio-rng-pci-transitional'
+# Testing device 'vhost-vdpa-device'
+# Testing device 'usb-bot'
+# Testing device 'Fujitsu-Sparc64-III-sparc64-cpu'
+# Testing device 'VGA'
+# Testing device 'vhost-user-fs-device'
+# Testing device 'pci-serial-4x'
+# Testing device 'pci-ohci'
+# Testing device 'virtio-tablet-device'
+# Testing device 'usb-uas'
+# Testing device 'vhost-user-test-device'
+# Testing device 'virtio-keyboard-pci'
+# Testing device 'pcnet'
+# Testing device 'i82559c'
+# Testing device 'Sun-UltraSparc-IV-sparc64-cpu'
+# Testing device 'virtserialport'
+# Testing device 'ipoctal232'
+# Testing device 'i82559b'
+# Testing device 'usb-mouse'
+# Testing device 'ide-hd'
+# Testing device 'vhost-user-scsi-pci'
+# Testing device 'i82559a'
+# Testing device 'Sun-UltraSparc-IIIi-plus-sparc64-cpu'
+# Testing device 'emmc'
+# Testing device 'kvaser_pci'
+# Testing device 'e1000-82544gc'
+# Testing device 'sabre-pci'
+# Testing device 'usb-ccid'
+# Testing device 'vhost-user-rtc'
+# Testing device 'virtio-blk-pci'
+# Testing device 'Sun-UltraSparc-IV-plus-sparc64-cpu'
+# Testing device 'unimplemented-device'
+# Testing device 'bochs-display'
+# Testing device 'vfio-pci'
+# Testing device 'virtio-multitouch-device'
+# Testing device 'ebus'
+# Testing device 'pc-testdev'
+# Testing device 'megasas'
+# Testing device 'virtio-iommu-pci'
+# Testing device 'sun4u-iommu'
+# Testing device 'tpci200'
+# Testing device 'gpio_i2c'
+# Testing device 'TI-UltraSparc-IIi-sparc64-cpu'
+# Testing device 'usb-ehci'
+# Testing device 'vhost-vdpa-device-pci-non-transitional'
+# Testing device 'AC97'
+# Testing device 'isa-fdc'
+# Testing device 'virtio-multitouch-pci'
+# Testing device 'cs4231a'
+# Testing device 'virtio-net-pci-non-transitional'
+# Testing device 'usb-mtp'
+# Testing device 'scsi-hd'
+# Testing device 'usb-kbd'
+# Testing device 'base-xhci'
+# Testing device 'isa-m48t59'
+# Testing device 'virtio-net-device'
+# Testing device 'vhost-user-rng'
+# Testing device 's3c-sdhci'
+# Testing device 'fw_cfg_mem'
+# Testing device 'lsi53c810'
+# Testing device 'TI-UltraSparc-I-sparc64-cpu'
+# Testing device 'virtio-mouse-device'
+# Testing device 'virtconsole'
+# Testing device 'piix4-usb-uhci'
+# Testing device 'virtio-rng-pci'
+# Testing device 'vhost-vdpa-device-pci-transitional'
+# Testing device 'vhost-user-gpio-device'
+# Testing device 'virtio-scsi-pci-transitional'
+# Testing device 'pci-testdev'
+# Testing device 'vhost-user-input'
+# Testing device 'ich9-intel-hda'
+# Testing device 'virtio-9p-pci'
+# Testing device 'vhost-vsock-pci'
+# Testing device 'virtio-sound-device'
+# Testing device 'virtio-balloon-pci-non-transitional'
+# Testing device 'virtio-net-pci-transitional'
+# Testing device 'openprom'
+# Testing device 'usb-storage'
+# Testing device 'vhost-user-blk-pci-transitional'
+# Testing device 'vhost-scsi-pci-transitional'
+# Testing device 'sabre'
+# Testing device 'qemu-xhci'
+# Testing device 'nvme-ns'
+# Testing device 'megasas-gen2'
+# Testing device 'vhost-user-blk-pci'
+# Testing device 'fw_cfg_io'
+# Testing device 'u2f-passthru'
+# Testing device 'TI-UltraSparc-II-sparc64-cpu'
+# Testing device 'sysbus-esp'
+# Testing device 'virtio-balloon-pci-transitional'
+# Testing device 'virtio-keyboard-device'
+# Testing device 'hda-output'
+# Testing device 'virtio-input-host-device'
+# Testing device 'empty_slot'
+# Testing device 'sun4v_rtc'
+# Testing device 'power'
+# Testing device 'pci-serial'
+# Testing device 'vhost-scsi-pci-non-transitional'
+# Testing device 'piix3-usb-uhci'
+# Testing device 'ne2k_isa'
+# Testing device 'adlib'
+# Testing device 'cmd646-ide'
+# Testing device 'vhost-user-gpio-pci'
+# Testing device 'vhost-user-gpu'
+# Testing device 'hda-duplex'
+# Testing device 'pvpanic-pci'
+# Testing device 'virtio-balloon-device'
+# Testing device 'isa-parallel'
+# Testing device 'Sun-UltraSparc-III-Cu-sparc64-cpu'
+# Testing device 'vhost-user-rng-pci'
+# Testing device 'virtio-iommu-device'
+# Testing device 'i82558b'
+# Testing device 'fsl-esdhc-be'
+# Testing device 'virtio-net-pci'
+# Testing device 'i82558a'
+# Testing device 'vhost-user-spi-device'
+# Testing device 'loader'
+# Testing device 'usb-serial'
+# Testing device 'pvscsi'
+# Testing device 'Sun-UltraSparc-III-sparc64-cpu'
+# Testing device 'i82801'
+# Testing device 'virtio-tablet-pci'
+# Testing device 'dc390'
+# Testing device 'i6300esb'
+# Testing device 'Fujitsu-Sparc64-V-sparc64-cpu'
+# Testing device 'floppy'
+# Testing device 'vhost-user-snd'
+# Testing device 'sb16'
+# Testing device 'vhost-user-fs-pci'
+# Testing device 'ich9-ahci'
+# Testing device 'vhost-user-scsi-pci-transitional'
+# Testing device 'vhost-user-media-device'
+# Testing device 'i2c-ddc'
+# Testing device 'i82562'
+# Testing device 'pci-bridge-seat'
+# Testing device 'lsi53c895a'
+# Testing device 'vhost-user-media-pci'
+# Testing device 'intel-hda'
+# Testing device 'scsi-block'
+# Testing device 'virtio-rtc-device'
+# Testing device 'mptsas1068'
+# Testing device 'vhost-vdpa-device-pci'
+# Testing device 'pbm-bridge'
+# Testing device 'hda-micro'
+# Testing device 'ivshmem-flat'
+# Testing device 'vhost-user-blk'
+# Testing device 'nvme-subsys'
+ok 6 /sparc64/device/introspect/concrete/defaults/none
+# slow test /sparc64/device/introspect/concrete/defaults/none executed in 1.29 secs
+# End of defaults tests
+# End of concrete tests
+# End of introspect tests
+# End of device tests
+# End of sparc64 tests
+==============================================================================
+
+==================================== 3/17 ====================================
+test:         qtest+qtest-sparc64+slow - qemu:qtest-sparc64/cdrom-test
+start time:   09:24:39
+duration:     0.60s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 MALLOC_PERTURB_=160 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/cdrom-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02Sfa7cf6cbd2c066dbd539941b1c7c7c41
+1..3
+# Start of sparc64 tests
+# Start of cdrom tests
+# Start of param tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197604.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197604.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -M niagara -cdrom cdrom-boot-iso-9yr1f6  -accel qtest
+ok 1 /sparc64/cdrom/param/niagara
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197604.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197604.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -M sun4u -cdrom cdrom-boot-iso-9yr1f6  -accel qtest
+ok 2 /sparc64/cdrom/param/sun4u
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197604.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197604.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -M sun4v -cdrom cdrom-boot-iso-9yr1f6  -accel qtest
+ok 3 /sparc64/cdrom/param/sun4v
+# End of param tests
+# End of cdrom tests
+# End of sparc64 tests
+----------------------------------- stderr -----------------------------------
+xorriso 1.5.6 : RockRidge filesystem manipulator, libburnia project.
+
+xorriso 1.5.6
+ISO 9660 Rock Ridge filesystem manipulator and CD/DVD/BD burn program
+Copyright (C) 2023, Thomas Schmitt <scdbackup@gmx.net>, libburnia project.
+xorriso version   :  1.5.6
+Version timestamp :  2023.06.07.180001
+Build timestamp   :  -none-given-
+libisofs   in use :  1.5.6  (min. 1.5.6)
+libburn    in use :  1.5.6  (min. 1.5.6)
+libburn OS adapter:  internal GNU/Linux SG_IO adapter sg-linux
+libisoburn in use :  1.5.6  (min. 1.5.6)
+Provided under GNU GPL version 3 or later, due to libreadline license.
+There is NO WARRANTY, to the extent permitted by law.
+xorriso 1.5.6 : RockRidge filesystem manipulator, libburnia project.
+
+==============================================================================
+
+==================================== 4/17 ====================================
+test:         qtest+qtest-sparc64+slow - qemu:qtest-sparc64/prom-env-test
+start time:   09:24:40
+duration:     2.59s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh MALLOC_PERTURB_=115 QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/prom-env-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02Sc492959c732cbe5725a5808fbb9ddf5f
+1..1
+# Start of sparc64 tests
+# Start of prom-env tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197634.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197634.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -M sun4u -accel tcg  -prom-env "use-nvramrc?=true" -prom-env "nvramrc=cafec0de 4000 l!"   -accel qtest
+ok 1 /sparc64/prom-env/sun4u
+# slow test /sparc64/prom-env/sun4u executed in 2.47 secs
+# End of prom-env tests
+# End of sparc64 tests
+==============================================================================
+
+==================================== 5/17 ====================================
+test:         qtest+qtest-sparc64+slow - qemu:qtest-sparc64/boot-serial-test
+start time:   09:24:42
+duration:     2.42s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img MALLOC_PERTURB_=113 QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/boot-serial-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02S749766fad5dc7a6ea06a23e5f30d6508
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197645.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197645.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -machine none  -accel qtest
+1..1
+# Start of sparc64 tests
+# Start of boot-serial tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197645.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197645.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on   -M sun4u -no-shutdown -chardev file,id=serial0,path=/tmp/qtest-boot-serial-sIE4RV3 -serial chardev:serial0 -accel tcg -accel kvm   -accel qtest
+ok 1 /sparc64/boot-serial/sun4u
+# slow test /sparc64/boot-serial/sun4u executed in 2.20 secs
+# End of boot-serial tests
+# End of sparc64 tests
+==============================================================================
+
+==================================== 6/17 ====================================
+test:         qtest+qtest-sparc64+slow - qemu:qtest-sparc64/test-hmp
+start time:   09:24:45
+duration:     2.10s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MALLOC_PERTURB_=162 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/test-hmp --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02S115505e9bf08d3a4c2a24fad4dbc3f7f
+1..5
+# Start of sparc64 tests
+# Start of hmp tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197665.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197665.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -S -M sun4u  -accel qtest
+ok 1 /sparc64/hmp/sun4u
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197665.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197665.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -S -M none  -accel qtest
+ok 2 /sparc64/hmp/none
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197665.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197665.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -S -M niagara  -accel qtest
+ok 3 /sparc64/hmp/niagara
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197665.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197665.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -S -M sun4v  -accel qtest
+ok 4 /sparc64/hmp/sun4v
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197665.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197665.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -S -M none -m 2  -accel qtest
+ok 5 /sparc64/hmp/none+2MB
+# End of hmp tests
+# End of sparc64 tests
+==============================================================================
+
+==================================== 7/17 ====================================
+test:         qtest+qtest-sparc64+slow - qemu:qtest-sparc64/qmp-cmd-test
+start time:   09:24:47
+duration:     8.28s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 MALLOC_PERTURB_=244 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/qmp-cmd-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02S70c410a1d35f7fce5fe0cb62e2eb6ee7
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+1..68
+# Start of sparc64 tests
+# Start of qmp tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 1 /sparc64/qmp/query-status
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 2 /sparc64/qmp/query-jobs
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 3 /sparc64/qmp/query-kvm
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 4 /sparc64/qmp/x-accel-stats
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 5 /sparc64/qmp/query-accelerators
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 6 /sparc64/qmp/query-pr-managers
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 7 /sparc64/qmp/query-block
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 8 /sparc64/qmp/query-blockstats
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 9 /sparc64/qmp/query-block-jobs
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 10 /sparc64/qmp/query-named-block-nodes
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 11 /sparc64/qmp/x-debug-query-block-graph
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 12 /sparc64/qmp/query-block-exports
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 13 /sparc64/qmp/query-chardev
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 14 /sparc64/qmp/query-chardev-backends
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 15 /sparc64/qmp/query-dump
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 16 /sparc64/qmp/query-dump-guest-memory-capability
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 17 /sparc64/qmp/query-rx-filter
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 18 /sparc64/qmp/x-query-usernet
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 19 /sparc64/qmp/x-query-network
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 20 /sparc64/qmp/query-tpm-models
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 21 /sparc64/qmp/query-tpm-types
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 22 /sparc64/qmp/query-tpm
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 23 /sparc64/qmp/query-vnc
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 24 /sparc64/qmp/query-vnc-servers
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 25 /sparc64/qmp/query-mice
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 26 /sparc64/qmp/query-display-options
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 27 /sparc64/qmp/query-migrate
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 28 /sparc64/qmp/query-migrate-capabilities
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 29 /sparc64/qmp/query-migrate-parameters
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 30 /sparc64/qmp/query-xen-replication-status
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 31 /sparc64/qmp/query-colo-status
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 32 /sparc64/qmp/query-dirty-rate
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 33 /sparc64/qmp/query-version
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 34 /sparc64/qmp/query-commands
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 35 /sparc64/qmp/query-qmp-schema
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 36 /sparc64/qmp/qom-list-types
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 37 /sparc64/qmp/query-cpus-fast
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 38 /sparc64/qmp/query-machines
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 39 /sparc64/qmp/query-current-machine
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 40 /sparc64/qmp/query-target
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 41 /sparc64/qmp/query-uuid
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 42 /sparc64/qmp/query-vm-generation-id
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 43 /sparc64/qmp/query-memdev
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 44 /sparc64/qmp/query-hotpluggable-cpus
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 45 /sparc64/qmp/query-balloon
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 46 /sparc64/qmp/query-hv-balloon-status-report
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 47 /sparc64/qmp/query-memory-size-summary
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 48 /sparc64/qmp/query-memory-devices
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 49 /sparc64/qmp/x-query-irq
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 50 /sparc64/qmp/x-query-jit
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 51 /sparc64/qmp/x-query-numa
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 52 /sparc64/qmp/x-query-ramblock
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 53 /sparc64/qmp/x-query-roms
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 54 /sparc64/qmp/x-query-usb
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 55 /sparc64/qmp/x-query-interrupt-controllers
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 56 /sparc64/qmp/query-firmware-log
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 57 /sparc64/qmp/query-replay
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 58 /sparc64/qmp/query-yank
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 59 /sparc64/qmp/query-name
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 60 /sparc64/qmp/query-iothreads
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 61 /sparc64/qmp/query-fdsets
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 62 /sparc64/qmp/query-command-line-options
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 63 /sparc64/qmp/xen-event-list
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 64 /sparc64/qmp/query-audiodevs
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 65 /sparc64/qmp/query-acpi-ospm-status
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 66 /sparc64/qmp/query-stats-schemas
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 67 /sparc64/qmp/query-cryptodev
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197694.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197694.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 68 /sparc64/qmp/object-add-failure-modes
+# End of qmp tests
+# End of sparc64 tests
+==============================================================================
+
+==================================== 8/17 ====================================
+test:         qtest+qtest-sparc64+slow - qemu:qtest-sparc64/qos-test
+start time:   09:24:55
+duration:     0.16s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img MALLOC_PERTURB_=212 QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/qos-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02Se1f01c2604a0bbfff12cb5560770c286
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197972.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197972.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -machine none  -accel qtest
+1..0
+==============================================================================
+
+==================================== 9/17 ====================================
+test:         qtest+qtest-sparc64 - qemu:qtest-sparc64/endianness-test
+start time:   09:24:55
+duration:     0.51s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 MALLOC_PERTURB_=45 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/endianness-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02S88617a493079f18d7444a6553d3c6670
+1..3
+# Start of sparc64 tests
+# Start of endianness tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197978.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197978.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -M sun4u -device pc-testdev  -accel qtest
+ok 1 /sparc64/endianness/sun4u
+# Start of split tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197978.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197978.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -M sun4u -device pc-testdev  -accel qtest
+ok 2 /sparc64/endianness/split/sun4u
+# End of split tests
+# Start of combine tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197978.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197978.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -M sun4u -device pc-testdev  -accel qtest
+ok 3 /sparc64/endianness/combine/sun4u
+# End of combine tests
+# End of endianness tests
+# End of sparc64 tests
+==============================================================================
+
+=================================== 10/17 ====================================
+test:         qtest+qtest-sparc64 - qemu:qtest-sparc64/test-netfilter
+start time:   09:24:56
+duration:     0.14s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 MALLOC_PERTURB_=176 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/test-netfilter --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02Sa5f187f6fadbcadedac01ef5ebf451ef
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-197999.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-197999.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nic user,id=qtest-bn0  -accel qtest
+1..4
+# Start of sparc64 tests
+# Start of netfilter tests
+ok 1 /sparc64/netfilter/addremove_one
+ok 2 /sparc64/netfilter/remove_netdev_one
+ok 3 /sparc64/netfilter/addremove_multi
+ok 4 /sparc64/netfilter/remove_netdev_multi
+# End of netfilter tests
+# End of sparc64 tests
+==============================================================================
+
+=================================== 11/17 ====================================
+test:         qtest+qtest-sparc64 - qemu:qtest-sparc64/test-filter-buffer
+start time:   09:24:56
+duration:     0.14s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 MALLOC_PERTURB_=195 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/test-filter-buffer --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02S4203a71c07beaa68bcea5561d49bfa67
+1..1
+# Start of sparc64 tests
+# Start of netfilter tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198006.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198006.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nic socket,id=qtest-bn0,fd=4 -chardev socket,id=chardev0,path=filter-buffer-test.jBFOb4,server=on,wait=off -object filter-buffer,id=fbuf0,netdev=qtest-bn0,queue=tx,interval=1000000000 -object filter-redirector,id=rd0,netdev=qtest-bn0,queue=tx,outdev=chardev0  -accel qtest
+ok 1 /sparc64/netfilter/change_interval_timer
+# End of netfilter tests
+# End of sparc64 tests
+==============================================================================
+
+=================================== 12/17 ====================================
+test:         qtest+qtest-sparc64 - qemu:qtest-sparc64/test-filter-mirror
+start time:   09:24:56
+duration:     0.14s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc MALLOC_PERTURB_=189 UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/test-filter-mirror --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02Saf563919407c4510ae9fd376e2be7895
+1..1
+# Start of sparc64 tests
+# Start of netfilter tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198013.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198013.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nic socket,id=qtest-bn0,fd=4 -chardev socket,id=mirror0,fd=6 -object filter-mirror,id=qtest-f0,netdev=qtest-bn0,queue=tx,outdev=mirror0   -accel qtest
+ok 1 /sparc64/netfilter/mirror
+# End of netfilter tests
+# End of sparc64 tests
+==============================================================================
+
+=================================== 13/17 ====================================
+test:         qtest+qtest-sparc64 - qemu:qtest-sparc64/test-filter-redirector
+start time:   09:24:56
+duration:     1.66s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh MALLOC_PERTURB_=115 QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/test-filter-redirector --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02S1c1dc0d6936687f581a2b00fa7982295
+1..5
+# Start of sparc64 tests
+# Start of netfilter tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198020.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198020.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nic socket,id=qtest-bn0,fd=4 -chardev socket,id=redirector0,path=filter-redirector0.Zc3cu0,server=on,wait=off -chardev socket,id=redirector1,path=filter-redirector1.l1Sfjw,server=on,wait=off -chardev socket,id=redirector2,path=filter-redirector0.Zc3cu0 -object filter-redirector,id=qtest-f0,netdev=qtest-bn0,queue=tx,outdev=redirector0 -object filter-redirector,id=qtest-f1,netdev=qtest-bn0,queue=tx,indev=redirector2 -object filter-redirector,id=qtest-f2,netdev=qtest-bn0,queue=tx,outdev=redirector1   -accel qtest
+ok 1 /sparc64/netfilter/redirector_tx
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198020.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198020.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nic socket,id=qtest-bn0,fd=7 -chardev socket,id=redirector0,path=filter-redirector0.d58By6,server=on,wait=off -chardev socket,id=redirector1,path=filter-redirector1.yFJXcr,server=on,wait=off -chardev socket,id=redirector2,path=filter-redirector0.d58By6 -object filter-redirector,id=qtest-f0,netdev=qtest-bn0,queue=rx,indev=redirector0 -object filter-redirector,id=qtest-f1,netdev=qtest-bn0,queue=rx,outdev=redirector2 -object filter-redirector,id=qtest-f2,netdev=qtest-bn0,queue=rx,indev=redirector1   -accel qtest
+ok 2 /sparc64/netfilter/redirector_rx
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198020.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198020.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nic socket,id=qtest-bn0,fd=11 -chardev socket,id=redirector0,path=filter-redirector0.OiyS7s,server=on,wait=off -object filter-redirector,id=qtest-f0,netdev=qtest-bn0,queue=rx,indev=redirector0   -accel qtest
+ok 3 /sparc64/netfilter/redirector_status
+# slow test /sparc64/netfilter/redirector_status executed in 0.63 secs
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198020.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198020.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nic socket,id=qtest-bn0,fd=14 -chardev socket,id=redirector0,path=filter-redirector0.PpRZ5S,server=on,wait=off -object filter-redirector,id=qtest-f0,netdev=qtest-bn0,queue=rx,indev=redirector0,status=off   -accel qtest
+ok 4 /sparc64/netfilter/redirector_init_status_off
+# slow test /sparc64/netfilter/redirector_init_status_off executed in 0.63 secs
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198020.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198020.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nic socket,id=qtest-bn0,fd=17 -chardev socket,id=redirector0,path=filter-redirector0.eM9qzj,server=on,wait=off -object filter-redirector,id=qtest-f0,netdev=qtest-bn0,queue=rx,indev=redirector0   -accel qtest
+ok 5 /sparc64/netfilter/redirector_rx_event_opened
+# End of netfilter tests
+# End of sparc64 tests
+==============================================================================
+
+=================================== 14/17 ====================================
+test:         qtest+qtest-sparc64 - qemu:qtest-sparc64/machine-none-test
+start time:   09:24:58
+duration:     0.12s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MALLOC_PERTURB_=187 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/machine-none-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02S401633f0825fb58577570a3af30d49dd
+1..1
+# Start of sparc64 tests
+# Start of machine tests
+# Start of none tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198050.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198050.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -machine none -cpu "Fujitsu Sparc64"  -accel qtest
+ok 1 /sparc64/machine/none/cpu_option
+# End of none tests
+# End of machine tests
+# End of sparc64 tests
+==============================================================================
+
+=================================== 15/17 ====================================
+test:         qtest+qtest-sparc64 - qemu:qtest-sparc64/qmp-test
+start time:   09:24:58
+duration:     1.03s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 MALLOC_PERTURB_=116 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/qmp-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02Scc9862cae13a14fceba7512a385c83bd
+1..9
+# Start of sparc64 tests
+# Start of qmp tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198057.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198057.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 1 /sparc64/qmp/protocol
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198057.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198057.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 2 /sparc64/qmp/oob
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198057.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198057.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none --preconfig  -accel qtest
+ok 3 /sparc64/qmp/preconfig
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198057.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198057.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 4 /sparc64/qmp/missing-any-arg
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198057.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198057.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 5 /sparc64/qmp/monitor-add-remove
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198057.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198057.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 6 /sparc64/qmp/monitor-error-paths
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198057.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198057.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none  -accel qtest
+ok 7 /sparc64/qmp/monitor-chardev-in-use
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198057.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198057.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none -chardev null,id=cli-chr -object monitor-qmp,id=cli-mon,chardev=cli-chr  -accel qtest
+ok 8 /sparc64/qmp/monitor-remove-cli
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198057.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198057.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none -chardev null,id=hmp-chr -object monitor-hmp,id=hmp-mon,chardev=hmp-chr  -accel qtest
+ok 9 /sparc64/qmp/monitor-remove-hmp
+# End of qmp tests
+# End of sparc64 tests
+==============================================================================
+
+=================================== 16/17 ====================================
+test:         qtest+qtest-sparc64 - qemu:qtest-sparc64/readconfig-test
+start time:   09:24:59
+duration:     0.12s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 MALLOC_PERTURB_=172 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/readconfig-test --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02Sf3f2d6907a3384959e977777e8349b73
+1..1
+# Start of sparc64 tests
+# Start of readconfig tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198095.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198095.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -machine none -readconfig /tmp/readconfig-test-TT3EV3  -accel qtest
+ok 1 /sparc64/readconfig/object-rng
+# End of readconfig tests
+# End of sparc64 tests
+==============================================================================
+
+=================================== 17/17 ====================================
+test:         qtest+qtest-sparc64 - qemu:qtest-sparc64/netdev-socket
+start time:   09:24:59
+duration:     3.10s
+result:       exit status 0
+command:      G_TEST_DBUS_DAEMON=/git/qemu-test/tests/dbus-daemon.sh QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon MESON_TEST_ITERATION=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 PYTHON=/home/dpim/build/qemu-0002-on-5f664cd37a/pyvenv/bin/python3 RUST_BACKTRACE=1 QTEST_QEMU_IMG=./qemu-img QTEST_QEMU_VNC_BINARY=./tools/qemu-vnc/qemu-vnc MALLOC_PERTURB_=122 UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 QTEST_QEMU_BINARY=./qemu-system-sparc64 /home/dpim/build/qemu-0002-on-5f664cd37a/tests/qtest/netdev-socket --tap -k
+----------------------------------- stdout -----------------------------------
+TAP version 13
+# random seed: R02Scadae48fcf9c68146e05e53823ffb6e4
+1..10
+# Start of sparc64 tests
+# Start of netdev tests
+# Start of stream tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,addr.type=fd,addr.str=3  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,addr.type=fd,addr.str=4  -accel qtest
+ok 1 /sparc64/netdev/stream/fd
+# Start of inet tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,server=true,addr.type=inet,addr.ipv4=on,addr.ipv6=off,addr.host=127.0.0.1,addr.port=42641  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,server=false,id=st0,addr.type=inet,addr.ipv4=on,addr.ipv6=off,addr.host=127.0.0.1,addr.port=42641  -accel qtest
+ok 2 /sparc64/netdev/stream/inet/ipv4
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,server=true,addr.type=inet,addr.ipv4=off,addr.ipv6=on,addr.host=::1,addr.port=55331  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,server=false,id=st0,addr.type=inet,addr.ipv4=off,addr.ipv6=on,addr.host=::1,addr.port=55331  -accel qtest
+ok 3 /sparc64/netdev/stream/inet/ipv6
+# End of inet tests
+# Start of unix tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,server=true,addr.type=unix,addr.path=/tmp/netdev-socket.XHDCV3/stream_unix,  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,server=false,addr.type=unix,addr.path=/tmp/netdev-socket.XHDCV3/stream_unix  -accel qtest
+ok 4 /sparc64/netdev/stream/unix/oneshot
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,server=true,addr.type=unix,addr.path=/tmp/netdev-socket.XHDCV3/stream_unix_reconnect  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,server=false,id=st0,addr.type=unix,addr.path=/tmp/netdev-socket.XHDCV3/stream_unix_reconnect,reconnect-ms=1000  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,server=true,addr.type=unix,addr.path=/tmp/netdev-socket.XHDCV3/stream_unix_reconnect  -accel qtest
+ok 5 /sparc64/netdev/stream/unix/reconnect
+# slow test /sparc64/netdev/stream/unix/reconnect executed in 1.22 secs
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,server=true,addr.type=unix,addr.path=/tmp/netdev-socket.XHDCV3/stream_unix_abstract,addr.abstract=on  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev stream,id=st0,server=false,addr.type=unix,addr.path=/tmp/netdev-socket.XHDCV3/stream_unix_abstract,addr.abstract=on  -accel qtest
+ok 6 /sparc64/netdev/stream/unix/abstract
+# End of unix tests
+# End of stream tests
+# Start of dgram tests
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev dgram,id=st0,local.type=inet,local.host=127.0.0.1,local.port=50143,remote.type=inet,remote.host=127.0.0.1,remote.port=43927  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev dgram,id=st0,local.type=inet,local.host=127.0.0.1,local.port=43927,remote.type=inet,remote.host=127.0.0.1,remote.port=50143  -accel qtest
+ok 7 /sparc64/netdev/dgram/inet
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev dgram,id=st0,remote.type=inet,remote.host=230.0.0.1,remote.port=1234  -accel qtest
+ok 8 /sparc64/netdev/dgram/mcast
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev dgram,id=st0,local.type=unix,local.path=/tmp/netdev-socket.XHDCV3/dgram_unix0,remote.type=unix,remote.path=/tmp/netdev-socket.XHDCV3/dgram_unix1  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev dgram,id=st0,local.type=unix,local.path=/tmp/netdev-socket.XHDCV3/dgram_unix1,remote.type=unix,remote.path=/tmp/netdev-socket.XHDCV3/dgram_unix0  -accel qtest
+ok 9 /sparc64/netdev/dgram/unix
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev dgram,id=st0,local.type=fd,local.str=3  -accel qtest
+# starting QEMU: exec ./qemu-system-sparc64 -qtest unix:/tmp/qtest-198101.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-198101.qmp,id=char0 -object monitor-qmp,id=qmp0,chardev=char0 -display none -audio none -run-with exit-with-parent=on -nodefaults -M none -netdev dgram,id=st0,local.type=fd,local.str=4  -accel qtest
+ok 10 /sparc64/netdev/dgram/fd
+# End of dgram tests
+# End of netdev tests
+# End of sparc64 tests
+==============================================================================
+
+
+Ok:                16  
+Fail:              0   
+Skipped:           1   
