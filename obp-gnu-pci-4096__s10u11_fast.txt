@@ -1,0 +1,48 @@
+
+WARNING: Unable to connect to Domain Service providers
+
+WARNING: Unable to get LDOM Variable Updates
+
+WARNING: Unable to update LDOM Variable
+virtual-console not found.
+virtual-console not found.
+
+
+Sun Fire T2000, No Keyboard
+Copyright 2007 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.x.build_122***PROTOTYPE BUILD***, 4096 MB memory available, Serial #1122867.
+[ niagara-fw-qemu 09/20/26 13:58 git f1317ad-dirty #0]
+Ethernet address 0:80:3:de:ad:3, Host ID: 80112233.
+
+
+
+ok show-diss ks
+a) /pci@0/LSILogic,sas@1/disk
+q) NO SELECTION 
+Enter Selection, q to quit: a
+/pci@0/LSILogic,sas@1/disk has been selected.
+Type ^Y ( Control-Y ) to insert it in the command line. 
+e.g. ok nvalias mydev ^Y 
+         for creating devalias mydev for /pci@0/LSILogic,sas@1/disk
+ok boot /pci@0/LSILogic,sas@1/disk
+Boot device: /pci@0/LSILogic,sas@1/disk  File and args: 
+failed in wait-for-doorbell
+|/|/-\|/-\|/-\|/-\|SunOS Release 5.10 Version Generic_147147-26 64-bit
+Copyright (c) 1983, 2013, Oracle and/or its affiliates. All rights reserved.
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|failed in wait-for-doorbell
+Failed to plumb IPv4 interface(s): e1000g0
+Sep 20 14:25:56 svc.startd[9]: svc:/network/physical:default: Method "/lib/svc/method/net-physical" failed with exit status 96.
+Sep 20 14:26:00 svc.startd[9]: network/physical:default misconfigured: transitioned to maintenance (see 'svcs -xv' for details)
+Hostname: s10u11fast
+
+s10u11fast console login: Sep 20 14:29:04 s10u11fast sendmail[325]: My unqualified host name (s10u11fast) unknown; sleeping for retry
+Sep 20 14:29:26 s10u11fast svc.startd[9]: network/routing/route:default failed: transitioned to maintenance (see 'svcs -xv' for details)
+Sep 20 14:30:17 s10u11fast sendmail[325]: unable to qualify my own domain name (s10u11fast) -- using short name
+
+s10u11fast console login: root
+Password: 
+Sep 20 14:38:54 s10u11fast login: ROOT LOGIN /dev/console
+Last login: Tue Aug 18 18:07:30 on console
+Oracle Corporation      SunOS 5.10      Generic Patch   January 2005
+# poweroffQEMU: Terminated
+
