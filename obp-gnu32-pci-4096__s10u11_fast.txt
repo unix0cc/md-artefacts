@@ -1,0 +1,53 @@
+
+
+WARNING: Unable to connect to Domain Service providers
+
+WARNING: Unable to get LDOM Variable Updates
+
+WARNING: Unable to update LDOM Variable
+virtual-console not found.
+virtual-console not found.
+
+
+Sun Fire T2000 [prescribed MD config: pci, 4096MB], No Keyboard
+Copyright 2007 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.x.build_122***QEMU BUILD***, 4096 MB memory available, Serial #1122867.
+[ niagara-fw-qemu 09/26/26 13:22 git f1317ad-dirty #0]
+Ethernet address 52:54:0:66:0:20, Host ID: 80112233.
+
+
+
+ok boot 
+Boot device: cdrom  File and args: 
+ERROR: boot-read fail
+
+
+Can't locate boot device
+
+ok b show-disks
+a) /pci@0/LSILogic,sas@1/disk
+q) NO SELECTION 
+Enter Selection, q to quit: yvalid choice: a...a, q to quit a
+/pci@0/LSILogic,sas@1/disk has been selected.
+Type ^Y ( Control-Y ) to insert it in the command line. 
+e.g. ok nvalias mydev ^Y 
+         for creating devalias mydev for /pci@0/LSILogic,sas@1/disk
+ok booy /pci@0/LSILogic,sas@1/disk
+booy ?
+ok boot /pci@0/LSILogic,sas@1/disk
+Boot device: /pci@0/LSILogic,sas@1/disk  File and args: 
+failed in wait-for-doorbell
+|/|/-\|/-\|/-\|/-\|SunOS Release 5.10 Version Generic_147147-26 64-bit
+Copyright (c) 1983, 2013, Oracle and/or its affiliates. All rights reserved.
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|failed in wait-for-doorbell
+e1000g0: DL_ATTACH_REQ failed: DL_SYSERR (errno 22)
+e1000g0: DL_BIND_REQ failed: DL_OUTSTATE
+e1000g0: DL_PHYS_ADDR_REQ failed: DL_OUTSTATE
+e1000g0: DL_UNBIND_REQ failed: DL_OUTSTATE
+Failed to plumb IPv4 interface(s): e1000g0
+Sep 29 00:53:14 svc.startd[9]: svc:/network/physical:default: Method "/lib/svc/method/net-physical" failed with exit status 96.
+Sep 29 00:53:15 svc.startd[9]: network/physical:default misconfigured: transitioned to maintenance (see 'svcs -xv' for details)
+Hostname: s10u11fast
+Sep 29 00:56:41 s10u11fast sendmail[325]: My unqualified host name (s10u11fast) unknown; sleeping for retry
+
+s10u11fast console login: Sep 29 00:57:58 s10u11fast sendmail[325]: unable to qualify my own domain name (s10u11fast) -- using short name
