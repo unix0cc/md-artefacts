@@ -1,0 +1,44 @@
+
+WARNING: Unable to connect to Domain Service providers
+
+WARNING: Unable to get LDOM Variable Updates
+
+WARNING: Unable to update LDOM Variable
+virtual-console not found.
+virtual-console not found.
+
+
+Sun Fire T2000 [prescribed MD config: pci, 4096MB], No Keyboard
+Copyright 2007 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.x.build_122+qemu, 4096 MB memory available, Serial #1122867.
+[ niagara-fw-qemu 09/29/26 15:33 git 6267ef2 #0]
+Ethernet address 52:54:0:66:0:20, Host ID: 80112233.
+
+
+
+ok boot cdrom
+Boot device: /pci@0/ide@2/cdrom@1,0  File and args: 
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-||/-\|/-\|/-\|/SunOS Release 5.11 Version snv_134 64-bit
+Copyright 1983-2010 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-WARNING: Invalid watchdog-max-timeout, watchdog is disabled.
+WARNING: /pci@0/ide@2/dad@0,0 (dad1):
+        Corrupt label; wrong magic number
+
+Hostname: opensolaris
+Remounting root read/write
+Probing for device nodes ...
+Preparing automated install image for use
+Done mounting automated install image
+WARNING: No randomness provider enabled for /dev/random. Use cryptoadm(1M) to enable a provider.
+Configuring devices.
+Reading ZFS config: *done.
+Oct  8 07:26:11 opensolaris mDNSResponder: NOTE: Wide-Area Service Discovery disabled to avoid crashing defective DNS relay 10.0.2.3.
+Oct  8 07:26:11 opensolaris sendmail[819]: My unqualified host name (localhost) unknown; sleeping for retry
+
+Auto-installer disabled. Enable the auto-installer service
+by running the following command:
+   svcadm enable svc:/application/auto-installer:default
+
+
+opensolaris console login: 

@@ -1,0 +1,28 @@
+
+WARNING: Unable to connect to Domain Service providers
+
+WARNING: Unable to get LDOM Variable Updates
+
+WARNING: Unable to update LDOM Variable
+virtual-console not found.
+virtual-console not found.
+
+
+Sun Fire T2000 [prescribed MD config: pci, 4096MB], No Keyboard
+Copyright 2007 Sun Microsystems, Inc.  All rights reserved.
+OpenBoot 4.x.build_122+qemu, 4096 MB memory available, Serial #1122867.
+[ niagara-fw-qemu 09/29/26 15:33 git 6267ef2 #0]
+Ethernet address 52:54:0:66:0:20, Host ID: 80112233.
+
+
+
+ok boot cdrom
+Boot device: /pci@0/ide@2/cdrom@1,0  File and args: 
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\||/-\|/-\|/-\|SunOS Release 5.11 Version 11.1 64-bit
+Copyright (c) 1983, 2012, Oracle and/or its affiliates. All rights reserved.
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-WARNING: Invalid watchdog-max-timeout, watchdog is disabled.
+Remounting root read/write
+Probing for device nodes ...
+WARNING: /pci@0/ide@2/dad@0,0 (dad1):
+        Corrupt label; wrong magic number
+
