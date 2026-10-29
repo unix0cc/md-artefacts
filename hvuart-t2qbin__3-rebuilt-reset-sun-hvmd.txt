@@ -1,0 +1,10 @@
+Alive and well ...
+Strand start set = 0x1
+Total physical mem = 0x0
+Scrubbing the rest of memory
+Number of strands = 0x1
+membase = 0x400000
+memsize = 0x3bfffc0
+physmem = 0x0
+ done
+ABORT: Failure 0x424860, spinning
